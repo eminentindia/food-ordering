@@ -1,0 +1,10 @@
+
+RewriteEngine ON
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule !.*\.php$ %{REQUEST_FILENAME}.php [QSA,L]
+RewriteCond %{SCRIPT_FILENAME} !-d  
+RewriteCond %{SCRIPT_FILENAME} !-f
+ErrorDocument 404 http://localhost/new/404.html
+
+RewriteCond %{REQUEST_URI} ^/404/$
+RewriteRule ^(.*)$ /path/to/404 [L]
