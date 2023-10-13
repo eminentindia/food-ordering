@@ -226,27 +226,27 @@ if (isset($_POST['param']) &&  decryptpost($conn, $_POST['param']) === 'get_dish
                         <div   style="display:flex"  class=" justify-content-center gap-4 align-items-center remove_' . $dish_detail_row['dish_detail_id'] . '">
                             ';
 
-        if ($dish_detail_row['status'] == 0) {
-            $html .= '<a href="action/update_dish_detail_status.php?action=deactive&ID=' . $dish_detail_row['dish_detail_id'] . '" class=" badge badge-secondary bg-danger badge-sm" title="Click to active" data-toggle="tooltip"><i class="fa fa-toggle-off" aria-hidden="true"></i>
-            </a>';
-        } else {
-            $html .= '<a href="action/update_dish_detail_status.php?action=active&ID=' . $dish_detail_row['dish_detail_id'] . '" class=" badge badge-dark badge-sm" title="Click to Deactive" data-toggle="tooltip"><i class="fa fa-toggle-on" aria-hidden="true"></i>
-            </a>';
-        }
+                            if ($dish_detail_row['status'] == 0) {
+                                $html .= '<a href="action/update_dish_detail_status.php?action=deactive&ID=' . $dish_detail_row['dish_detail_id'] . '" class=" badge badge-secondary bg-danger badge-sm" title="Click to active" data-toggle="tooltip"><i class="fa fa-toggle-off" aria-hidden="true"></i>
+                                </a>';
+                            } else {
+                                $html .= '<a href="action/update_dish_detail_status.php?action=active&ID=' . $dish_detail_row['dish_detail_id'] . '" class=" badge badge-dark badge-sm" title="Click to Deactive" data-toggle="tooltip"><i class="fa fa-toggle-on" aria-hidden="true"></i>
+                                </a>';
+                            }
 
-        if ($j != 1) {
-            $html .= '
+                            if ($j != 1) {
+                                $html .= '
                         <div style="display:flex" class="   justify-content-center gap-4 align-items-center  remove_' . $dish_detail_row['dish_detail_id'] . '">
                             <div class="adddivpositionwarn"><i title="Add More" class="fa fa-trash bg-danger bg-hover-warning" style="cursor: pointer;" onclick="remove_old_attr(\'' . $dish_detail_row['dish_detail_id'] . '\')"></i></div>
 
                         </div>';
-        }
-        $html .= '</div></div>';
+                            }
+                            $html .= '</div></div>';
 
-        $html .= '</div>';
-        $j++;
-    }
-    $html .= '<div class="col-sm-10">
+                            $html .= '</div>';
+                            $j++;
+                        }
+                        $html .= '<div class="col-sm-10">
                     <button type="button" class="shadow-none" name="edit_add_more" style="    float: right;
                     position: absolute;
                     bottom: 5px;
@@ -307,18 +307,12 @@ if (isset($_POST['param']) &&  decryptpost($conn, $_POST['param']) === 'get_dish
 }
 
 
-
-
 if (isset($_POST['param']) && decryptpost($conn, $_POST['param']) === 'delete_data') {
     $id = $_POST['id'];
-
     // Delete dish images
     deleteImages($conn, $id);
-
     // Delete dish and its details
     $deletekro = deletekro($conn, 'dish', 'WHERE ID="' . $id . '"');
-
-
     if ($deletekro) {
         $deletekroDetails = deletekro($conn, 'dish_details', 'WHERE dish_id="' . $id . '"');
         $deletekroDetails = deletekro($conn, 'images', 'WHERE dish_id="' . $id . '"');
