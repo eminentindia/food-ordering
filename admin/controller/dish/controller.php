@@ -206,13 +206,13 @@ if (isset($_POST['param']) &&  decryptpost($conn, $_POST['param']) === 'get_dish
                         </div>
                     </div>
                 </div>
-                <div class="form-group row mb-3 ' . ($is_attribute_product == 0 ? 'd-none' : '') . '" id="editdish_box1" style="position:relative">';
+                <div class="form-group row mb-3 ' . ($is_attribute_product == 0 ? 'd-none' : '') . '" id="editdish_box1" style="position:relative;background: #fff8d8; padding: 5px;">';
     $j = 1;
-    $dish_details_sql = mysqli_query($conn, "select * from dish_details where dish_id='$DISHID'");
+    $dish_details_sql = mysqli_query($conn, "select * from dish_details where dish_id='$DISHID' ORDER BY dish_detail_id ASC");
     while ($dish_detail_row = mysqli_fetch_assoc($dish_details_sql)) {
         $html .= '<div class="form-group row" id="dish_box' . $j . '">
                         <label for="Attributes" class="col-sm-3 mb-2 control-label col-form-label remove_' . $dish_detail_row['dish_detail_id'] . '">Attributes '.$j.' </label>
-                        <input type="hidden" name="dish_details_id[]" class="dish_details_id" value="' . $dish_detail_row['dish_detail_id'] . '">
+                        <input type="hidden" name="edit_dish_details_id[]" class="edit_dish_details_id" value="' . $dish_detail_row['dish_detail_id'] . '">
                         <div class="col-md-2 remove_' . $dish_detail_row['dish_detail_id'] . '">
                             <input type="text" class="form-control attribute" required name="attribute[]" placeholder="Attribute" value="' . $dish_detail_row['attribute'] . '">
                         </div>
@@ -222,8 +222,8 @@ if (isset($_POST['param']) &&  decryptpost($conn, $_POST['param']) === 'get_dish
                         <div class="col-md-2 remove_' . $dish_detail_row['dish_detail_id'] . '">
                             <input required type="text" class="form-control sku" name="sku[]" placeholder="sku" value="' . $dish_detail_row['sku'] . '">
                         </div>
-                        <div class="col-3 gap-5 d-flex align-items-center  remove_' . $dish_detail_row['dish_detail_id'] . '">
-                        <div class=" d-flex justify-content-center gap-4 align-items-center remove_' . $dish_detail_row['dish_detail_id'] . '">
+                        <div  style="display:flex"  class="col-3 gap-5 align-items-center  remove_' . $dish_detail_row['dish_detail_id'] . '">
+                        <div   style="display:flex"  class=" justify-content-center gap-4 align-items-center remove_' . $dish_detail_row['dish_detail_id'] . '">
                             ';
 
         if ($dish_detail_row['status'] == 0) {
@@ -236,7 +236,7 @@ if (isset($_POST['param']) &&  decryptpost($conn, $_POST['param']) === 'get_dish
 
         if ($j != 1) {
             $html .= '
-                        <div class="  d-flex justify-content-center gap-4 align-items-center  remove_' . $dish_detail_row['dish_detail_id'] . '">
+                        <div style="display:flex" class="   justify-content-center gap-4 align-items-center  remove_' . $dish_detail_row['dish_detail_id'] . '">
                             <div class="adddivpositionwarn"><i title="Add More" class="fa fa-trash bg-danger bg-hover-warning" style="cursor: pointer;" onclick="remove_old_attr(\'' . $dish_detail_row['dish_detail_id'] . '\')"></i></div>
 
                         </div>';
@@ -249,15 +249,16 @@ if (isset($_POST['param']) &&  decryptpost($conn, $_POST['param']) === 'get_dish
     $html .= '<div class="col-sm-10">
                     <button type="button" class="shadow-none" name="edit_add_more" style="    float: right;
                     position: absolute;
-                    bottom: -46px;
-                    right: -50px;
+                    bottom: 5px;
+                    right: 15px;
                     width: 40px;
                     height: 40px;
                     display: flex;
                     align-items: center;
                     margin: 0 auto;
                     justify-content: center;
-                    background: #223b25;
+                    background: #7fc6ff;
+                    border:1px solid #7fc6ff;
                     color: white;" onclick="newedit_add_more()" ><i title="Add More" class="fa fa-plus" style="cursor: pointer;" ></i></button>
                 </div>
 
@@ -328,6 +329,20 @@ if (isset($_POST['param']) && decryptpost($conn, $_POST['param']) === 'delete_da
         $response['message'] = 'FAILED TO DELETE !!';
     }
 }
+
+if (isset($_POST['param']) && decryptpost($conn, $_POST['param']) === 'delete_attribute') {
+    $id = $_POST['id'];
+    // Delete dish and its details
+    $deletekro = deletekro($conn, 'dish_details', 'WHERE dish_detail_id="' . $id . '"');
+    if ($deletekro) {
+        $response['status'] = 'success';
+        $response['message'] = 'SUCCESS !!';
+    } else {
+        $response['status'] = 'error';
+        $response['message'] = 'FAILED TO DELETE !!';
+    }
+}
+
 
 function deleteImages($conn, $dishId)
 {

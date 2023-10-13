@@ -57,20 +57,25 @@ if (isset($_POST['ID'])) {
     $price_tagline = $_POST['edit_price_tagline'];
     // define Variable 
     $image = '';
-    if (isset($_FILES['edit_myimg']['name']) && $_FILES['edit_myimg']['name'] != '') {
+    if (isset($_FILES['edit_myimg']['name']) && !empty($_FILES['edit_myimg']['name'])) {
+        $old_img = null;
+
+        // Check if the image exists in the database and delete the old file
         $logoExistsInDatabase = checkImageExistsInDatabase($conn, 'dish', 'image');
         if ($logoExistsInDatabase) {
-            $old_img = getImageNameCondInDatabase($conn, 'dish', 'image', 'ID=' . $ID . '');
+            $old_img = getImageNameCondInDatabase($conn, 'dish', 'image', 'ID=' . $ID);
             unlink('../../../media/dish/' . $old_img); // Remove the old file
         }
-        $extn = explode('.', $_FILES["edit_myimg"]["name"]);
-        $str = str_replace(' ', '-', strtolower($dish));
-        $uniqueName = time() . '_' . uniqid() . '.' . $extn[1];
+
+        $extn = pathinfo($_FILES["edit_myimg"]["name"], PATHINFO_EXTENSION);
+        $uniqueName = time() . '_' . uniqid() . '.' . $extn;
         $upath = "../../../media/dish/" . $uniqueName;
+
+        // Move the uploaded file to the new location
         move_uploaded_file($_FILES["edit_myimg"]["tmp_name"], $upath);
-        $columnsToUpdate = array(
-            'image' => $image,
-        );
+
+        // Update the image in the database
+        $columnsToUpdate = ['image' => $image];
         $conditionColumn = 'ID'; // Adjust this to your actual condition column
         $conditionValue = $ID;
         $response = updatekro($conn, 'dish', $columnsToUpdate, $conditionColumn, $conditionValue);
@@ -95,8 +100,8 @@ if (isset($_POST['ID'])) {
         'main_sku' => $main_sku,
         'is_attribute_product' => $is_attribute_product,
     );
-   
-   
+
+
     $conditionColumn = 'ID'; // Adjust this to your actual condition column
     $conditionValue = $ID;
 
@@ -105,16 +110,23 @@ if (isset($_POST['ID'])) {
 
 
     if ($is_attribute_product > 0) {
-        //insert attribute
+        //insert edit attribute
         $attributeArr = $_POST['attribute'];
         $priceArr = $_POST['price'];
-        $skuArr = $_POST['sku']; // Assuming you have an array of SKUs
+        $dishDetailsIdArr = $_POST['edit_dish_details_id'];
+        $skuArr = $_POST['sku'];
 
         foreach ($attributeArr as $key => $val) {
             $attribute = $val;
             $price = $priceArr[$key];
-            $sku = $skuArr[$key]; // Get the corresponding SKU for this variant
-            mysqli_query($conn, "INSERT INTO dish_details(dish_id, attribute, price, status, sku) VALUES ('$ID', '$attribute', '$price', 1, '$sku')");
+            $sku = $skuArr[$key];
+            if (isset($dishDetailsIdArr[$key])) {
+                $did = $dishDetailsIdArr[$key];
+                mysqli_query($conn, "update dish_details set attribute='$attribute', price='$price', sku='$sku' where dish_detail_id='$did'");
+            } else {
+
+                mysqli_query($conn, "insert into dish_details(dish_id,attribute,price,status,sku) values('$ID','$attribute','$price',1,'$sku')");
+            }
         }
         if (isset($_FILES['file']['name']) && $_FILES['file']['name'] != '') {
             $file_names = '';

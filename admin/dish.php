@@ -595,7 +595,7 @@ $categorydata = json_decode($categorydata, true);
                             formData.append("editmyimg", imageInput.files[0]);
                         }
                         $('.edit_dish_details_id').each(function() {
-                            formData.append("editdish_details_id[]", $(this).val());
+                            formData.append("edit_dish_details_id[]", $(this).val());
                         });
                         $('.edit_attribute').each(function() {
                             formData.append("editattribute[]", $(this).val());
@@ -706,21 +706,32 @@ $categorydata = json_decode($categorydata, true);
             jQuery('#editbox' + id).hide(1000);
         }
 
-        function remove_old_attr(id) {
-            var result = confirm('Are you sure');
-            if (result == true) {
 
+
+        function remove_old_attr(id) {
+            showDeleteConfirmation(function() {
+                $('#overlay').fadeIn();
+                var param = encryptpost('delete_attribute');
+                var requestData = {
+                    id,
+                    param
+                };
                 $.ajax({
-                    type: "post",
-                    url: "action/delete-attr.php",
-                    data: "dish_details_id=" + id,
+                    type: "POST",
+                    url: "controller/dish/controller.php",
+                    data: requestData,
                     success: function(response) {
-                        $(".remove_" + id + "").hide();
+                        $('#overlay').fadeOut();
+                        showPopup(response.status, response.message)
+                        $(".remove_" + id).css("display", "none", "important");
+
                     }
                 });
-            }
-
+            });
         }
+
+
+     
 
         var edit_add_more_counter = 0; // Initialize a counter variable
         function newedit_add_more() {
