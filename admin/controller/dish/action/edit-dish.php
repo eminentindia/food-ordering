@@ -19,7 +19,16 @@ if (isset($_POST['ID'])) {
     $type = safe_value($conn, $_POST['edit_type']);
     $dish = safe_value($conn, $_POST['edit_dish']);
     $short_description = safe_value($conn, $_POST['edit_short_description']);
-    $dish_detail = safe_value($conn, $_POST['edit_dish_detail']);
+
+    if (isset($_POST['edit_dish_detail'])) {
+
+        $dish_detail = safe_value($conn, $_POST['edit_dish_detail']);
+    } else {
+        $dish_detail = NULL;
+    }
+
+
+
     $meta_title = safe_value($conn, $_POST['edit_meta_title']);
     $slug = safe_value($conn, $_POST['edit_slug']);
     $is_available = safe_value($conn, $_POST['edit_is_available']);
@@ -59,23 +68,25 @@ if (isset($_POST['ID'])) {
     $image = '';
     if (isset($_FILES['edit_myimg']['name']) && !empty($_FILES['edit_myimg']['name'])) {
         $old_img = null;
-
         // Check if the image exists in the database and delete the old file
         $logoExistsInDatabase = checkImageExistsInDatabase($conn, 'dish', 'image');
         if ($logoExistsInDatabase) {
             $old_img = getImageNameCondInDatabase($conn, 'dish', 'image', 'ID=' . $ID);
-            unlink('../../../media/dish/' . $old_img); // Remove the old file
+            if($old_img!=''){
+                $file_path = '../../../media/dish/' . $old_img;
+                if (file_exists($file_path)) {
+                    unlink($file_path); // Remove the old file
+                } 
+            }
         }
-
+        
         $extn = pathinfo($_FILES["edit_myimg"]["name"], PATHINFO_EXTENSION);
         $uniqueName = time() . '_' . uniqid() . '.' . $extn;
         $upath = "../../../media/dish/" . $uniqueName;
-
         // Move the uploaded file to the new location
         move_uploaded_file($_FILES["edit_myimg"]["tmp_name"], $upath);
-
         // Update the image in the database
-        $columnsToUpdate = ['image' => $image];
+        $columnsToUpdate = ['image' => $uniqueName];
         $conditionColumn = 'ID'; // Adjust this to your actual condition column
         $conditionValue = $ID;
         $response = updatekro($conn, 'dish', $columnsToUpdate, $conditionColumn, $conditionValue);
@@ -109,7 +120,7 @@ if (isset($_POST['ID'])) {
 
 
 
-    if ($is_attribute_product > 0) {
+    if ($is_attribute_product > 0 &&  isset($_POST['price']) != '' &&  isset($_POST['sku']) != '') {
         //insert edit attribute
         $attributeArr = $_POST['attribute'];
         $priceArr = $_POST['price'];
@@ -125,7 +136,7 @@ if (isset($_POST['ID'])) {
                 mysqli_query($conn, "update dish_details set attribute='$attribute', price='$price', sku='$sku' where dish_detail_id='$did'");
             } else {
 
-                mysqli_query($conn, "insert into dish_details(dish_id,attribute,price,status,sku) values('$ID','$attribute','$price',1,'$sku')");
+                mysqli_query($conn, "insert into dish_details(dish_id,attribute,price,status,sku) values('$ID','$attribute','$price','1','$sku')");
             }
         }
         if (isset($_FILES['file']['name']) && $_FILES['file']['name'] != '') {
@@ -157,6 +168,8 @@ if (isset($_POST['ID'])) {
     $response['status'] = 'error';
     $response['message'] = 'All Respective Fields Are Required !!';
 }
+
+
 // Sending the JSON response
 header('Content-Type: application/json');
 echo json_encode($response);

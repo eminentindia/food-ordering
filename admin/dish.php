@@ -135,11 +135,6 @@ $categorydata = json_decode($categorydata, true);
                 });
             });
         }
-        //-------------------------- ADD SUBMIT------------------------------------------------------------------
-
-
-
-
 
         //-------------------------- EDIT SUBMIT------------------------------------------------------------------
         $('#edit_dish_drawer_submit').on('submit', function(event) {
@@ -168,6 +163,98 @@ $categorydata = json_decode($categorydata, true);
             });
         });
 
+        function activeornotbtn(id) {
+            var checkbox = $('.active_' + id); // Get the checkbox element by class name
+            if (checkbox.length > 0) {
+                var isChecked = checkbox.prop('checked'); // Get the current checked state
+                checkbox.prop('checked', !isChecked); // Toggle the checkbox's checked state
+                $('#overlay').fadeIn(); // Show an overlay indicating loading
+                var param = encryptpost('dish_active');
+                var id = encryptpost(id);
+                var requestData = {
+                    id,
+                    param,
+                    isChecked: !isChecked
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "controller/dish/controller.php",
+                    data: requestData,
+                    success: function(response) {
+                        $('#overlay').fadeOut(); // Hide the overlay
+                        $('#maketable').DataTable().ajax.reload(null, false); // Reload the DataTable
+                        showPopup(response.status, response.message); // Display a popup message
+                    },
+                    error: function(error) {
+                        showPopup(response.status, error);
+                    }
+                });
+            } else {
+                showPopup('Network Issue !!', 'error');
+            }
+        }
+
+        function ispopornot(id) {
+            var checkbox = $('.is_pop_' + id); // Get the checkbox element by class name
+            if (checkbox.length > 0) {
+                var isChecked = checkbox.prop('checked'); // Get the current checked state
+                checkbox.prop('checked', !isChecked); // Toggle the checkbox's checked state
+                $('#overlay').fadeIn(); // Show an overlay indicating loading
+                var param = encryptpost('dish_is_pop_active');
+                var id = encryptpost(id);
+                var requestData = {
+                    id,
+                    param,
+                    isChecked: !isChecked
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "controller/dish/controller.php",
+                    data: requestData,
+                    success: function(response) {
+                        $('#overlay').fadeOut(); // Hide the overlay
+                        $('#maketable').DataTable().ajax.reload(null, false); // Reload the DataTable
+                        showPopup(response.status, response.message); // Display a popup message
+                    },
+                    error: function(error) {
+                        showPopup(response.status, error);
+                    }
+                });
+            } else {
+                showPopup('Network Issue !!', 'error');
+            }
+        }
+        function isavailable(id) {
+            var checkbox = $('.is_available_' + id); // Get the checkbox element by class name
+            if (checkbox.length > 0) {
+                var isChecked = checkbox.prop('checked'); // Get the current checked state
+                checkbox.prop('checked', !isChecked); // Toggle the checkbox's checked state
+                $('#overlay').fadeIn(); // Show an overlay indicating loading
+                var param = encryptpost('dish_is_available_active');
+                var id = encryptpost(id);
+                var requestData = {
+                    id,
+                    param,
+                    isChecked: !isChecked
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "controller/dish/controller.php",
+                    data: requestData,
+                    success: function(response) {
+                        $('#overlay').fadeOut(); // Hide the overlay
+                        $('#maketable').DataTable().ajax.reload(null, false); // Reload the DataTable
+                        showPopup(response.status, response.message); // Display a popup message
+                    },
+                    error: function(error) {
+                        showPopup(response.status, error);
+                    }
+                });
+            } else {
+                showPopup('Network Issue !!', 'error');
+            }
+        }
+
 
 
         // ------------------------------------ FOR DATATABLE -----------------------------------------------------
@@ -176,29 +263,23 @@ $categorydata = json_decode($categorydata, true);
             $('td:eq(5)', nRow).html(`
         <div class="toggle-button-switch">
             <div id="button-3" class="button r">
-                <input ${checked} name="status" class="checkbox activeornot ${aData[5]}" onclick="activeornotbtn('${aData[5]}')" type="checkbox">
+                <input ${checked} name="status" class="checkbox activeornot active_${aData[9]}" onclick="activeornotbtn('${aData[9]}')" type="checkbox">
                 <div class="knobs"></div>
                 <div class="layer"></div>
             </div>
         </div>`);
+            var checked2 = aData[6] == '1' ? 'checked' : '';
 
             $('td:eq(6)', nRow).html(`
-        <div class="toggle-button-switch">
-            <div id="button-3" class="button r">
-                <input ${checked} name="is_popular" class="checkbox activeornot ${aData[6]}" onclick="activeornotbtn('${aData[6]}')" type="checkbox">
-                <div class="knobs"></div>
-                <div class="layer"></div>
-            </div>
-        </div>`);
+            <div class="form-check form-switch">
+  <input ${checked2} name="is_popular" class="form-check-input  is_pop_${aData[9]}" type="checkbox" onclick="ispopornot('${aData[9]}')" role="switch" id="isPopular">
+</div>`);
+var checked3 = aData[7] == '1' ? 'checked' : '';
 
-            $('td:eq(7)', nRow).html(`
-        <div class="toggle-button-switch">
-            <div id="button-3" class="button r">
-                <input ${checked} name="is_popular" class="checkbox activeornot ${aData[7]}" onclick="activeornotbtn('${aData[7]}')" type="checkbox">
-                <div class="knobs"></div>
-                <div class="layer"></div>
-            </div>
-        </div>`);
+            $('td:eq(7)', nRow).html(` <div class="form-check form-switch">
+  <input ${checked3} name="is_available" class="form-check-input  is_available_${aData[9]}" type="checkbox" onclick="isavailable('${aData[9]}')" role="switch" id="isPopular">
+</div>
+       `);
 
             $('td:eq(9)', nRow).html(`
         <div class="d-flex align-items-center gap-4">
@@ -580,9 +661,9 @@ $categorydata = json_decode($categorydata, true);
 
                     this.on('sendingmultiple', function(data, xhr, formData) {
                         var formFields = [
-                            "edit_dish", "edit_ID", "edit_oldImg", "edit_category_id", "edit_short_description",
+                            "edit_dish", "ID", "edit_oldImg", "edit_category_id", "edit_short_description",
                             "dish_detail", "edit_meta_title", "edit_slug", "edit_is_available",
-                            "meta_description", "edit_meta_keywords", "edit_type", "edit_is_attribute_product", "edit_is_detailed_dish", "edit_price_tagline", "edit_mrp", "edit_selling_price", "edit_main_sku"
+                            "meta_description", "edit_meta_keywords", "edit_type", "edit_is_attribute_product", "edit_is_detailed_dish", "edit_price_tagline", "edit_mrp", "edit_selling_price", "edit_main_sku", "edit_dish_detail", "edit_meta_description"
                         ];
                         for (const field of formFields) {
                             const inputElement = document.getElementsByName(field)[0];
@@ -592,7 +673,7 @@ $categorydata = json_decode($categorydata, true);
                         }
                         const imageInput = document.querySelector('input[name="edit_myimg"]');
                         if (imageInput && imageInput.files.length === 1) {
-                            formData.append("editmyimg", imageInput.files[0]);
+                            formData.append("edit_myimg", imageInput.files[0]);
                         }
                         $('.edit_dish_details_id').each(function() {
                             formData.append("edit_dish_details_id[]", $(this).val());
@@ -609,7 +690,7 @@ $categorydata = json_decode($categorydata, true);
                         editselectedMeals = $('input[name="edit_meal[]"]:checked').map(function() {
                             return $(this).val();
                         }).get();
-                        formData.append("editmeal[]", editselectedMeals);
+                        formData.append("edit_meal[]", editselectedMeals);
                     });
                 }
             });
@@ -638,6 +719,44 @@ $categorydata = json_decode($categorydata, true);
 
                 }
             }
+
+            function changeattrstatus() {
+                $('#overlay').fadeIn();
+                var attr_status = document.querySelector('input[name="attr_status"]:checked');
+
+                let qq = '1';
+                if (attr_status) {
+                    qq = '1';
+                } else {
+                    qq = '0';
+                }
+
+
+                var uniq_id = $(this).data('id');
+
+                var param = encryptpost('change_attr_status_data');
+                var requestData = {
+                    qq,
+                    uniq_id,
+                    param
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "controller/dish/controller.php",
+                    data: requestData,
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            $('#overlay').fadeOut();
+                            showPopup(response.status, response.message);
+                        } else {
+                            $('#overlay').fadeOut();
+                            showPopup('error', 'Please Check Your Internet Connection');
+                        }
+                    }
+                });
+            }
+
+
 
             function edittoggleDetaildishBox() {
                 var is_detailed_dish = document.querySelector('input[name="edit_is_detailed_dish"]:checked').value;
@@ -678,23 +797,9 @@ $categorydata = json_decode($categorydata, true);
             $(document).on('change', 'input[name="edit_is_attribute_product"]', edittoggleDishBox);
             $(document).on('change', 'input[name="edit_is_detailed_dish"]', edittoggleDetaildishBox);
             $(document).on('change', 'input[name="edit_type"]', edittypedish);
-
-
-
-
-
-
-
-
-
-
-
-
+            $(document).on('change', 'input[name="attr_status"]', changeattrstatus);
 
         }
-
-
-
 
 
         function remove_more(counter) {
@@ -731,14 +836,14 @@ $categorydata = json_decode($categorydata, true);
         }
 
 
-     
+
 
         var edit_add_more_counter = 0; // Initialize a counter variable
         function newedit_add_more() {
             edit_add_more_counter++; // Increment the counter
 
 
-                var html = ' <div class="row additionalrows pt-2" id="editbox' + edit_add_more_counter + '">  <div class="col-sm-3 mb-2 control-label col-form-label"></div><div class="col-sm-2"><input type="text" class="form-control ml-5 attribute" name="attribute[]" placeholder="ATTRIBUTE" id="attribute" required></div><div class="col-sm-2"><input type="number" class="price form-control ml-5" name="price[]" required placeholder="PRICE" id="price"></div><div class="col-sm-2"><input type="text" class="form-control ml-5 sku" name="sku[]" placeholder="SKU" id="sku" required></div> <div class="col-sm-1"><div class="adddivpositionwarn"><i title="Add More" class="fa fa-minus" style="cursor: pointer;" onclick="remove_more(' + edit_add_more_counter + ')"></i></div>';
+            var html = ' <div class="row additionalrows pt-2" id="editbox' + edit_add_more_counter + '">  <div class="col-sm-3 mb-2 control-label col-form-label"></div><div class="col-sm-2"><input type="text" class="form-control ml-5 attribute" name="attribute[]" placeholder="ATTRIBUTE" id="attribute" required></div><div class="col-sm-2"><input type="number" class="price form-control ml-5" name="price[]" required placeholder="PRICE" id="price"></div><div class="col-sm-2"><input type="text" class="form-control ml-5 sku" name="sku[]" placeholder="SKU" id="sku" required></div> <div class="col-sm-1"><div class="adddivpositionwarn"><i title="Add More" class="fa fa-minus" style="cursor: pointer;" onclick="remove_more(' + edit_add_more_counter + ')"></i></div>';
 
             $('#editdish_box1').append(html);
         }

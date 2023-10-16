@@ -20,7 +20,6 @@ $totalQty = 0;
 foreach ($cart as $item) {
     $totalQty += $item['quantity'];
 }
-include('../admin/category/controller/category-controller.php');
 // Initialize the total variable
 $total = 0;
 $getactivecategory = getactivecategory($conn);

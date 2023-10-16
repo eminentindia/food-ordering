@@ -1,0 +1,10 @@
+{
+    "noto sans": {
+        "100": "C:\\xampp\\htdocs\\food-ordering\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_100_a2c79f52bbe3a09d799f5df74c8a87f0",
+        "200": "C:\\xampp\\htdocs\\food-ordering\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_200_c1c288f2f9121b2d10b2695a4911eeb8",
+        "300": "C:\\xampp\\htdocs\\food-ordering\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_300_d40b6cfc3a1c20feef115b7e7b34aedf",
+        "normal": "C:\\xampp\\htdocs\\food-ordering\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_normal_91ed372ed60fb76e37036c963b23bfdd",
+        "500": "C:\\xampp\\htdocs\\food-ordering\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_500_4525bbdc09d1fe04eb59a4e574941959",
+        "600": "noto_sans_600_8669022061e33171ead8c13e857f84ec"
+    }
+}

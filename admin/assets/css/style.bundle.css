@@ -55586,3 +55586,8 @@ body [contenteditable="true"]:focus {
 }
 /* //switch css   */
 
+
+.toast.toast-success {
+    background-color: #4dac5a !important; 
+    color: #fff;
+}

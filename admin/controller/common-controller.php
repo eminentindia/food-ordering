@@ -725,3 +725,19 @@ function getbanner($conn)
 }
 
 
+
+
+
+function getBannerImg()
+{
+  global $conn;
+  $data = array();
+  $res = mysqli_query($conn, "select * from banner");
+  //  echo "select * from images where dish_id='$dish_id'";
+
+  while ($row = mysqli_fetch_assoc($res)) {
+    $data[] = $row;
+  }
+  return $data;
+  // echo $data;
+}

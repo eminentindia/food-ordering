@@ -160,19 +160,33 @@ $(document).on("ajaxSend", function (event, jqXHR, ajaxOptions) {
 });
 
 //custom popup
+
+
+// function showPopup(status, text) {
+//   var popup = document.querySelector(".popup");
+//   popup.classList.add("animated-popup" + status + "");
+//   popup.style.display = "block";
+//   popup.innerHTML = text;
+//   setTimeout(function () {
+//     $(".popup").fadeOut();
+//     popup.classList.remove("animated-popup" + status + "");
+//   }, 3000);
+//   setTimeout(function () {
+//     popup.classList.remove("animated-popup" + status + "");
+//   }, 4000);
+// }
+
 function showPopup(status, text) {
-  var popup = document.querySelector(".popup");
-  popup.classList.add("animated-popup" + status + "");
-  popup.style.display = "block";
-  popup.innerHTML = text;
-  setTimeout(function () {
-    $(".popup").fadeOut();
-    popup.classList.remove("animated-popup" + status + "");
-  }, 3000);
-  setTimeout(function () {
-    popup.classList.remove("animated-popup" + status + "");
-  }, 4000);
+  toastr.options = {
+    positionClass: 'toast-top-center', // You can change the position as needed
+    timeOut: 3000, // Set to 0 to disable automatic timeout
+    closeButton: true, 
+  };
+
+  toastr[status](text);
 }
+
+
 // copy function
 function copyValue(event) {
   const inputElement = event.target.previousElementSibling;

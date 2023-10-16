@@ -21,7 +21,7 @@ if (isset($_GET['category_id'])) {
     $getcategoryedish = json_decode($getcategoryedish, true);
 }
 if ($category_id != '') {
-    $query1 = "select * from dish where category_id in ($category_id_str) AND status=1 ";
+    $query1 = "select * from dish where category_id in ($category_id_str) AND status='1' ";
     // echo $query1;
 }
 if ($type != '' && $type != 'both') {

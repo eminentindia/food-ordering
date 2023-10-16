@@ -444,8 +444,6 @@ if (isset($_GET['show']) && $_GET['show'] == md5('dish')) {
             $is_popular,
             $is_available,
             '<a target="blank" href="feedback.php?dish_id=' . $row['ID'] . '"><button type="button" class="btn btn-sm btn-primary">VIEW <i class="fa fa-comments" aria-hidden="true"></i></button></a>',
-
-
            $ID,
 
         ];

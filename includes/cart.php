@@ -22,13 +22,13 @@
 
         <div class="action-buttons">
             <div class="buttonSet text-center d-flex">
-                <a style="height: 50px;line-height: 30px;" <?php
+                <a style="height: 50px;line-height: 30px; transform: none !important;" <?php
                                                             if ($website_close == 0) {
                                                             ?> href="<?php echo SITE_PATH ?>cart" ; <?php } else {
                                                                                                     ?> onclick="websiteclose()" <?php
                                                                                                                             }
                                                                                                                                 ?> class="btn btn-secondary  w-100">View Cart</a>
-                <a style="height: 50px;line-height: 30px;" <?php
+                <a style="height: 50px;line-height: 30px; transform: none !important;" <?php
                                                             if ($website_close == 0) {
                                                             ?> href="<?php echo SITE_PATH ?>checkout" ; <?php } else {
                                                                                                         ?> onclick="websiteclose()" <?php

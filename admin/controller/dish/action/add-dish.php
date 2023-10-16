@@ -11,6 +11,9 @@ include('../../../controller/constant.inc.php');
 
 
 $mainmainresponse = array();
+
+
+
 if (isset($_POST['dish'])) {
     $added_on = date("Y-m-d");
     $category_id = safe_value($conn, $_POST['category_id']);
@@ -78,7 +81,7 @@ if (isset($_POST['dish'])) {
         'meta_title' => $meta_title,
         'meta_description' => $meta_description,
         'meta_keywords' => $meta_keywords,
-        'status' => 1,
+        'status' => '1',
         'is_available' => $is_available,
         'mrp' => $mrp,
         'selling_price' => $selling_price,
@@ -106,7 +109,7 @@ if (isset($_POST['dish'])) {
             $attribute = $val;
             $price = $priceArr[$key];
             $sku = $skuArr[$key]; // Get the corresponding SKU for this variant
-            mysqli_query($conn, "INSERT INTO dish_details(dish_id, attribute, price, status, sku) VALUES ('$mydish_id', '$attribute', '$price', 1, '$sku')");
+            mysqli_query($conn, "INSERT INTO dish_details(dish_id, attribute, price, status, sku) VALUES ('$mydish_id', '$attribute', '$price', '1', '$sku')");
         }
         if (isset($_FILES['file']['name']) && $_FILES['file']['name'] != '') {
             $file_names = '';

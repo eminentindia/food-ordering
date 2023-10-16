@@ -84,11 +84,11 @@
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <input type="number" class="form-control" name="mrp" id="mrp">
-                                        <label class="form-check-label mb-0" for="mrp">MRP <span class="text-danger">*</span> </label>
+                                        <label class="form-check-label " style="margin:10px 0;font-weight:bold" for="mrp">MRP <span class="text-danger">*</span> </label>
                                     </div>
                                     <div class="col-sm-3">
                                         <input type="number" class="form-control" name="selling_price" id="selling_price">
-                                        <label class="form-check-label mb-0" for="selling_price">Selling Price</label>
+                                        <label class="form-check-label " style="margin:10px 0;font-weight:bold" for="selling_price">Selling Price</label>
                                     </div>
                                 </div>
                             </div>

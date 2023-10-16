@@ -34,7 +34,7 @@ $dompdf->setOptions($options);
 
 if (isset($_GET['id'])  && $_GET['id'] > 0) {
 	$Oid = safe_value($conn, $_GET['id']);
-	
+
 	$res = mysqli_query($conn, "select * from orders where ID='$Oid'");
 	if (isset($_SESSION['ADMIN_LOGIN_ID'])) {
 		$row = mysqli_fetch_assoc($res);
@@ -50,11 +50,11 @@ if (isset($_GET['id'])  && $_GET['id'] > 0) {
 		}
 		$uid = $_SESSION['ATECHFOOD_USER_ID'];
 	}
-	
+
 	$sql = "select *, order_details.name AS order_name
 	from order_details JOIN orders ON order_details.order_id=orders.ID where order_details.invoice_order_id='" . $order_id . "'";
 	$result = mysqli_query($conn, $sql);
-	
+
 	// get number of rows returned by query
 	$num_rows = mysqli_num_rows($result);
 	// check if any rows are returned
@@ -67,77 +67,80 @@ if (isset($_GET['id'])  && $_GET['id'] > 0) {
 		$count = 0;
 		$i = 1;
 		while ($row = mysqli_fetch_assoc($result)) {
-			  $count = 0;
-            $i = 1;
-           
-                $name = $row['order_name'];
-                $sku = $row['sku'];
-                $price = $row['price'];
-                $qty = $row['qty'];
-                $address = $row['address'];
-                $t_slot = $row['delievery_time'];
-                $d_date = $row['delievery_date'];
-                $apartment = $row['appartment'];
-                $city = $row['city'];
-                $zip = $row['postcode'];
-                $phone = $row['phone'];
-                $fname = $row['name'];
-                $email = $row['email'];
-                $option = '';
-                if ($row['attributeID'] != '') {
-                    $attrID = $row['attributeID'];
-                    $selattr = "SELECT * FROM dish_details WHERE dish_detail_id='$attrID'";
-                    $sql1attr = mysqli_query($conn, $selattr);
-                    $sql2Attr = mysqli_fetch_assoc($sql1attr);
-                    $attri = $sql2Attr['attribute']; // Assign the attribute value
+			$count = 0;
+			$i = 1;
 
-                    // Check if $attri is not empty before appending badges
-                    if (!empty($attri)) {
-                        $attributes = explode(',', $attri); // Assuming attributes are comma-separated
-                        foreach ($attributes as $attribute) {
-                            // Append Bootstrap 5 badge elements to $attri
-                            $option .= ' <span class="badge badge-success ml-3 p-2">' . $attribute . '</span>';
-                        }
-                    }
-                }
-                $store = $row['store'];
-                $delieverytype = $row['delieverytype'];
-                $GSTNUMBER = '07AAFCE3528B1Z2';
-                if ($store == '1') {
-                    $store = "07A, G.F. Arunachal Building, Barakhamba Road, Connaught Place";
-                    $store_email = "cp@foodieez.in";
-                    $store_phone = "+91 88260 55975";
-                    $fssai = '13321009000057';
-                } else if ($store == '2') {
-                    $store = "Ground floor DCM Building, Barakhamba Road, Connaught Place";
-                    $store_email = "dcm@foodieez.in";
-                    $store_phone = "+91 8130654257";
-                    $fssai = '13322009000431';
-                } else if ($store == '3') {
-                    $store = "Somdatt Plaza Chamber 2 Bhikaji Cama Place Delhi";
-                    $store_email = "bcp@foodieez.in";
-                    $store_phone = "+91 9871257358";
-                    $fssai = '13322009000663';
-                }
+			$name = $row['order_name'];
+			$sku = $row['sku'];
+			$price = $row['price'];
+			$qty = $row['qty'];
+			$address = $row['address'];
+			$t_slot = $row['delievery_time'];
+			$d_date = $row['delievery_date'];
+			$apartment = $row['appartment'];
+			$city = $row['city'];
+			$zip = $row['postcode'];
+			$phone = $row['phone'];
+			$fname = $row['name'];
+			$email = $row['email'];
+			$option = '';
+			if ($row['attributeID'] != '') {
+				$attrID = $row['attributeID'];
+				$selattr = "SELECT * FROM dish_details WHERE dish_detail_id='$attrID'";
+				$sql1attr = mysqli_query($conn, $selattr);
+				$sql2Attr = mysqli_fetch_assoc($sql1attr);
+				$attri = $sql2Attr['attribute']; // Assign the attribute value
 
-                if ($delieverytype == 'Dinein' || $delieverytype == 'Takeaway') {
-                    if ($delieverytype == 'Dinein') {
-                        $delieverytype = "DINE-IN";
-                    } else if ($delieverytype == 'Delivery') {
-                        $delieverytype = "DELIVERY";
-                    } else if ($delieverytype == 'Takeaway') {
-                        $delieverytype = "TAKE-AWAY";
-                    }
-                    $showAdd = "Order Type : $delieverytype ";
-                } else {
-                    $showAdd = " Deliever Address : $address $apartment $city ,  $zip  ";
-                }
-                $invoice_detail = '<div style="text-align:left"><h3>Invoice Detais</h3>
-       <p style="margin: 15px auto;">
-       ' . $showAdd . ' 
-       </p>
-       <p>Time Slot: ' . $t_slot . '</p>
-       <p>Serve Date: ' . $d_date . '</p>
+				// Check if $attri is not empty before appending badges
+				if (!empty($attri)) {
+					$attributes = explode(',', $attri); // Assuming attributes are comma-separated
+					foreach ($attributes as $attribute) {
+						// Append Bootstrap 5 badge elements to $attri
+						$option .= ' <span class="badge badge-success ml-3 p-2">' . $attribute . '</span>';
+					}
+				}
+			}
+			$store = $row['store'];
+			$delieverytype = $row['delieverytype'];
+			$GSTNUMBER = '07AAFCE3528B1Z2';
+			$payment_type = $row['payment_type'];
+			if ($store == '1') {
+				$store = "07A, G.F. Arunachal Building, Barakhamba Road, Connaught Place";
+				$store_email = "cp@foodieez.in";
+				$store_phone = "+91 88260 55975";
+				$fssai = '13321009000057';
+			} else if ($store == '2') {
+				$store = "Ground floor DCM Building, Barakhamba Road, Connaught Place";
+				$store_email = "dcm@foodieez.in";
+				$store_phone = "+91 8130654257";
+				$fssai = '13322009000431';
+			} else if ($store == '3') {
+				$store = "Somdatt Plaza Chamber 2 Bhikaji Cama Place Delhi";
+				$store_email = "bcp@foodieez.in";
+				$store_phone = "+91 9871257358";
+				$fssai = '13322009000663';
+			}
+
+			if ($delieverytype == 'Dinein' || $delieverytype == 'Takeaway') {
+				if ($delieverytype == 'Dinein') {
+					$delieverytype = "DINE-IN";
+				} else if ($delieverytype == 'Delivery') {
+					$delieverytype = "DELIVERY";
+				} else if ($delieverytype == 'Takeaway') {
+					$delieverytype = "TAKE-AWAY";
+				}
+				$showAdd = "Order Type : $delieverytype ";
+			} else {
+				$showAdd = " Deliever Address : $address $apartment $city ,  $zip  ";
+			}
+			$invoice_detail = '<div style="text-align:left"><h3>Invoice Details</h3>
+				<div style="margin: 8px auto;"> <p style="">
+				' . $showAdd . ' 
+				</p>
+				<p>Payment Type: <span class="text-uppercase text-bold" style="font-weight:bold !important; text-transform:uppercase !important">' . $payment_type . '</span></p>
+				<p>Time Slot: ' . $t_slot . '</p>
+				<p>Serve Date: ' . $d_date . '</p></div>
+      
        <p>
            <b>User Name:</b> ' . $fname . '
        </p>
@@ -147,56 +150,56 @@ if (isset($_GET['id'])  && $_GET['id'] > 0) {
        <p>
            <b>Email:</b> ' . $email . '
        </p></div>';
-                $items .= ' <tr class="invoice-items">
+			$items .= ' <tr class="invoice-items">
        <td>' . $i++ . '</td>
        <td>' . $name .  ' ' . ($option !== '' ? ' </br>( ' . $option . ' )' : '') . ' </br>  <span style="font-size: .8rem;">[' . $sku . ']</span> </td>
        <td>' . $qty . '</td>
        <td style="text-align: right;">Rs. ' . $price . ' X ' . $qty . '</td>
    </tr>';
-                // perform any other operations on the row data
-                // ...
-                $total += $row['qty'] * $row['price'];
-                $count++;
-            }
-        } else {
-            die();
-        }
-        $res = mysqli_query($conn, "select * from coupon where coupon_code='$coupon_code' and status='1'");
-        $check = mysqli_num_rows($res);
-        $foot = '';
-        if ($check > 0) {
-            $row = mysqli_fetch_assoc($res);
+			// perform any other operations on the row data
+			// ...
+			$total += $row['qty'] * $row['price'];
+			$count++;
+		}
+	} else {
+		die();
+	}
+	$res = mysqli_query($conn, "select * from coupon where coupon_code='$coupon_code' and status='1'");
+	$check = mysqli_num_rows($res);
+	$foot = '';
+	if ($check > 0) {
+		$row = mysqli_fetch_assoc($res);
 
-            if ($row !== null) { // Check if $row is not null
-                $cart_min_value = $row['cart_min_value'];
-                $coupon_type = $row['coupon_type'];
-                $coupon_value = $row['coupon_value'];
-                $expired_on = strtotime($row['expired_on']);
-                $cur_time = strtotime(date('Y-m-d'));
+		if ($row !== null) { // Check if $row is not null
+			$cart_min_value = $row['cart_min_value'];
+			$coupon_type = $row['coupon_type'];
+			$coupon_value = $row['coupon_value'];
+			$expired_on = strtotime($row['expired_on']);
+			$cur_time = strtotime(date('Y-m-d'));
 
-                if ($total > $cart_min_value) {
-                    if ($cur_time > $expired_on) {
-                        $coupon_code_apply = 0;
-                        $camt = 0;
-                    } else {
-                        $coupon_code_apply = 0;
-                        $camt = 0;
-                        if ($coupon_type == 'F') {
-                            $coupon_code_apply = $total - $coupon_value;
-                            $camt = $coupon_value;
-                        }
-                        if ($coupon_type == 'P') {
-                            $coupon_code_apply = $total - ($coupon_value / 100) * $total;
-                            $camt = $coupon_value . '%';
-                        }
-                    }
-                }
+			if ($total > $cart_min_value) {
+				if ($cur_time > $expired_on) {
+					$coupon_code_apply = 0;
+					$camt = 0;
+				} else {
+					$coupon_code_apply = 0;
+					$camt = 0;
+					if ($coupon_type == 'F') {
+						$coupon_code_apply = $total - $coupon_value;
+						$camt = $coupon_value;
+					}
+					if ($coupon_type == 'P') {
+						$coupon_code_apply = $total - ($coupon_value / 100) * $total;
+						$camt = $coupon_value . '%';
+					}
+				}
+			}
 
-                // Define $foot here, don't declare it again
-                $foot = '';
+			// Define $foot here, don't declare it again
+			$foot = '';
 
-                if ($row['coupon_code'] != '' || $row['coupon_code'] > 0) {
-                    $foot .= ' <tr>
+			if ($row['coupon_code'] != '' || $row['coupon_code'] > 0) {
+				$foot .= ' <tr>
             <th>S.Total</th>
             <th>&nbsp;</th>
             <th style="text-align: right;">Rs. ' . $total . '</th>
@@ -209,25 +212,25 @@ if (isset($_GET['id'])  && $_GET['id'] > 0) {
             <th>&nbsp;</th>
             <th style="text-align: right;">Rs. ' . ($coupon_code_apply) . '</th>
             </tr>';
-                } else {
-                    $foot .= ' <tr>
+			} else {
+				$foot .= ' <tr>
             <th>Total</th>
             <th>&nbsp;</th>
             <th style="text-align: right;">Rs. ' . $total . '</th>
             </tr>
             ';
-                }
-            }
-        } else {
-            $foot .= ' <tr>
+			}
+		}
+	} else {
+		$foot .= ' <tr>
             <th>Total</th>
             <th>&nbsp;</th>
             <th style="text-align: right;">Rs. ' . $total . '</th>
             </tr>
             ';
-        }
+	}
 
-	
+
 	$html = '
 	<!DOCTYPE html>
 	<html>
@@ -235,19 +238,26 @@ if (isset($_GET['id'])  && $_GET['id'] > 0) {
 		   <meta charset="utf-8" />
 		   <title>Foodieez Order</title>
 		   <link rel="shortcut icon" type="image/png" href="./favicon.png" />
+		   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
 		   <style>
-			   * {
-				   box-sizing: border-box;
-			   }
+		   * {
+		   box-sizing: border-box;
+           font-family: "Noto Sans", sans-serif;
+
+	   }
+	   
 	
 			   .table-bordered td,
 			   .table-bordered th {
 				   border: 1px solid #ddd;
 				   padding: 10px;
 				   word-break: break-all;
+				   font-weight:normal
 			   }
 			   body {
-				   font-family: Arial, Helvetica, sans-serif;
+				   
 				   margin: 0;
 				   padding: 0;
 				   font-size: 16px;
@@ -274,7 +284,6 @@ if (isset($_GET['id'])  && $_GET['id'] > 0) {
 			   }
 	
 			   table {
-				   font-family: arial, sans-serif;
 				   width: 100%;
 				   border-collapse: collapse;
 				   padding: 1px;
@@ -349,7 +358,7 @@ if (isset($_GET['id'])  && $_GET['id'] > 0) {
 		   <div style="
 					 text-align: center;
 					 margin: auto;
-					 line-height: 1.5;
+					 line-height: 1.2;
 					 font-size: 14px;
 					 color: #4a4a4a;
 					 ">
@@ -417,10 +426,9 @@ if (isset($_GET['id'])  && $_GET['id'] > 0) {
 	// echo $html;
 	// die();
 	$dompdf->setBasePath('img/');
-	
+
 	$dompdf->loadHtml($html);
 	$dompdf->render();
 	$dompdf->stream('order-invoice.pdf');
 	$dompdf->output('document.pdf', 'F');
-
 }

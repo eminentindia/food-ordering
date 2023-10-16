@@ -154,6 +154,7 @@ if (isset($_POST['finalcheckout'])) {
                 }
                 $store = $row['store'];
                 $delieverytype = $row['delieverytype'];
+                $payment_type = $row['payment_type'];
                 $GSTNUMBER = '07AAFCE3528B1Z2';
                 if ($store == '1') {
                     $store = "07A, G.F. Arunachal Building, Barakhamba Road, Connaught Place";
@@ -185,11 +186,12 @@ if (isset($_POST['finalcheckout'])) {
                     $showAdd = " Deliever Address : $address $apartment $city ,  $zip  ";
                 }
                 $invoice_detail = '<div style="text-align:left"><h3>Invoice Detais</h3>
-       <p style="margin: 15px auto;">
-       ' . $showAdd . ' 
-       </p>
-       <p>Time Slot: ' . $t_slot . '</p>
-       <p>Serve Date: ' . $d_date . '</p>
+                <div style="margin: 8px auto;"> <p style="">
+				' . $showAdd . ' 
+				</p>
+				<p>Payment Type: <span class="text-uppercase text-bold" style="font-weight:bold !important; text-transform:uppercase !important">' . $payment_type . '</span></p>
+				<p>Time Slot: ' . $t_slot . '</p>
+				<p>Serve Date: ' . $d_date . '</p></div>
        <p>
            <b>User Name:</b> ' . $fname . '
        </p>
@@ -293,7 +295,9 @@ if (isset($_POST['finalcheckout'])) {
    <head>
        <meta charset="utf-8" />
        <title>Foodieez Order</title>
-       <link rel="shortcut icon" type="image/png" href="./favicon.png" />
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
        <style>
            * {
                box-sizing: border-box;
@@ -306,7 +310,7 @@ if (isset($_POST['finalcheckout'])) {
                word-break: break-all;
            }
            body {
-               font-family: Arial, Helvetica, sans-serif;
+               font-family: "Noto Sans", sans-serif;
                margin: 0;
                padding: 0;
                font-size: 16px;
@@ -408,7 +412,7 @@ if (isset($_POST['finalcheckout'])) {
        <div style="
                  text-align: center;
                  margin: auto;
-                 line-height: 1.5;
+                  line-height: 1.2;
                  font-size: 14px;
                  color: #4a4a4a;
                  ">
@@ -476,11 +480,12 @@ if (isset($_POST['finalcheckout'])) {
         $html2 = '
 <!DOCTYPE html>
 <html>
-
-   <head>
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
        <meta charset="utf-8" />
        <title>Foodieez Order</title>
-       <link rel="shortcut icon" type="image/png" href="./favicon.png" />
        <style>
            * {
                box-sizing: border-box;
@@ -494,7 +499,7 @@ if (isset($_POST['finalcheckout'])) {
            }
 
            body {
-               font-family: Arial, Helvetica, sans-serif;
+               font-family: "Noto Sans", sans-serif;
                margin: 0;
                padding: 0;
                font-size: 16px;
@@ -596,7 +601,7 @@ if (isset($_POST['finalcheckout'])) {
        <div style="
                  text-align: center;
                  margin: auto;
-                 line-height: 1.5;
+                  line-height: 1.2;
                  font-size: 14px;
                  color: #4a4a4a;
                  ">
