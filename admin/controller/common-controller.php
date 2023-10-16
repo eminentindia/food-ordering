@@ -527,12 +527,19 @@ function addkro($conn, $table, $columnsAndValues)
     $sql = "INSERT INTO $table (";
     $placeholders = array();
     $values = array();
-
+    $valueTypes = ""; // A string to specify the data types of values
 
     foreach ($columnsAndValues as $column => $value) {
         $sql .= $column . ", ";
-        array_push($placeholders, "?");
-        array_push($values, $value);
+        if (is_int($value)) {
+            array_push($placeholders, "?");
+            array_push($values, $value);
+            $valueTypes .= "i"; // i for integer
+        } else {
+            array_push($placeholders, "?");
+            array_push($values, $value);
+            $valueTypes .= "s"; // s for string
+        }
     }
 
     $sql = rtrim($sql, ', '); // Remove the last comma and space
@@ -542,7 +549,8 @@ function addkro($conn, $table, $columnsAndValues)
     $sql .= $placeholdersStr . ")";
 
     if ($stmt = mysqli_prepare($conn, $sql)) {
-        mysqli_stmt_bind_param($stmt, str_repeat("s", count($placeholders)), ...$values);
+        // Use the $valueTypes string to specify the data types
+        mysqli_stmt_bind_param($stmt, $valueTypes, ...$values);
 
         if (mysqli_stmt_execute($stmt)) {
             $response['status'] = 'success';
@@ -559,6 +567,7 @@ function addkro($conn, $table, $columnsAndValues)
 
     return $response;
 }
+
 
 function multipleaddkro($conn, $table, $columnsAndValues)
 {
@@ -740,4 +749,52 @@ function getBannerImg()
   }
   return $data;
   // echo $data;
+}
+
+function getfaq($conn)
+{
+	$response = array();
+	$sql = "Select * from  faq";
+	$result=mysqli_query($conn,$sql);
+	if($result->num_rows>0)	
+	{
+		while($row = $result->fetch_assoc())
+		{
+			extract($row);
+			array_push($response,$row);
+		}
+	}
+	return json_encode($response);
+}
+
+
+function getsinglefaq($conn,$ID)
+{
+	$response = array();
+	$sql = "Select * from  faq WHERE faq_id='$ID'";
+	$result=mysqli_query($conn,$sql);
+	if($result->num_rows>0)	
+	{
+		while($row = $result->fetch_assoc())
+		{
+			extract($row);
+			array_push($response,$row);
+		}
+	}
+	return json_encode($response);
+}
+function getabout($conn)
+{
+	$response = array();
+	$sql = "Select * from  about";
+	$result=mysqli_query($conn,$sql);
+	if($result->num_rows>0)	
+	{
+		while($row = $result->fetch_assoc())
+		{
+			extract($row);
+			array_push($response,$row);
+		}
+	}
+	return json_encode($response);
 }

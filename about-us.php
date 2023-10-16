@@ -1,7 +1,5 @@
 <?php include('includes/header.php');  ?>
 <?php
-include('admin/pages/controller/pages-controller.php');
-$conn = _connectodb();
 $getabout = getabout($conn);
 $getabout = json_decode($getabout, true);
 foreach ($getabout as $getabout) {

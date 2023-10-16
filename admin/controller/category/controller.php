@@ -109,6 +109,8 @@ if (isset($_POST['param']) &&  decryptpost($conn, $_POST['param']) === 'add_cate
 }
 
 
+
+
 if (isset($_POST['param']) &&  decryptpost($conn, $_POST['param']) === 'update_category') {
     $category = decryptpost($conn, $_POST['category']);
     $ID = decryptpost($conn, $_POST['ID']);

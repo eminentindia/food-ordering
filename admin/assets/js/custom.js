@@ -179,7 +179,7 @@ $(document).on("ajaxSend", function (event, jqXHR, ajaxOptions) {
 function showPopup(status, text) {
   toastr.options = {
     positionClass: 'toast-top-center', // You can change the position as needed
-    timeOut: 3000, // Set to 0 to disable automatic timeout
+    timeOut: 1500, // Set to 0 to disable automatic timeout
     closeButton: true, 
   };
 

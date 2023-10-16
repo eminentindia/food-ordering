@@ -1,7 +1,5 @@
 <?php include('includes/header.php');  ?>
 <?php
-include('admin/faq/controller/faq-controller.php');
-$conn = _connectodb();
 $getfaq = getfaq($conn);
 $getfaq = json_decode($getfaq, true);
 ?>
