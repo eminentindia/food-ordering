@@ -399,9 +399,17 @@ if (isset($_POST['OTP'])) {
                                     <div style=" font-size: 1rem;color: white !important;padding: 10px 30px;">
                                         <h4 style=" font-size: 1rem;color: white !important;background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);" class="badge bg-primary badge-primary text-dark badge mb-0 rounded-pill text-dark">Order ID: <?php echo $order_id; ?></h4>
                                     </div>
-                                    <div style=" font-size: .7rem;color: white !important;padding: 10px 30px; background-image: linear-gradient(-45deg, #FFC796 0%, #FF6B95 100%);" class="rounded-pill ">
-                                        <div id="countdown"></div>
-                                    </div>
+
+                                    <?php
+                                    if ($otp_validate != '1') {
+                                    ?>
+
+                                        <div style=" font-size: .9rem;color: white !important;padding: 10px 30px; background-image: linear-gradient(-45deg, #FFC796 0%, #FF6B95 100%);" class="rounded-pill ">
+                                            <div id="countdown"></div>
+                                        </div>
+                                    <?php } ?>
+
+
                                 </div>
                             </div>
 
@@ -744,6 +752,8 @@ if (isset($_POST['OTP'])) {
             } else {
                 if (days == 0) {
                     countdownElement.innerHTML = ` ${hours} hours ${minutes} minutes ${seconds} seconds`;
+                } else if (hours == 0) {
+                    countdownElement.innerHTML = `  ${minutes} minutes ${seconds} seconds`;
                 } else {
                     countdownElement.innerHTML = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
                 }
