@@ -63,6 +63,7 @@
             </a>
         </div>
         <?php include('includes/category-slider.php');  ?>
+        <?php include('includes/festival-popup.php');  ?>
         <?php include('includes/tiffin.php') ?>
         <?php include('includes/products.php');  ?>
     </div>

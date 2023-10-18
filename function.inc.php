@@ -13,6 +13,34 @@ function getUserCart()
   return $arr;
 }
 
+function checkAdminDeveloperSession()
+{
+    if (session_status() == PHP_SESSION_ACTIVE && $_SESSION['store'] == '100') {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+function checkAdminDCMSession()
+{
+    if (session_status() == PHP_SESSION_ACTIVE && $_SESSION['store'] == '2') {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function checkAdminArunachalSession()
+{
+    if (session_status() == PHP_SESSION_ACTIVE && $_SESSION['store'] == '1') {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function manageUserCart($uid, $qty, $attr)
 {
   global $conn;
@@ -3564,8 +3592,13 @@ function get_dish_Attibutes($conn, $id)
 
 function getDashboardtodaycompleteOrders($conn, $start, $end)
 {
+  if (checkAdminDeveloperSession()) {
+    $filter = " ";
+} else {
+    $filter = "AND orders.store='" . $_SESSION['store'] . "'";
+}
   $arr = array();
-  $sql = "select * from orders  where  order_added_on between '$start' and '$end' AND order_status='2' ";
+  $sql = "select * from orders  where  order_added_on between '$start' and '$end' AND order_status='2' $filter ";
   //  echo $sql;
   $result = mysqli_query($conn, $sql);
   while ($row = mysqli_fetch_assoc($result)) {
@@ -3575,10 +3608,37 @@ function getDashboardtodaycompleteOrders($conn, $start, $end)
   return $arr;
 }
 
+
+
+function gettodaytotalorder($conn, $start, $end)
+{
+
+     if (checkAdminDeveloperSession()) {
+        $filter = " ";
+    } else {
+        $filter = "AND orders.store='" . $_SESSION['store'] . "'";
+    }
+  $arr = array();
+  $sql = "select * from orders  where  order_added_on between '$start' and '$end' $filter";
+  //  echo $sql;
+  $result = mysqli_query($conn, $sql);
+  while ($row = mysqli_fetch_assoc($result)) {
+    $arr[] = $row;
+    // return $row[];
+  }
+  return $arr;
+}
+
+
 function getDashboardpendingOrders($conn)
 {
+    if (checkAdminDeveloperSession()) {
+        $filter = " ";
+    } else {
+        $filter = "AND orders.store='" . $_SESSION['store'] . "'";
+    }
   $arr = array();
-  $sql = "select * from orders  where  order_status='1' OR  order_status='3' ";
+  $sql = "select * from orders  where  order_status='1' OR  order_status='3'  $filter";
   //  echo $sql;
   $result = mysqli_query($conn, $sql);
   while ($row = mysqli_fetch_assoc($result)) {
@@ -3590,8 +3650,15 @@ function getDashboardpendingOrders($conn)
 
 function getDashboardcancelpendingOrders($conn, $start, $end)
 {
+
+  if (checkAdminDeveloperSession()) {
+    $filter = " ";
+} else {
+    $filter = "AND orders.store='" . $_SESSION['store'] . "'";
+}
+
   $arr = array();
-  $sql = "select * from orders  where  order_cancelAt between '$start' and '$end' AND  order_status='4'";
+  $sql = "select * from orders  where  order_cancelAt between '$start' and '$end' AND  order_status='4' $filter";
   //  echo $sql;
   $result = mysqli_query($conn, $sql);
   while ($row = mysqli_fetch_assoc($result)) {

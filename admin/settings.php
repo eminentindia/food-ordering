@@ -8,7 +8,12 @@ include('connect/menu-nav.php'); ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 <link rel="stylesheet" href="<?php echo ADMIN_SITE_PATH ?>assets/css/color-picker.css">
+<?php
 
+if (!checkAdminDeveloperSession()) {
+	echo '<script>window.location.href="dashboard.php"</script>';
+}
+?>
 
 <style>
 	.hidden-radio {

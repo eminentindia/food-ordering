@@ -45,7 +45,7 @@ include('connect/loader/foodieezloader.php')
 		<div class="page d-flex flex-row flex-column-fluid">
 			<div id="kt_aside" class="aside" data-kt-drawer="true" data-kt-drawer-name="aside" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="auto" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_aside_toggle">
 
-			
+
 				<div class="aside-logo flex-column-auto pt-3" id="kt_aside_logo">
 					<a href="dashboard.php">
 						<img alt="Logo" src="<?php echo $logo;  ?>" class="asidelogo" />
@@ -54,8 +54,8 @@ include('connect/loader/foodieezloader.php')
 
 				<div class="aside-menu flex-column-fluid pt-0 pb-5 py-lg-5" id="kt_aside_menu">
 
-				<div class="hover-scroll-overlay-y px-2 my-5 my-lg-5" id="kt_aside_menu_wrapper" data-kt-scroll="true" data-kt-scroll-height="auto" data-kt-scroll-dependencies="{default: '#kt_aside_toolbar, #kt_aside_footer'}" data-kt-scroll-wrappers="#kt_aside_menu">
-					
+					<div class="hover-scroll-overlay-y px-2 my-5 my-lg-5" id="kt_aside_menu_wrapper" data-kt-scroll="true" data-kt-scroll-height="auto" data-kt-scroll-dependencies="{default: '#kt_aside_toolbar, #kt_aside_footer'}" data-kt-scroll-wrappers="#kt_aside_menu">
+
 						<div id="kt_aside_menu" class="menu menu-column menu-title-gray-600 menu-state-primary menu-state-icon-primary menu-state-bullet-primary menu-icon-gray-400 menu-arrow-gray-400 fw-bold fs-6" data-kt-menu="true">
 							<div class="menu-item py-3 	300ms">
 								<a class="menu-link sidenavBtn " href="dashboard.php" title="Dashboard" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
@@ -105,26 +105,30 @@ include('connect/loader/foodieezloader.php')
 								</div>
 							</div>
  -->
+							<?php
+							if (checkAdminDeveloperSession()) {
+							?>
+								<div class="menu-item py-3 	300ms">
+									<a class="menu-link sidenavBtn " href="category.php" title="category" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+										<span class="menu-icon">
+											<i class="fa fa-list fs-2" aria-hidden="true"></i>
 
+										</span>
+										<h6 class="smallh6">
+											CATEGORY
+										</h6>
+									</a>
+								</div>
 
-							<div class="menu-item py-3 	300ms">
-								<a class="menu-link sidenavBtn " href="category.php" title="category" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-									<span class="menu-icon">
-									<i class="fa fa-user fs-2" aria-hidden="true"></i>
+							<?php }
 
-									</span>
-									<h6 class="smallh6">
-										CATEGORY
-									</h6>
-								</a>
-							</div>
-
+							?>
 
 
 							<div class="menu-item py-3 	300ms">
 								<a class="menu-link sidenavBtn " href="order.php" title="order" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
 									<span class="menu-icon">
-									<i class="fa fa-user fs-2" aria-hidden="true"></i>
+										<i class="fa  fa-shopping-cart fs-2" aria-hidden="true"></i>
 
 									</span>
 									<h6 class="smallh6">
@@ -133,69 +137,97 @@ include('connect/loader/foodieezloader.php')
 								</a>
 							</div>
 
+							<?php
+							if (checkAdminDeveloperSession()) {
+							?>
+
+								<div class="menu-item py-3 	300ms">
+									<a class="menu-link sidenavBtn " href="sales.php" title="sales" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+										<span class="menu-icon">
+											<i class="fa  fa-rupee-sign fs-2" aria-hidden="true"></i>
+
+										</span>
+										<h6 class="smallh6">
+											SALES
+										</h6>
+									</a>
+								</div>
 
 
-							
-							<div class="menu-item py-3 	300ms">
-								<a class="menu-link sidenavBtn " href="banner.php" title="banner" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-									<span class="menu-icon">
-									<i class="fa fa-user fs-2" aria-hidden="true"></i>
+								<div class="menu-item py-3 	300ms">
+									<a class="menu-link sidenavBtn " href="banner.php" title="banner" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+										<span class="menu-icon">
+											<i class="fa fa-image fs-2" aria-hidden="true"></i>
 
-									</span>
-									<h6 class="smallh6">
-										Banner
-									</h6>
-								</a>
-							</div>
-
-
-							<div class="menu-item py-3 	300ms">
-								<a class="menu-link sidenavBtn " href="dish.php" title="dish" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-									<span class="menu-icon">
-									<i class="fa fa-user fs-2" aria-hidden="true"></i>
-
-									</span>
-									<h6 class="smallh6">
-										Dish
-									</h6>
-								</a>
-							</div>
+										</span>
+										<h6 class="smallh6">
+											Banner
+										</h6>
+									</a>
+								</div>
 
 
-							<div class="menu-item py-3 	300ms">
-								<a class="menu-link sidenavBtn " href="coupon.php" title="coupon" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-									<span class="menu-icon">
-									<i class="fa fa-user fs-2" aria-hidden="true"></i>
+								<div class="menu-item py-3 	300ms">
+									<a class="menu-link sidenavBtn " href="festivals.php" title="festivals" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+										<span class="menu-icon">
+											<i class="fa fa-gift fs-2" aria-hidden="true"></i>
 
-									</span>
-									<h6 class="smallh6">
-										Coupons
-									</h6>
-								</a>
-							</div>
-							<div class="menu-item py-3 	300ms">
-								<a class="menu-link sidenavBtn " href="subscription.php" title="subscription" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-									<span class="menu-icon">
-									<i class="fa fa-user fs-2" aria-hidden="true"></i>
+										</span>
+										<h6 class="smallh6">
+											Festivals
+										</h6>
+									</a>
+								</div>
 
-									</span>
-									<h6 class="smallh6">
-									Subscriptions
-									</h6>
-								</a>
-							</div>
-							
-							 <div class="menu-item py-3 	300ms">
-								<a class="menu-link sidenavBtn " href="users.php" title="Users" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-									<span class="menu-icon">
-									<i class="fa fa-user fs-2" aria-hidden="true"></i>
 
-									</span>
-									<h6 class="smallh6">
-										USERS
-									</h6>
-								</a>
-							</div>
+								<div class="menu-item py-3 	300ms">
+									<a class="menu-link sidenavBtn " href="dish.php" title="dish" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+										<span class="menu-icon">
+											<i class="fa fa-utensils fs-2" aria-hidden="true"></i>
+
+										</span>
+										<h6 class="smallh6">
+											Dish
+										</h6>
+									</a>
+								</div>
+
+								<div class="menu-item py-3 	300ms">
+									<a class="menu-link sidenavBtn " href="coupon.php" title="coupon" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+										<span class="menu-icon">
+											<i class="fa fa-tag fs-2" aria-hidden="true"></i>
+
+										</span>
+										<h6 class="smallh6">
+											Coupons
+										</h6>
+									</a>
+								</div>
+
+								<div class="menu-item py-3 	300ms">
+									<a class="menu-link sidenavBtn " href="subscription.php" title="subscription" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+										<span class="menu-icon">
+											<i class="fa fa-inbox fs-2" aria-hidden="true"></i>
+
+										</span>
+										<h6 class="smallh6">
+											Subscriptions
+										</h6>
+									</a>
+								</div>
+
+								<div class="menu-item py-3 	300ms">
+									<a class="menu-link sidenavBtn " href="users.php" title="Users" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+										<span class="menu-icon">
+											<i class="fa fa-user fs-2" aria-hidden="true"></i>
+
+										</span>
+										<h6 class="smallh6">
+											USERS
+										</h6>
+									</a>
+								</div>
+							<?php } ?>
 
 
 						</div>
@@ -523,7 +555,7 @@ include('connect/loader/foodieezloader.php')
 															<span class="fs-7 text-muted fw-bold">#67945</span>
 														</div>
 													</div>
-													
+
 												</div>
 											</div>
 											<div data-kt-search-element="empty" class="text-center d-none">
@@ -573,10 +605,14 @@ include('connect/loader/foodieezloader.php')
 											</div>
 										</div>
 										<div class="separator my-2"></div>
+										<?php
+										if (checkAdminDeveloperSession()) {
+										?>
+											<div class="menu-item px-5 my-1">
+												<a href="settings.php" class="menu-link px-5">Account Settings</a>
+											</div>
 
-										<div class="menu-item px-5 my-1">
-											<a href="settings.php" class="menu-link px-5">Account Settings</a>
-										</div>
+										<?php } ?>
 										<div class="menu-item px-5">
 											<a href="logout.php" class="menu-link px-5">Sign Out</a>
 										</div>

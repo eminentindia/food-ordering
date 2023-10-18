@@ -2,6 +2,11 @@
 $page_title = "Users";
 include('connect/head.php'); ?>
 <?php include('connect/menu-nav.php');
+?><?php
+
+if (!checkAdminDeveloperSession()) {
+	echo '<script>window.location.href="dashboard.php"</script>';
+}
 ?>
 <style>
 

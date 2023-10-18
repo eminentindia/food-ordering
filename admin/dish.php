@@ -6,9 +6,15 @@ include('connect/head.php'); ?>
 <link rel="stylesheet" href="<?= ADMIN_SITE_PATH ?>assets/css/multiple-input.css">
 <link rel="stylesheet" href="<?= ADMIN_SITE_PATH ?>assets/css/dropzone.css">
 
+
 <?php
 $categorydata = getcategory($conn);
 $categorydata = json_decode($categorydata, true);
+
+
+if (!checkAdminDeveloperSession()) {
+	echo '<script>window.location.href="dashboard.php"</script>';
+}
 ?>
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <div class=" container-xxl " id="kt_content_container">

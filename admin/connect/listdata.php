@@ -163,7 +163,13 @@ if (isset($_GET['show']) and $_GET['show'] == md5('coupon')) {
 }
 if (isset($_GET['show']) and $_GET['show'] == 'order') {
 
-    $sql = "Select * from  orders JOIN order_status  ON orders.order_status=order_status.order_status_id WHERE orders.order_status='1' ";
+    if (checkAdminDeveloperSession()) {
+        $filter = " ";
+    } else {
+        $filter = "AND orders.store='" . $_SESSION['store'] . "'";
+    }
+
+    $sql = "Select * from  orders JOIN order_status  ON orders.order_status=order_status.order_status_id WHERE orders.order_status='1' $filter ORDER BY order_added_on DESC";
     $result = $conn->query($sql);
     $count = mysqli_num_rows($result);
     $data = array();
@@ -229,8 +235,12 @@ if (isset($_GET['show']) and $_GET['show'] == 'order') {
 
 
 if (isset($_GET['show']) and $_GET['show'] == 'cancel') {
-
-    $sql = "Select * from  orders JOIN order_status  ON orders.order_status=order_status.order_status_id WHERE orders.order_status='4'";
+    if (checkAdminDeveloperSession()) {
+        $filter = " ";
+    } else {
+        $filter = "AND orders.store='" . $_SESSION['store'] . "'";
+    }
+    $sql = "Select * from  orders JOIN order_status  ON orders.order_status=order_status.order_status_id WHERE orders.order_status='4' $filter ORDER BY order_added_on DESC";
     $result = $conn->query($sql);
     $count = mysqli_num_rows($result);
     $data = array();
@@ -296,8 +306,12 @@ if (isset($_GET['show']) and $_GET['show'] == 'cancel') {
 
 
 if (isset($_GET['show']) and $_GET['show'] == 'complete') {
-
-    $sql = "Select * from  orders JOIN order_status  ON orders.order_status=order_status.order_status_id WHERE orders.order_status='2' AND paymentstatus='captured'";
+    if (checkAdminDeveloperSession()) {
+        $filter = " ";
+    } else {
+        $filter = "AND orders.store='" . $_SESSION['store'] . "'";
+    }
+    $sql = "Select * from  orders JOIN order_status  ON orders.order_status=order_status.order_status_id WHERE orders.order_status='2' AND paymentstatus='captured' $filter ORDER BY order_added_on DESC";
     $result = $conn->query($sql);
     $count = mysqli_num_rows($result);
     $data = array();
@@ -444,11 +458,11 @@ if (isset($_GET['show']) && $_GET['show'] == md5('dish')) {
             $is_popular,
             $is_available,
             '<a target="blank" href="feedback.php?dish_id=' . $row['ID'] . '"><button type="button" class="btn btn-sm btn-primary">VIEW <i class="fa fa-comments" aria-hidden="true"></i></button></a>',
-           $ID,
+            $ID,
 
         ];
 
-      
+
 
         $data[] = $rowData;
     }

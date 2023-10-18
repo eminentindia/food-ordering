@@ -1,5 +1,5 @@
 <?php
-$page_title = "Banner";
+$page_title = "Banners";
 include('connect/head.php'); ?>
 <?php include('connect/menu-nav.php');
 ?>
