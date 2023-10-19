@@ -89,7 +89,7 @@ if (!checkAdminDeveloperSession()) {
                                         echo "<div class='d-flex align-items-center justify-content-between my-3'><p class='card-text mb-0'>ONLINE  </p><p class='mb-0 fs-3 text-success'> $online_count</p></div>";
                                     }
                                     echo '<div style=" display: flex;gap: 10px;border: 1px solid #37c45f;padding: 3px;padding-top:0;margin-bottom: 0;padding-right: 0;box-shadow: 0 0.1rem 1rem 0.25rem rgb(38 151 20 / 5%);font-size: .8rem;border-right: 0;
-                                "><p class="card-text pb-0 mb-0" style="    color: #2b9d29 !important;">Total Orders <span style="    background: #f3fff0;padding: 10px;border: 1px solid;" class="fs-4">  <i class="fas fa-rupee-sign"></i> ' . $row_count . '</span></p>';
+                                "><p class="card-text pb-0 mb-0" style="    color: #2b9d29 !important;">Total Orders <span style="    background: #f3fff0;padding: 10px;border: 1px solid;" class="fs-4"> ' . $row_count . '</span></p>';
                                     if ($row['total_price'] > 0) {
                                         echo '<p class="card-text pb-0 mb-0" style="    color: #2b9d29 !important;">Total Sale  <span style="    background: #f3fff0;padding: 10px;border: 1px solid;" class="fs-4"> <i class="fas fa-rupee-sign"></i> ' . $row['total_price'] . ' </span></p>';
                                     }

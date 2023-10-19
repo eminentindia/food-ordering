@@ -178,10 +178,7 @@ if (isset($_GET['param']) &&  decryptpost($conn, $_GET['param']) === 'get_faq') 
                 <td>" . $p++ . "</td>
                 <td>" . $row['a'] . "</td>
                 <td>" . $row['q'] . "</td>
-                <td>
-                    <i class='fas fa-edit text-warning ms-3 me-3 cursor-pointer' onclick=\"edit_faq('" . $row['faq_id'] . "')\"></i>
-                    <i class='fas fa-trash text-danger cursor-pointer' onclick=\"delete_faq('" . $row['faq_id'] . "')\"></i>
-                </td>
+                
             </tr>";
         }
         

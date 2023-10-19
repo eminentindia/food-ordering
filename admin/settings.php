@@ -167,53 +167,100 @@ if (!checkAdminDeveloperSession()) {
 	}
 </style>
 
+<!-- timeline  -->
+
+<style>
+	.node::after {
+		content: '\f0da';
+		font-family: 'Font Awesome 5 Free';
+		font-weight: 900;
+		color: #a0a0a0;
+		position: absolute;
+		left: 10px;
+		top: 15px;
+	}
+
+	section {
+		z-index: 1;
+	}
+
+	.node {
+		cursor: pointer;
+		position: absolute;
+		z-index: 999999;
+	}
+
+	.node:hover {
+		background: #27571e;
+	}
+
+	.node span {
+		text-transform: uppercase;
+		color: #000000;
+		position: absolute;
+		white-space: nowrap;
+		font-size: 8px;
+		font-weight: bold;
+		/* opacity: 0; */
+		/* transition: opacity 0.4s ease-out; */
+		top: -2px;
+		left: 20px;
+		background: white;
+		padding: 10px;
+		margin: 10px 0;
+		box-shadow: 0px 0px 10px 2px #05120a0f;
+		border-radius: 10px;
+	}
+
+	.timeline {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		position: fixed;
+		top: 50%;
+		transform: translateY(-50%);
+		left: 120px;
+		height: 80%;
+		border-radius: 5%;
+		z-index: 999;
+	}
+
+	@media only screen and (max-width: 1000px) {
+
+		.timeline,
+		.timeline2 {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			height: 100vh;
+			border-radius: 5%;
+			z-index: 999;
+		}
+		.node span {
+			min-width: 80px;
+		}
+
+
+	}
+</style>
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 	<div class=" container-xxl " id="kt_content_container">
-		<div class="container mt-5" style="    background: #223b25;
-    display: flex;
-    padding: 0;
-    position: sticky;
-    top: 80px;
-	justify-content: center;
-    z-index: 999999;">
-			<ul class="nav nav-pills" id="myTab" role="tablist" style="    display: flex;
-    gap: 10px;
-    padding: 10px;">
-				<li class="" >
-					<a class="btn btn-outline-white border border-white text-white text-hover-dark"  href="#portfoliodetail">Tab 1</a>
-				</li>
-				<li class="" >
-					<a class=" btn btn-outline-secondary border border-secondary text-white e text-hover-dark"  href="#kt_account_email_preferences">Terfrefab 2</a>
-				</li>
-				
-				<li class="" >
-					<a class=" btn btn-outline-danger border border-danger text-white"  href="#content-4">Tab 4</a>
-				</li>
-				<li class="" >
-					<a class=" btn btn-outline-warning text-darktext-white"  href="#content-5">Tab 5</a>
-				</li>
-				<li class="" >
-					<a class=" btn btn-outline-info border border-info text-white"  href="#content-6">Tab 6</a>
-				</li>
-				
-				<li class="" >
-					<a class=" btn btn-outline-secondary border border-secondary text-white  text-hover-dark"  href="#content-8">Tab 8</a>
-				</li>
-				
-				<li class="" >
-					<a class=" btn btn-outline-danger border border-danger text-white"   href="#content-10" >Tab 10</a>
-				</li>
-			</ul>
-
-		</div>
-		<div class="card mb-5 mb-xl-10">
-			<div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" id="portfoliodetail" aria-expanded="true" aria-controls="kt_account_profile_details">
+	</div>
+	<div class="container">
+		<div class="bar"></div>
+		<ul class="timeline" style="display: none;">
+		</ul>
+		<section class="card mb-5 mb-xl-10 cursor-pointer" data-name="Portal Details">
+			<div class="card-header border-1 cursor-pointer" role="button" data-bs-toggle="collapse" id="portfoliodetail" aria-expanded="true" aria-controls="kt_account_profile_details">
 				<div class="card-title m-0">
 					<h3 class="fw-bold m-0">Portal Details</h3>
 				</div>
 			</div>
 
-			<div id="kt_account_settings_profile_details" class="collapse show">
+			<div id="kt_account_settings_profile_details">
 				<form id="company_detail_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
 					<div class="card-body border-top p-9">
 						<div class="row mb-6">
@@ -271,15 +318,14 @@ if (!checkAdminDeveloperSession()) {
 					<input type="hidden">
 				</form>
 			</div>
-		</div>
-
-		<div class="card mb-5 mb-xl-10">
-			<div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" id="kt_account_connected_accounts" aria-expanded="true" aria-controls="kt_account_connected_accounts">
+		</section>
+		<section class="card mb-5 mb-xl-10 cursor-pointer" data-name="Addons">
+			<div class="card-header border-1 cursor-pointer" role="button" data-bs-toggle="collapse" id="kt_account_connected_accounts" aria-expanded="true" aria-controls="kt_account_connected_accounts">
 				<div class="card-title m-0">
-					<h3 class="fw-bold m-0">Connected Accounts</h3>
+					<h3 class="fw-bold m-0">Addons</h3>
 				</div>
 			</div>
-			<div id="connected_accounts_form_div" class="collapse show">
+			<div id="connected_accounts_form_div">
 				<form id="connected_accounts_form" method="post" enctype="multipart/form-data">
 					<div class="card-body border-top p-9">
 						<div class="py-2">
@@ -348,19 +394,14 @@ if (!checkAdminDeveloperSession()) {
 					</div>
 				</form>
 			</div>
-		</div>
-
-
-
-
-
-		<div class="card mb-5 mb-xl-10">
-			<div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" id="kt_account_connected_accounts" aria-expanded="true" aria-controls="kt_account_connected_accounts">
+		</section>
+		<section class="card mb-5 mb-xl-10 cursor-pointer " data-name="Social Media">
+			<div class="card-header border-1 cursor-pointer" role="button" data-bs-toggle="collapse" id="kt_account_connected_accounts" aria-expanded="true" aria-controls="kt_account_connected_accounts">
 				<div class="card-title m-0">
 					<h3 class="fw-bold m-0">Social Media</h3>
 				</div>
 			</div>
-			<div id="connected_accounts_form_div" class="collapse show">
+			<div id="connected_accounts_form_div">
 				<form id="socialmediafrm" method="POST" enctype="multipart/form-data">
 					<div class="card-body">
 						<input type="hidden" name="ID" value="<?php echo $setting_id; ?>">
@@ -396,15 +437,14 @@ if (!checkAdminDeveloperSession()) {
 					</div>
 				</form>
 			</div>
-		</div>
-
-		<div class="card mb-5 mb-xl-10">
-			<div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" id="kt_account_connected_accounts" aria-expanded="true" aria-controls="kt_account_connected_accounts">
+		</section>
+		<section class="card mb-5 mb-xl-10 cursor-pointer" data-name="Contact">
+			<div class="card-header border-1 cursor-pointer" role="button" data-bs-toggle="collapse" id="kt_account_connected_accounts" aria-expanded="true" aria-controls="kt_account_connected_accounts">
 				<div class="card-title m-0">
 					<h3 class="fw-bold m-0">Contact</h3>
 				</div>
 			</div>
-			<div id="connected_accounts_form_div" class="collapse show">
+			<div id="connected_accounts_form_div">
 				<form id="contactupdatefrm" action="action/update-setting.php" method="POST" enctype="multipart/form-data">
 					<div class="card-body">
 						<input type="hidden" name="ID" value="<?php echo $setting_id; ?>">
@@ -446,16 +486,15 @@ if (!checkAdminDeveloperSession()) {
 					</div>
 				</form>
 			</div>
-		</div>
-
-		<div class="card mb-5 mb-xl-10">
-			<div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" id="kt_account_email_preferences" aria-expanded="true" aria-controls="kt_account_email_preferences">
+		</section>
+		<section class="card mb-5 mb-xl-10 cursor-pointer" data-name="Activation">
+			<div class="card-header border-1 cursor-pointer" role="button" data-bs-toggle="collapse" id="kt_account_email_preferences" aria-expanded="true" aria-controls="kt_account_email_preferences">
 				<div class="card-title m-0">
 					<h3 class="fw-bold m-0">Activation</h3>
 				</div>
 			</div>
 
-			<div id="kt_account_settings_email_preferences" class="collapse show">
+			<div id="kt_account_settings_email_preferences">
 				<form class="form" id="activation_form">
 					<div class="card-body border-top px-9 py-9">
 						<label class="form-check form-check-custom form-check-solid align-items-start">
@@ -512,17 +551,17 @@ if (!checkAdminDeveloperSession()) {
 					</div>
 				</form>
 			</div>
-		</div>
+		</section>
+		<section class="card mb-5 mb-xl-10 cursor-pointer" data-name="Theme">
 
-
-		<div class="card mb-5 mb-xl-10">
-			<div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" id="settings" aria-expanded="true" aria-controls="settings">
+			<div class="card-header border-1 cursor-pointer" role="button" data-bs-toggle="collapse" id="kt_account_email_preferences" aria-expanded="true" aria-controls="kt_account_email_preferences">
 				<div class="card-title m-0">
 					<h3 class="fw-bold m-0">Theme <span style="font-size: 10px;    color: var(--bs-danger);">(APPLIED ON FRONTEND)</span></h3>
 				</div>
 			</div>
 
-			<div id="kt_account_settings_email_preferences" class="collapse show">
+
+			<div id="kt_account_settings_email_preferences">
 				<form id="colorupdatefrm" method="POST" enctype="multipart/form-data">
 					<div class="card-body">
 						<div class="form-group row">
@@ -583,14 +622,14 @@ if (!checkAdminDeveloperSession()) {
 					</div>
 				</form>
 			</div>
-		</div>
-		<div class="card mb-5">
-			<div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" id="kt_account_deactivate" aria-expanded="true" aria-controls="kt_account_deactivate">
+		</section>
+		<section class="card mb-5 mb-xl-10 cursor-pointer" data-name="Preloader">
+			<div class="card-header border-1 cursor-pointer" role="button" data-bs-toggle="collapse" id="kt_account_deactivate" aria-expanded="true" aria-controls="kt_account_deactivate">
 				<div class="card-title m-0">
 					<h3 class="fw-bold m-0">Preloaders</h3>
 				</div>
 			</div>
-			<div id="" class="collapse show">
+			<div id="">
 				<form id="design_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
 					<div class="row">
 						<?php
@@ -624,15 +663,14 @@ if (!checkAdminDeveloperSession()) {
 					</div>
 				</form>
 			</div>
-		</div>
-
-		<div class="card mb-5">
-			<div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" id="kt_account_deactivate" aria-expanded="true" aria-controls="kt_account_deactivate">
+		</section>
+		<section class="card mb-5 mb-xl-10 cursor-pointer" data-name="About">
+			<div class="card-header border-1 cursor-pointer" role="button" data-bs-toggle="collapse" id="kt_account_deactivate" aria-expanded="true" aria-controls="kt_account_deactivate">
 				<div class="card-title m-0">
 					<h3 class="fw-bold m-0">About Us</h3>
 				</div>
 			</div>
-			<div id="" class="collapse show">
+			<div id="">
 				<form id="aboutUsForm" class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
 					<div class="row">
 						<?php
@@ -653,121 +691,116 @@ if (!checkAdminDeveloperSession()) {
 					</div>
 				</form>
 			</div>
-		</div>
-
-		<div class="card mb-5">
-			<div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" id="kt_account_deactivate" aria-expanded="true" aria-controls="kt_account_deactivate">
+		</section>
+		<section class="card mb-5 mb-xl-10 cursor-pointer" data-name="FAQ">
+			<div class="card-header border-1 cursor-pointer" role="button" data-bs-toggle="collapse" id="kt_account_deactivate" aria-expanded="true" aria-controls="kt_account_deactivate">
 				<div class="card-title m-0">
 					<h3 class="fw-bold m-0">FAQ (Frequently Asked Questions)</h3>
 				</div>
 
 			</div>
-			<div id="" class="collapse show">
-				<form id="FaqForm" class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
-					<div class="card-body">
+			<form id="FaqForm" class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
+				<div class="card-body">
 
-						<div class="form-group row">
-							<label for="fname" class="col-sm-3 control-label col-form-label">Question</label>
-							<div class="col-sm-9">
-								<input type="text" class="form-control" name="q" id="q">
-							</div>
+					<div class="form-group row">
+						<label for="fname" class="col-sm-3 control-label col-form-label">Question</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="q" id="q">
 						</div>
-						<div class="form-group row">
-							<label for="fname" class="col-sm-3 control-label col-form-label">Answer</label>
-							<div class="col-sm-9">
+					</div>
+					<div class="form-group row">
+						<label for="fname" class="col-sm-3 control-label col-form-label">Answer</label>
+						<div class="col-sm-9">
 
-								<textarea class="form-control" name="a" id="a"></textarea>
-							</div>
+							<textarea class="form-control" name="a" id="a"></textarea>
 						</div>
-
-						<div class="form-group row">
-							<label for="fname" class="col-sm-3 control-label col-form-label">Display Priority</label>
-							<div class="col-sm-9">
-								<input type="number" class="form-control" name="display_priority" id="display_priority">
-							</div>
-						</div>
-
-
 					</div>
 
-					<div class="card-footer d-flex justify-content-end py-6 px-9">
-						<button id="" type="submit" class="btn btn-primary fw-semibold">Save <i class="fas fa-check    "></i> </button>
-					</div>
-				</form>
-				<div class="accordion accordion-light  accordion-toggle-arrow" id="accordionExample5">
-					<div class="card">
-						<div class="card-header" id="headingOne5">
-							<div class="card-title" data-toggle="collapse" data-target="#collapseOne5">
-								<i class="flaticon-pie-chart-1"></i> List Of FAQ's
-							</div>
+					<div class="form-group row">
+						<label for="fname" class="col-sm-3 control-label col-form-label">Display Priority</label>
+						<div class="col-sm-9">
+							<input type="number" class="form-control" name="display_priority" id="display_priority">
 						</div>
-						<div id="collapseOne5" class="collapse show" data-parent="#accordionExample5">
-							<div class="card-body">
-								<div class="container mt-5 pb-0" style="    border: 1px dashed #aeaeae;padding: 10px;">
-									<div class="row d-flex align-items-center justify-content-between">
-										<div class="col-8">
-											<div class="pagecount">
-												<strong>Page <span id="page-no">1</span> of <span id="total-pages">1</span></strong>
-											</div>
-										</div>
-										<div class="col-4 d-flex justify-content-end">
-											<div class="form-group searchwidth">
-												<input type="text" id="search" class="form-control " placeholder="Search...">
-											</div>
+					</div>
+
+
+				</div>
+
+				<div class="card-footer d-flex justify-content-end py-6 px-9">
+					<button id="" type="submit" class="btn btn-primary fw-semibold">Save <i class="fas fa-check    "></i> </button>
+				</div>
+			</form>
+			<div class="accordion accordion-light  accordion-toggle-arrow" id="accordionExample5">
+				<div class="card">
+					<div class="card-header" id="headingOne5">
+						<div class="card-title" data-toggle="collapse" data-target="#collapseOne5">
+							<i class="flaticon-pie-chart-1"></i> List Of FAQ's
+						</div>
+					</div>
+					<div id="collapseOne5" data-parent="#accordionExample5">
+						<div class="card-body">
+							<div class="container mt-5 pb-0" style="    border: 1px dashed #aeaeae;padding: 10px;">
+								<div class="row d-flex align-items-center justify-content-between">
+									<div class="col-8">
+										<div class="pagecount">
+											<strong>Page <span id="page-no">1</span> of <span id="total-pages">1</span></strong>
 										</div>
 									</div>
-
-									<table class="table table-striped table-bordered">
-										<thead>
-											<tr>
-												<th style='width:50px; font-weight:bold; text-align: center;' class="sortable" data-sort="faq_id">ID <img src="<?php echo ADMIN_SITE_PATH ?>assets/media/sort.png" width="18px" /> </th>
-												<th style='width:150px;font-weight:bold' class="sortable" data-sort="q">Answer <img src="<?php echo ADMIN_SITE_PATH ?>assets/media/sort.png" width="18px" /> </th>
-												<th style='width:50px; font-weight:bold' class="sortable" data-sort="a">Question <img src="<?php echo ADMIN_SITE_PATH ?>assets/media/sort.png" width="18px" /> </th>
-												<th style='width:50px; font-weight:bold' class="sortable" data-sort="a">Action </th>
-											</tr>
-										</thead>
-										<tbody id="pagination-data">
-											<!-- Data will be loaded here through AJAX -->
-										</tbody>
-									</table>
-
-
-
-									<div class="row d-flex align-items-center" style="    background: #fbfbfb;border: 1px dashed #aeaeae;border-right: 0;border-left: 0;border-bottom:0">
-										<div class="col-6">
-											<ul class="pagination" id="pagination-links">
-												<!-- Pagination links will be loaded here through AJAX -->
-											</ul>
+									<div class="col-4 d-flex justify-content-end">
+										<div class="form-group searchwidth">
+											<input type="text" id="search" class="form-control " placeholder="Search...">
 										</div>
-										<div class="col-6 d-flex justify-content-end">
-											<div class="mb-3 pagination">
-												<select id="pagesPerPage" class="page-link">
-													<option value="1">1</option>
-													<option value="5">5</option>
-													<option value="10">10</option>
-													<option value="15">15</option>
-													<option value="20">20</option>
-												</select>
-											</div>
+									</div>
+								</div>
+
+								<table class="table table-striped table-bordered">
+									<thead>
+										<tr>
+											<th style='width:50px; font-weight:bold; text-align: center;' class="sortable" data-sort="faq_id">ID <img src="<?php echo ADMIN_SITE_PATH ?>assets/media/sort.png" width="18px" /> </th>
+											<th style='width:150px;font-weight:bold' class="sortable" data-sort="q">Answer <img src="<?php echo ADMIN_SITE_PATH ?>assets/media/sort.png" width="18px" /> </th>
+											<th style='width:50px; font-weight:bold' class="sortable" data-sort="a">Question <img src="<?php echo ADMIN_SITE_PATH ?>assets/media/sort.png" width="18px" /> </th>
+										</tr>
+									</thead>
+									<tbody id="pagination-data">
+										<!-- Data will be loaded here through AJAX -->
+									</tbody>
+								</table>
+
+
+
+								<div class="row d-flex align-items-center" style="    background: #fbfbfb;border: 1px dashed #aeaeae;border-right: 0;border-left: 0;border-bottom:0">
+									<div class="col-6">
+										<ul class="pagination" id="pagination-links">
+											<!-- Pagination links will be loaded here through AJAX -->
+										</ul>
+									</div>
+									<div class="col-6 d-flex justify-content-end">
+										<div class="mb-3 pagination">
+											<select id="pagesPerPage" class="page-link">
+												<option value="1">1</option>
+												<option value="5">5</option>
+												<option value="10">10</option>
+												<option value="15">15</option>
+												<option value="20">20</option>
+											</select>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
 				</div>
 
 			</div>
-		</div>
 
-		<div class="card" style="    border: 1px solid red;">
-			<div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" id="kt_account_maintenance" aria-expanded="true" aria-controls="kt_account_maintenance" style="    background: snow !important;    border-radius: 20px;">
+		</section>
+		<section class="card" style="border: 1px solid red;" data-name="Danger Zone">
+			<div class="card-header border-1 cursor-pointer" role="button" data-bs-toggle="collapse" id="kt_account_maintenance" aria-expanded="true" aria-controls="kt_account_maintenance" style="    background: snow !important;    border-radius: 20px;">
 				<div class="card-title m-0">
 					<h3 class="fw-bold m-0">DANGER ZONE</h3>
 				</div>
 			</div>
-			<div id="kt_account_settings_maintenance" class="collapse show">
+			<div id="kt_account_settings_maintenance">
 				<form id="maintenance_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
 					<div class="card-body border-top p-9">
 						<div class="notice d-flex bg-light-danger rounded border-danger border border-dashed mb-9 p-6">
@@ -793,16 +826,121 @@ if (!checkAdminDeveloperSession()) {
 					<input type="hidden">
 				</form>
 			</div>
-		</div>
+		</section>
 	</div>
 	<?php include('connect/copyrights.php'); ?>
 	<?php include('connect/footer-script.php'); ?>
+
+	<script>
+
+	</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
 
 	<script src="https://cdn.tiny.cloud/1/7omt3b4517021mnd1q496sj7bas6wt2mrbiuki543gxlabl1/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
 
 	<script type="text/javascript" src="<?php echo ADMIN_SITE_PATH ?>assets/js/color-picker.js"></script>
+
+	<script>
+
+
+		document.addEventListener("DOMContentLoaded", function() {
+			const sections = document.querySelectorAll("section");
+			const timeline = document.querySelector(".timeline");
+			let timelineVisible = false;
+			let activeSpan = null; // Keep track of the active span
+
+			// Function to check if the user has scrolled 200px or more
+			function checkScrollPosition() {
+				if (window.scrollY >= 200 && !timelineVisible) {
+					timeline.style.display = "block";
+					timelineVisible = true;
+				} else if (window.scrollY < 200 && timelineVisible) {
+					timeline.style.display = "none";
+					timelineVisible = false;
+				}
+
+				// Check which section is currently in view
+				sections.forEach((section, index) => {
+					if (isElementInViewport(section)) {
+						// Remove color from the previous active span
+						if (activeSpan) {
+							activeSpan.style.color = ""; // Reset the color
+						}
+
+						const span = timeline.querySelector(`li.node:nth-child(${index + 1}) span`);
+						if (span) {
+							// Change the color of the corresponding span
+							changeSpanColor(span);
+							activeSpan = span; // Update the active span
+						}
+					}
+				});
+			}
+
+			// Check if an element is in the viewport
+			function isElementInViewport(element) {
+				const rect = element.getBoundingClientRect();
+				return (
+					rect.top >= 0 &&
+					rect.left >= 0 &&
+					rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+					rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+				);
+			}
+
+			// Check the scroll position on initial load
+			checkScrollPosition();
+
+			// Check the scroll position when the user scrolls
+			window.addEventListener("scroll", checkScrollPosition);
+
+			sections.forEach((section, index) => {
+				const li = document.createElement("li");
+				li.className = "node";
+				li.style.top = `${(index + 1) * 6 + 20}%`;
+
+				const span = document.createElement("span");
+				span.setAttribute("data-name", section.getAttribute("data-name"));
+				span.textContent = section.getAttribute("data-name");
+
+				li.appendChild(span);
+				timeline.appendChild(li);
+
+				// Add a click event listener to scroll to the corresponding section and change color
+				li.addEventListener("click", function() {
+					scrollToSection(index);
+
+					// Remove color from the previous active span
+					if (activeSpan) {
+						activeSpan.style.color = ""; // Reset the color
+					}
+
+					// Change the color of the clicked span
+					changeSpanColor(span);
+					activeSpan = span; // Update the active span
+				});
+			});
+
+			// Function to scroll to a section by index
+			function scrollToSection(index) {
+				if (sections[index]) {
+					sections[index].scrollIntoView({
+						behavior: "smooth"
+					});
+				}
+			}
+
+			// Function to change the color of a span
+			function changeSpanColor(span) {
+				span.style.color = "red"; // Change the color to red (you can use any color you prefer)
+			}
+		});
+	</script>
+
+
+
+
 	<script>
 		tinymce.init({
 			selector: 'textarea',
@@ -971,8 +1109,6 @@ if (!checkAdminDeveloperSession()) {
 			});
 		}
 	</script>
-
-
 	<script type="text/javascript">
 		Coloris({
 			el: '.coloris',
@@ -1054,6 +1190,7 @@ if (!checkAdminDeveloperSession()) {
 			});
 		});
 	</script>
+
 	<script>
 		$('#maketable').DataTable({
 			"dom": "<'row'<'col-sm-12 col-md-8'B><'col-sm-12 col-md-4'f>>" + "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-2'l><'col-sm-12 col-md-5'p>>",
@@ -1244,4 +1381,6 @@ if (!checkAdminDeveloperSession()) {
 			});
 		});
 	</script>
+
+
 	<?php include('connect/footer-end.php'); ?>

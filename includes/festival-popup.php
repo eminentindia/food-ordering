@@ -313,11 +313,11 @@ foreach ($festive as $bannerfestive) {
                 <div class="after"></div>
                 <div class="after"></div>
             </div>
-            <div class=" modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+            <div class=" modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content p-0 m-0">
                     <button type="button" class="close closebtnfestive" data-dismiss="modal">&times;</button>
                     <div class="modal-body p-0 m-0">
-                        <img src="<?php echo ADMIN_SITE_PATH ?>media/festive/<?php echo $bannerfestive['festival_banner'] ?>" class="img-fluid " alt="<?php echo $bannerfestive['festival_name'] ?>">
+                        <a target="_blank" href="<?php echo SITE_PATH . $bannerfestive['redirect_page'] ?>"> <img src="<?php echo ADMIN_SITE_PATH ?>media/festive/<?php echo $bannerfestive['festival_banner'] ?>" class="img-fluid " alt="<?php echo $bannerfestive['festival_name'] ?>"></a>
                     </div>
 
                 </div>
@@ -327,7 +327,7 @@ foreach ($festive as $bannerfestive) {
             $(document).ready(function() {
                 setTimeout(() => {
                     $('#festivalPopup').modal('show');
-                }, 1000);
+                }, <?php echo $bannerfestive['timing'] ?>);
             });
             // Verify that the modal element exists on the page
             var modal = document.querySelector('.modal');

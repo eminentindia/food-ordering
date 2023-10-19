@@ -171,9 +171,10 @@ color: #353333;
 outline: none;
 }
 
-a:hover,
-a:focus {
-opacity: 0.8;
+
+a:hover, a:focus {
+    opacity: 0.8;
+    filter: saturate(1.6);
 }
 
 a:hover {

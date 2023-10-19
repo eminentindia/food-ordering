@@ -105,11 +105,12 @@ if ($mypage == 'forgot-password') {
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="<?php echo SITE_PATH ?>images/<?php echo $fav ?>" />
+    <link rel="shortcut icon" href="<?php echo ADMIN_SITE_PATH . $fav ?>" />
     <title><?php echo $meta_title; ?></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

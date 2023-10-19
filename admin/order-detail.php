@@ -381,11 +381,13 @@ if (isset($_POST['OTP'])) {
                     </div>
                     <div class="card-toolbar">
                         <div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
-                            <button type="button" class="me-3 btn btn-sm btn-success" data-kt-drawer-show="true" data-kt-drawer-target="#add_order_drawer">ADD</button>
+
+                            <button id="copy-button" class="btn btn-sm btn-light">Copy</button>
+
                         </div>
                     </div>
                 </div>
-                <div class="container-fluid">
+                <div class="container-fluid" id="html-content">
 
                     <!-- -------------Content Here------------- -->
                     <div class="card">
@@ -538,228 +540,256 @@ if (isset($_POST['OTP'])) {
                                                 <input type="hidden" name="order_ID" value="<?php echo isset($_GET['id']) ? $_GET['id'] : ""; ?>">
                                             </form>
                                         </div>
-                                    <?php } ?>
-                                    <div class="m-2" style="background-image: linear-gradient(to top, #09203f 0%, #537895 100%);  padding: 20px;    border: 2px dashed white;" class="mt-3">
-                                        <?php
-                                        if ($otp_validate == 0) {
-                                        ?>
-                                            <div class="my-2" ">
+                                    </div>
+                                <?php } ?>
+                                <div class="m-2" style="background-image: linear-gradient(to top, #09203f 0%, #537895 100%);  padding: 20px;    border: 2px dashed white;" class="mt-3">
+                                    <?php
+                                    if ($otp_validate == 0) {
+                                    ?>
+                                        <div class="my-2" ">
                             <h6 class=" mb-3 text-white" style="text-decoration: underline;">Check OTP </h6>
-                                                <div>
-                                                    <form method="post">
-                                                        <input type="text" class="form-control" name="OTP" id="OTP">
-                                                        <input type="submit" value="Submit" class="btn btn-primary mt-2">
-                                                    </form>
-                                                </div>
+                                            <div>
+                                                <form method="post">
+                                                    <input type="text" class="form-control" name="OTP" id="OTP">
+                                                    <input type="submit" value="Submit" class="btn btn-primary mt-2">
+                                                </form>
                                             </div>
-                                        <?php } else {
-                                            echo "<span class='text-white'>OTP VALIDATE SUCCESSFULLY !!</span>";
-                                        }
-                                        ?>
-                                    </div>
-                                    </div>
+                                        </div>
+                                    <?php } else {
+                                        echo "<span class='text-white'>OTP VALIDATE SUCCESSFULLY !!</span>";
+                                    }
+                                    ?>
+                                </div>
                             </div>
-                            <div>
-                                <table class="table table-responsive table-hover table-bordered table-striped">
-                                    <thead style=" background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);;">
-                                        <tr>
-                                            <th class="text-center">Dish</th>
-                                            <th>Qty</th>
-                                            <th>Price</th>
-                                            <th>Total</th>
-                                        </tr>
-                                    </thead>
-                                    <?php
-                                    $getorderdetails = getorderdetails($conn, $ID);
-                                    $total = 0;
+                        </div>
+                        <div>
+                            <table class="table table-responsive table-hover table-bordered table-striped">
+                                <thead style=" background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);;">
+                                    <tr>
+                                        <th class="text-center">Dish</th>
+                                        <th>Qty</th>
+                                        <th>Price</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <?php
+                                $getorderdetails = getorderdetails($conn, $ID);
+                                $total = 0;
 
-                                    foreach ($getorderdetails as $orderattr) {
-                                        // echo '<pre>';
-                                        // print_r($orderattr);
+                                foreach ($getorderdetails as $orderattr) {
+                                    // echo '<pre>';
+                                    // print_r($orderattr);
 
-                                        $price = $orderattr['price'];
-                                        $quantity = $orderattr['qty'];
-                                        $total += $quantity * $price;
+                                    $price = $orderattr['price'];
+                                    $quantity = $orderattr['qty'];
+                                    $total += $quantity * $price;
 
-                                        $dish_order_id = $orderattr['dish_order_id'];
-                                        $sel = "SELECT * FROM dish WHERE ID='$dish_order_id'";
-                                        $sql1 = mysqli_query($conn, $sel);
-                                        $sql2 = mysqli_fetch_assoc($sql1);
-                                        $myimg = $sql2['image'];
-                                        //get attributes
-                                        $attriname = '';
-                                        if ($orderattr['attributeID'] != '') {
-                                            $attrID = $orderattr['attributeID'];
-                                            $selattr = "SELECT * FROM dish_details WHERE dish_detail_id='$attrID'";
-                                            $sql1attr = mysqli_query($conn, $selattr);
-                                            $sql2Attr = mysqli_fetch_assoc($sql1attr);
-                                            $attri = $sql2Attr['attribute']; // Assign the attribute value
+                                    $dish_order_id = $orderattr['dish_order_id'];
+                                    $sel = "SELECT * FROM dish WHERE ID='$dish_order_id'";
+                                    $sql1 = mysqli_query($conn, $sel);
+                                    $sql2 = mysqli_fetch_assoc($sql1);
+                                    $myimg = $sql2['image'];
+                                    //get attributes
+                                    $attriname = '';
+                                    if ($orderattr['attributeID'] != '') {
+                                        $attrID = $orderattr['attributeID'];
+                                        $selattr = "SELECT * FROM dish_details WHERE dish_detail_id='$attrID'";
+                                        $sql1attr = mysqli_query($conn, $selattr);
+                                        $sql2Attr = mysqli_fetch_assoc($sql1attr);
+                                        $attri = $sql2Attr['attribute']; // Assign the attribute value
 
-                                            // Check if $attri is not empty before appending badges
-                                            if (!empty($attri)) {
-                                                $attributes = explode(',', $attri); // Assuming attributes are comma-separated
-                                                foreach ($attributes as $attribute) {
-                                                    // Append Bootstrap 5 badge elements to $attri
-                                                    $attriname .= ' <span class="badge badge-success bg-success ml-3 p-2">' . $attribute . '</span>';
-                                                }
-                                            }
-                                        }
-                                    ?>
-                                        <tr>
-                                            <td><?php echo $orderattr['name'] ?> <?php echo $attriname ?></td>
-                                            <td><?php echo $orderattr['qty'] ?></td>
-                                            <td><?php echo $orderattr['price'] ?></td>
-                                            <td><?php echo $orderattr['price'] * $orderattr['qty'] ?></td>
-
-                                        </tr>
-                                    <?php }
-                                    ?>
-
-                                    <?php
-                                    $coupon_code_apply = 0; // Initialize the variable outside the conditional block
-
-                                    if ($coupon_code != '') {
-                                        $res = mysqli_query($conn, "select * from coupon where coupon_code='$coupon_code' and status='1'");
-                                        $check = mysqli_num_rows($res);
-
-                                        $coupon_code_apply = 0;
-                                        $camt = 0;
-
-                                        if ($check > 0) {
-                                            $row = mysqli_fetch_assoc($res);
-                                            $cart_min_value = $row['cart_min_value'];
-                                            $coupon_type = $row['coupon_type'];
-                                            $coupon_value = $row['coupon_value'];
-                                            $expired_on = strtotime($row['expired_on']);
-                                            $cur_time = strtotime(date('Y-m-d'));
-
-                                            if ($total > $cart_min_value) {
-                                                if ($cur_time <= $expired_on) {
-                                                    if ($coupon_type == 'F') {
-                                                        $coupon_code_apply = $total - $coupon_value;
-                                                        $camt = 'Rs. ' . $coupon_value;
-                                                    } elseif ($coupon_type == 'P') {
-                                                        $coupon_code_apply = $total - ($coupon_value / 100) * $total;
-                                                        $camt = $coupon_value . '%';
-                                                    }
-                                                }
-                                            } else {
-                                                $coupon_code_apply = $total;
+                                        // Check if $attri is not empty before appending badges
+                                        if (!empty($attri)) {
+                                            $attributes = explode(',', $attri); // Assuming attributes are comma-separated
+                                            foreach ($attributes as $attribute) {
+                                                // Append Bootstrap 5 badge elements to $attri
+                                                $attriname .= ' <span class="badge badge-success bg-success ml-3 p-2">' . $attribute . '</span>';
                                             }
                                         }
                                     }
-                                    ?>
-
+                                ?>
                                     <tr>
-                                        <?php if ($coupon_code_apply > 0) { ?>
-                                            <div style="border: 2px dashed #ffe493;padding: 15px 20px;margin-top: 20px;background: #fff6db;">
-                                                <p> Coupon Applied: <strong><?php echo $coupon_code ?> ( <?php echo $camt ?> )</strong></p>
-                                                <p>Final Price: <strong>Rs. <?php echo $coupon_code_apply ?></strong></p>
-                                            </div>
-                                        <?php } ?>
+                                        <td><?php echo $orderattr['name'] ?> <?php echo $attriname ?></td>
+                                        <td><?php echo $orderattr['qty'] ?></td>
+                                        <td><?php echo $orderattr['price'] ?></td>
+                                        <td><?php echo $orderattr['price'] * $orderattr['qty'] ?></td>
+
                                     </tr>
+                                <?php }
+                                ?>
 
-                                </table>
-                            </div>
+                                <?php
+                                $coupon_code_apply = 0; // Initialize the variable outside the conditional block
 
+                                if ($coupon_code != '') {
+                                    $res = mysqli_query($conn, "select * from coupon where coupon_code='$coupon_code' and status='1'");
+                                    $check = mysqli_num_rows($res);
 
+                                    $coupon_code_apply = 0;
+                                    $camt = 0;
 
+                                    if ($check > 0) {
+                                        $row = mysqli_fetch_assoc($res);
+                                        $cart_min_value = $row['cart_min_value'];
+                                        $coupon_type = $row['coupon_type'];
+                                        $coupon_value = $row['coupon_value'];
+                                        $expired_on = strtotime($row['expired_on']);
+                                        $cur_time = strtotime(date('Y-m-d'));
 
+                                        if ($total > $cart_min_value) {
+                                            if ($cur_time <= $expired_on) {
+                                                if ($coupon_type == 'F') {
+                                                    $coupon_code_apply = $total - $coupon_value;
+                                                    $camt = 'Rs. ' . $coupon_value;
+                                                } elseif ($coupon_type == 'P') {
+                                                    $coupon_code_apply = $total - ($coupon_value / 100) * $total;
+                                                    $camt = $coupon_value . '%';
+                                                }
+                                            }
+                                        } else {
+                                            $coupon_code_apply = $total;
+                                        }
+                                    }
+                                }
+                                ?>
 
+                                <tr>
+                                    <?php if ($coupon_code_apply > 0) { ?>
+                                        <div style="border: 2px dashed #ffe493;padding: 15px 20px;margin-top: 20px;background: #fff6db;">
+                                            <p> Coupon Applied: <strong><?php echo $coupon_code ?> ( <?php echo $camt ?> )</strong></p>
+                                            <p>Final Price: <strong>Rs. <?php echo $coupon_code_apply ?></strong></p>
+                                        </div>
+                                    <?php } ?>
+                                </tr>
 
+                            </table>
                         </div>
-                    </div>
 
-                    <div id="loader" class="lds-dual-ring hidden overlay"></div>
-                    <!-- ------------------------------------------------>
+
+
+
+
+
+                    </div>
                 </div>
 
-                <script>
-                    function hi() {
-                        showConfirmation(function() {
-                            $('#overlay').fadeIn();
-                            var param = encryptpost('updatestatus_data');
-                            var formData = $("#order_status_update").serialize();
-                            var requestData = {
-                                data: formData,
-                                param: param
-                            };
-                            $.ajax({
-                                type: "POST",
-                                url: "controller/order/controller.php",
-                                data: requestData,
-                                success: function(response) {
-                                    $('#overlay').fadeOut();
-                                    showPopup(response.status, response.message);
-                                    location.reload()
-                                }
-                            });
-
-                        });
-                    }
-                </script>
-                <script>
-                    function deleivery_update() {
-                        var delieveryboyupdate = jQuery('#delieveryboyupdate').val();
-                        var delieveryboyhtml = $('#delieveryboyupdate :selected').text();
-                        if (delieveryboyupdate != '') {
-                            $.ajax({
-                                type: "post",
-                                url: "action/update-delievery-boy.php",
-                                data: $("#delivery_boy_update").serialize(),
-                                success: function(response) {
-                                    var response = JSON.parse(response);
-                                    if (response.success == true) {
-                                        $("#delievery_boy_status_success").html("Assigned Successfully !");
-                                        $("#delievery_boy_status_success").delay(4000).fadeOut("slow");
-                                        $("#delievery_boy_status_name").html(delieveryboyhtml);
-
-                                    }
-
-                                }
-                            });
-                        }
-                    }
-                </script>
-
-            </form>
+                <div id="loader" class="lds-dual-ring hidden overlay"></div>
+                <!-- ------------------------------------------------>
         </div>
-    </div>
-    <?php include('connect/copyrights.php'); ?>
-    <?php include('connect/footer-script.php'); ?>
-    <?php include('connect/footer-end.php'); ?>
 
-    <?php
-    $time = explode(' - ', $getsingleorder['delievery_time']);
-    $datetime = date('D M d Y', strtotime($getsingleorder['delievery_date'])) . " " . date('H:i:s', strtotime($time[1]));
-    $dateTimeObj = new DateTime($datetime);
-    $dateTimeObj->modify('-30 minutes');
-    $datetime = $dateTimeObj->format('D M d Y H:i:s') . " GMT+0530 (India Standard Time)";
-    ?>
-    <script>
-        function updateCountdown() {
-            const deliveryDate = new Date('<?= $datetime ?>');
-            const currentDate = new Date();
-            const timeDifference = deliveryDate - currentDate;
-            // Calculate days, hours, minutes, and seconds
-            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-            const countdownElement = document.getElementById('countdown');
-            if (seconds <= 0 && minutes <= 0 && hours <= 0) {
-                countdownElement.innerHTML = "Delivery time has passed.";
-            } else {
-                if (days == 0) {
-                    countdownElement.innerHTML = ` ${hours} hours ${minutes} minutes ${seconds} seconds`;
-                } else if (hours == 0) {
-                    countdownElement.innerHTML = `  ${minutes} minutes ${seconds} seconds`;
-                } else {
-                    countdownElement.innerHTML = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
-                }
-                setTimeout(updateCountdown, 1000); // Update every 1 second
+        <script>
+            function hi() {
+                showConfirmation(function() {
+                    $('#overlay').fadeIn();
+                    var param = encryptpost('updatestatus_data');
+                    var formData = $("#order_status_update").serialize();
+                    var requestData = {
+                        data: formData,
+                        param: param
+                    };
+                    $.ajax({
+                        type: "POST",
+                        url: "controller/order/controller.php",
+                        data: requestData,
+                        success: function(response) {
+                            $('#overlay').fadeOut();
+                            showPopup(response.status, response.message);
+                            location.reload()
+                        }
+                    });
+
+                });
             }
+        </script>
+        <script>
+            function deleivery_update() {
+                var delieveryboyupdate = jQuery('#delieveryboyupdate').val();
+                var delieveryboyhtml = $('#delieveryboyupdate :selected').text();
+                if (delieveryboyupdate != '') {
+                    $.ajax({
+                        type: "post",
+                        url: "action/update-delievery-boy.php",
+                        data: $("#delivery_boy_update").serialize(),
+                        success: function(response) {
+                            var response = JSON.parse(response);
+                            if (response.success == true) {
+                                $("#delievery_boy_status_success").html("Assigned Successfully !");
+                                $("#delievery_boy_status_success").delay(4000).fadeOut("slow");
+                                $("#delievery_boy_status_name").html(delieveryboyhtml);
+
+                            }
+
+                        }
+                    });
+                }
+            }
+        </script>
+
+        </form>
+    </div>
+</div>
+<?php include('connect/copyrights.php'); ?>
+<?php include('connect/footer-script.php'); ?>
+<?php include('connect/footer-end.php'); ?>
+
+<?php
+$time = explode(' - ', $getsingleorder['delievery_time']);
+$datetime = date('D M d Y', strtotime($getsingleorder['delievery_date'])) . " " . date('H:i:s', strtotime($time[1]));
+$dateTimeObj = new DateTime($datetime);
+$dateTimeObj->modify('-30 minutes');
+$datetime = $dateTimeObj->format('D M d Y H:i:s') . " GMT+0530 (India Standard Time)";
+?>
+<script>
+    //copy 
+    // Function to copy HTML content when the button is clicked
+    function copyHTML() {
+        // Select the HTML content
+        const htmlContent = document.getElementById('html-content');
+
+        // Create a range and select the HTML content
+        const range = document.createRange();
+        range.selectNode(htmlContent);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+
+        // Copy the selected HTML content to the clipboard
+        document.execCommand('copy');
+
+        // Deselect the content
+        window.getSelection().removeAllRanges();
+
+        // Alert the user that the HTML content has been copied (you can modify this part)
+        alert('HTML content has been copied to the clipboard');
+    }
+
+    // Add a click event listener to the copy button
+    const copyButton = document.getElementById('copy-button');
+    copyButton.addEventListener('click', copyHTML);
+</script>
+<script>
+    function updateCountdown() {
+        const deliveryDate = new Date('<?= $datetime ?>');
+        const currentDate = new Date();
+        const timeDifference = deliveryDate - currentDate;
+        // Calculate days, hours, minutes, and seconds
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+        const countdownElement = document.getElementById('countdown');
+        if (seconds <= 0 && minutes <= 0 && hours <= 0) {
+            countdownElement.innerHTML = "Delivery time has passed.";
+        } else {
+            if (days == 0) {
+                countdownElement.innerHTML = ` ${hours} hours ${minutes} minutes ${seconds} seconds`;
+            } else if (hours == 0) {
+                countdownElement.innerHTML = `  ${minutes} minutes ${seconds} seconds`;
+            } else {
+                countdownElement.innerHTML = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+            }
+            setTimeout(updateCountdown, 1000); // Update every 1 second
         }
-        // Initial update
-        updateCountdown();
-    </script>
+    }
+    // Initial update
+    updateCountdown();
+</script>
