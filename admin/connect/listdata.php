@@ -474,3 +474,34 @@ if (isset($_GET['show']) && $_GET['show'] == md5('dish')) {
     $outputJson = json_encode($output);
     echo $outputJson;
 }
+
+
+
+
+
+if (isset($_GET['show']) and $_GET['show'] == md5('festivals')) {
+    $sql = "select * from festivals ";
+    $result = $conn->query($sql);
+    $count = mysqli_num_rows($result);
+    $data = array();
+    if ($result->num_rows > 0) {
+        $i = 1;
+        while ($row = $result->fetch_assoc()) {
+            $rowData = [
+                $i++,
+                $row['festival_name'],
+                '<img src="../admin/media/festive/' . $row['festival_banner'] . '" width="80px" alt="" onclick="dish(\'' . $row['festival_banner'] . '\')">',
+                $row['festival_status'],
+                $row['timing'],
+                $row['redirect_page'],
+                $row['festival_id'],
+            ];
+            $data[] = $rowData;
+        }
+    }
+    $output = array(
+        "data" => $data
+    );
+    $outputJson = json_encode($output);
+    echo $outputJson;
+}

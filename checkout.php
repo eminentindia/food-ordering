@@ -501,21 +501,21 @@ if (count($cart) > 0) {
                                 <div class="prFeatures">
                                     <div class="row mb-0 pb-0">
                                         <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature">
+                                            <img src="<?php echo SITE_PATH ?>images/delicious.png" alt="Delicious" title="Delicious" />
+                                            <div class="details">
+                                                <h3>Delicious Food</h3>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature">
                                             <img src="<?php echo SITE_PATH ?>images/credit-card.png" alt="Safe Payment" title="Safe Payment" />
                                             <div class="details">
                                                 <h3>Safe Payment</h3>
                                             </div>
                                         </div>
                                         <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature">
-                                            <img src="<?php echo SITE_PATH ?>images/worldwide.png" alt="Worldwide Delivery" title="Worldwide Delivery" />
+                                            <img src="<?php echo SITE_PATH ?>images/free.png" alt="Free Delivery" title="Free Delivery" />
                                             <div class="details">
-                                                <h3>Fast Delivery</h3>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature">
-                                            <img src="<?php echo SITE_PATH ?>images/phone-call.png" alt="Hotline" title="Hotline" style="width:35px" />
-                                            <div class="details">
-                                                <h3>Hotline</h3> <?php echo $site_phone ?>
+                                                <h3>0 Delivery Charge</h3>
                                             </div>
                                         </div>
                                     </div>

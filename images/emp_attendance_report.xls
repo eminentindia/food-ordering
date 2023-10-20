@@ -1,0 +1,277 @@
+Employee Report From ( 01-Oct-2023 to 31-Oct-2023 )
+    <table class="table" border="1" style="table-layout: fixed;  width: 100%;">
+    <tr><th class="letterSpacing" colspan="10" style="text-align: center; font-size: 26px; background-color: #76a8cf;font-weight:600">EMINENT INDIA PRIVATE LIMITED</th></tr>
+    <tr><th class="letterSpacing" colspan="10" style="text-align: center; font-size: 18px; background-color: #76a8cf;font-weight:600">2L,2M,2N,2S, 2ND FLOOR DCM BUILDING 16, BARAKHAMBA ROAD CONNAUGHT PLACE NEW DELHI-110001	</th></tr>
+    <tr><th class="letterSpacing" colspan="10" style="text-align: center; font-size: 20px; background-color: #71de85;">Employee Report From ( 01-Oct-2023 to 31-Oct-2023 )</th></tr>
+                     <tr style="background:#54c067; color:white; "> 
+                         <th class="letterSpacing">Date</th>  
+                         <th class="letterSpacing">Full Name</th>  
+                         <th class="letterSpacing">In Time</th>  
+                         <th class="letterSpacing">Out Time</th>  
+                         <th class="letterSpacing">Duration</th>  
+                         <th class="letterSpacing">Old Status</th>  
+                         <th class="letterSpacing">Updated Status</th>  
+                         <th class="letterSpacing">Current Status</th>  
+                         <th class="letterSpacing">Department</th>  
+                         <th class="letterSpacing">Review</th>  
+                    </tr>
+        <tr>
+        <td>01-Oct-2023</td>
+        <td>EIPL/231 - Poonam Soni</td>
+        <td>WEEKOFF</td>
+        <td>WEEKOFF</td>
+        <td>Total Hrs: 0:0 (WEEKOFF)</td>
+        <td><span>WEEKOFF</span></td>
+        <td>--</td>
+        <td><span>WEEKOFF</span></td>
+        <td><span>Human Resource</span><input type="hidden" class="uniqueID" value="16176"/></td>
+        <td><span></span></td>
+        <tr>
+        
+        <tr>
+        <td>02-Oct-2023</td>
+        <td>EIPL/231 - Poonam Soni</td>
+        <td>ABSENT</td>
+        <td>ABSENT</td>
+        <td>ABSENT</td>
+        <td><span>FESTIVEHOLIDAY</span></td>
+        <td>--</td>
+        <td><span>FESTIVEHOLIDAY</span></td>
+        <td><span>Human Resource</span><input type="hidden" class="uniqueID" value="16177"/></td>
+        <td><span></span></td>
+        <tr>
+        
+        <tr>
+        <td>03-Oct-2023</td>
+        <td>EIPL/231 - Poonam Soni</td>
+        <td>10:09 AM</td>
+        <td>06:42 PM</td>
+        <td>Total Hrs: 8:33 (Late by 9 Min)</td>
+        <td><span>PRESENT</span></td>
+        <td>--</td>
+        <td><span>PRESENT</span></td>
+        <td><span>Human Resource</span><input type="hidden" class="uniqueID" value="16249"/></td>
+        <td><span></span></td>
+        <tr>
+        
+        <tr>
+        <td>04-Oct-2023</td>
+        <td>EIPL/231 - Poonam Soni</td>
+        <td>12:32 PM</td>
+        <td>06:36 PM</td>
+        <td>Total Hrs: 6:5 (Late by 2 Hrs 32 Min)</td>
+        <td><span>HALFDAY</span></td>
+        <td><span class="badge rounded-pill badge-warning px-2">PRESENT</span></td>
+        <td><span>PRESENT</span></td>
+        <td><span>Human Resource</span><input type="hidden" class="uniqueID" value="16319"/></td>
+        <td><span>Power Cut </span></td>
+        <tr>
+        
+        <tr>
+        <td>05-Oct-2023</td>
+        <td>EIPL/231 - Poonam Soni</td>
+        <td>10:00 AM</td>
+        <td>06:44 PM</td>
+        <td>Total Hrs: 8:44 (Late by 0 Min)</td>
+        <td><span>PRESENT</span></td>
+        <td>--</td>
+        <td><span>PRESENT</span></td>
+        <td><span>Human Resource</span><input type="hidden" class="uniqueID" value="16389"/></td>
+        <td><span></span></td>
+        <tr>
+        
+        <tr>
+        <td>06-Oct-2023</td>
+        <td>EIPL/231 - Poonam Soni</td>
+        <td>10:19 AM</td>
+        <td>06:40 PM</td>
+        <td>Total Hrs: 8:21 (Late by 19 Min) - BUFFER TIME</td>
+        <td><span>PRESENT</span></td>
+        <td>--</td>
+        <td><span>PRESENT</span></td>
+        <td><span>Human Resource</span><input type="hidden" class="uniqueID" value="16459"/></td>
+        <td><span></span></td>
+        <tr>
+        
+        <tr>
+        <td>07-Oct-2023</td>
+        <td>EIPL/231 - Poonam Soni</td>
+        <td>10:20 AM</td>
+        <td>02:54 PM</td>
+        <td>Total Hrs: 4:34 (Late by 20 Min)</td>
+        <td><span>HALFDAY</span></td>
+        <td><span class="badge rounded-pill badge-warning px-2">PRESENT</span></td>
+        <td><span>PRESENT</span></td>
+        <td><span>Human Resource</span><input type="hidden" class="uniqueID" value="16529"/></td>
+        <td><span>Forgot to Punch ( Left office by 5pm)</span></td>
+        <tr>
+        
+        <tr>
+        <td>08-Oct-2023</td>
+        <td>EIPL/231 - Poonam Soni</td>
+        <td>WEEKOFF</td>
+        <td>WEEKOFF</td>
+        <td>Total Hrs: 0:0 (WEEKOFF)</td>
+        <td><span>WEEKOFF</span></td>
+        <td>--</td>
+        <td><span>WEEKOFF</span></td>
+        <td><span>Human Resource</span><input type="hidden" class="uniqueID" value="16599"/></td>
+        <td><span></span></td>
+        <tr>
+        
+        <tr>
+        <td>09-Oct-2023</td>
+        <td>EIPL/231 - Poonam Soni</td>
+        <td>09:51 AM</td>
+        <td>06:51 PM</td>
+        <td>Total Hrs: 9:1</td>
+        <td><span>PRESENT</span></td>
+        <td>--</td>
+        <td><span>PRESENT</span></td>
+        <td><span>Human Resource</span><input type="hidden" class="uniqueID" value="16669"/></td>
+        <td><span></span></td>
+        <tr>
+        
+        <tr>
+        <td>10-Oct-2023</td>
+        <td>EIPL/231 - Poonam Soni</td>
+        <td>10:14 AM</td>
+        <td>06:48 PM</td>
+        <td>Total Hrs: 8:34 (Late by 14 Min)</td>
+        <td><span>PRESENT</span></td>
+        <td>--</td>
+        <td><span>PRESENT</span></td>
+        <td><span>Human Resource</span><input type="hidden" class="uniqueID" value="16739"/></td>
+        <td><span></span></td>
+        <tr>
+        
+        <tr>
+        <td>11-Oct-2023</td>
+        <td>EIPL/231 - Poonam Soni</td>
+        <td>10:05 AM</td>
+        <td>06:41 PM</td>
+        <td>Total Hrs: 8:36 (Late by 5 Min)</td>
+        <td><span>PRESENT</span></td>
+        <td>--</td>
+        <td><span>PRESENT</span></td>
+        <td><span>Human Resource</span><input type="hidden" class="uniqueID" value="16809"/></td>
+        <td><span></span></td>
+        <tr>
+        
+        <tr>
+        <td>12-Oct-2023</td>
+        <td>EIPL/231 - Poonam Soni</td>
+        <td>10:06 AM</td>
+        <td>06:39 PM</td>
+        <td>Total Hrs: 8:33 (Late by 6 Min)</td>
+        <td><span>PRESENT</span></td>
+        <td>--</td>
+        <td><span>PRESENT</span></td>
+        <td><span>Human Resource</span><input type="hidden" class="uniqueID" value="16879"/></td>
+        <td><span></span></td>
+        <tr>
+        
+        <tr>
+        <td>13-Oct-2023</td>
+        <td>EIPL/231 - Poonam Soni</td>
+        <td>ABSENT</td>
+        <td>ABSENT</td>
+        <td>ABSENT</td>
+        <td><span class='badge rounded-pill badge-danger px-2'>ABSENT</span></td>
+        <td>--</td>
+        <td><span class='badge rounded-pill badge-danger px-2'>ABSENT</span></td>
+        <td><span>Human Resource</span><input type="hidden" class="uniqueID" value="16949"/></td>
+        <td><span></span></td>
+        <tr>
+        
+        <tr>
+        <td>14-Oct-2023</td>
+        <td>EIPL/231 - Poonam Soni</td>
+        <td>WEEKOFF</td>
+        <td>WEEKOFF</td>
+        <td>Total Hrs: 0:0 (WEEKOFF)</td>
+        <td><span>WEEKOFF</span></td>
+        <td>--</td>
+        <td><span>WEEKOFF</span></td>
+        <td><span>Human Resource</span><input type="hidden" class="uniqueID" value="17019"/></td>
+        <td><span></span></td>
+        <tr>
+        
+        <tr>
+        <td>15-Oct-2023</td>
+        <td>EIPL/231 - Poonam Soni</td>
+        <td>WEEKOFF</td>
+        <td>WEEKOFF</td>
+        <td>Total Hrs: 0:0 (WEEKOFF)</td>
+        <td><span>WEEKOFF</span></td>
+        <td>--</td>
+        <td><span>WEEKOFF</span></td>
+        <td><span>Human Resource</span><input type="hidden" class="uniqueID" value="17089"/></td>
+        <td><span></span></td>
+        <tr>
+        
+        <tr>
+        <td>16-Oct-2023</td>
+        <td>EIPL/231 - Poonam Soni</td>
+        <td>10:18 AM</td>
+        <td>06:35 PM</td>
+        <td>Total Hrs: 8:17 (Late by 18 Min) - BUFFER TIME</td>
+        <td><span>PRESENT</span></td>
+        <td>--</td>
+        <td><span>PRESENT</span></td>
+        <td><span>Human Resource</span><input type="hidden" class="uniqueID" value="17159"/></td>
+        <td><span></span></td>
+        <tr>
+        
+        <tr>
+        <td>17-Oct-2023</td>
+        <td>EIPL/231 - Poonam Soni</td>
+        <td>10:17 AM</td>
+        <td>06:46 PM</td>
+        <td>Total Hrs: 8:29 (Late by 17 Min) - BUFFER TIME</td>
+        <td><span>PRESENT</span></td>
+        <td>--</td>
+        <td><span>PRESENT</span></td>
+        <td><span>Human Resource</span><input type="hidden" class="uniqueID" value="17229"/></td>
+        <td><span></span></td>
+        <tr>
+        
+        <tr>
+        <td>18-Oct-2023</td>
+        <td>EIPL/231 - Poonam Soni</td>
+        <td>09:57 AM</td>
+        <td>06:43 PM</td>
+        <td>Total Hrs: 8:46</td>
+        <td><span>PRESENT</span></td>
+        <td>--</td>
+        <td><span>PRESENT</span></td>
+        <td><span>Human Resource</span><input type="hidden" class="uniqueID" value="17299"/></td>
+        <td><span></span></td>
+        <tr>
+        
+        <tr>
+        <td>19-Oct-2023</td>
+        <td>EIPL/231 - Poonam Soni</td>
+        <td>10:07 AM</td>
+        <td>06:49 PM</td>
+        <td>Total Hrs: 8:42 (Late by 7 Min)</td>
+        <td><span>PRESENT</span></td>
+        <td>--</td>
+        <td><span>PRESENT</span></td>
+        <td><span>Human Resource</span><input type="hidden" class="uniqueID" value="17369"/></td>
+        <td><span></span></td>
+        <tr>
+        
+        <tr>
+        <td>20-Oct-2023</td>
+        <td>EIPL/231 - Poonam Soni</td>
+        <td>09:57 AM</td>
+        <td>02:58 PM</td>
+        <td>Total Hrs: 5:1</td>
+        <td><span>TODAY</span></td>
+        <td>--</td>
+        <td><span>TODAY</span></td>
+        <td><span>Human Resource</span><input type="hidden" class="uniqueID" value="17439"/></td>
+        <td><span></span></td>
+        <tr>
+        </table>

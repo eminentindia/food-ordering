@@ -327,6 +327,16 @@ $getuserdetail = getUserDetailsByid();
             });
         </script>
 
+<script>
+    $(selector).hover(function () {
+            // over
+            
+        }, function () {
+            // out
+        }
+    );
+</script>
+
 </body>
 
 </html>

@@ -9,27 +9,28 @@
         $li = '';
         $i = 0;
         $div = '';
-
-
         // 
-
         while ($row = mysqli_fetch_assoc($res)) {
             $BannerImage = $row['image'];
             $bannerAlt = $row['alt'];
+            $banner_link = $row['banner_link'];
             if ($i == 0) {
                 $li .= ' <li data-target="#demo" data-slide-to="' . $i . '" class="active"></li>';
-                $div .= ' <div class="carousel-item active">
-                <div class="w-100 slider"style="background-image: url(' . ADMIN_SITE_PATH . 'media/banner/' . $BannerImage . ');filter: blur(8px);background-position: center;background-repeat: no-repeat;background-size: cover;"></div>
-                <img src="' . ADMIN_SITE_PATH . 'media/banner/' . $BannerImage . '" class="slider" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">';
+                $div .= '<div class="carousel-item active"> <a href="' . SITE_PATH . $banner_link . '">
+                <div class="w-100 slider" style="background-image: url(' . ADMIN_SITE_PATH . 'media/banner/' . $BannerImage . ');filter: blur(8px);background-position: center;background-repeat: no-repeat;background-size: cover;"></div>
+                <img src="' . ADMIN_SITE_PATH . 'media/banner/' . $BannerImage . '" class="slider" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+                </a></div>';
             } else {
                 $li .= ' <li data-target="#demo" data-slide-to="' . $i . '"></li>';
                 $div .= ' <div class="carousel-item">
+                <a href="' . SITE_PATH . $banner_link . '">
                 <div class="w-100 slider" style="background-image: url(' . ADMIN_SITE_PATH . 'media/banner/' . $BannerImage . ');filter: blur(8px);background-position: center;background-repeat: no-repeat;background-size: cover;"></div>
-                <img src="' . ADMIN_SITE_PATH . 'media/banner/' . $BannerImage . '" class="slider" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">';
+                <img src="' . ADMIN_SITE_PATH . 'media/banner/' . $BannerImage . '" class="slider" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+                </a></div>';
             }
             $i++;
-            $div .= '</div>';
         }
+        
 
 
         // while ($row = mysqli_fetch_assoc($res)) {
@@ -70,13 +71,13 @@
     <!--End Body Content-->
     <?php include('includes/footer.php');  ?>
     <?php include('includes/scripts.php');  ?>
-<style>
-
-    
+    <style>
 
 
 
-</style>
+
+
+    </style>
 
     <script>
         //tiffin tab
@@ -316,11 +317,12 @@
                 width: 20px;
             }
 
-            #menuItems{
+            #menuItems {
                 bottom: 65px;
                 padding: 0;
                 border-radius: 20px !important;
-                margin-bottom: 40px;   bottom: 65px;
+                margin-bottom: 40px;
+                bottom: 65px;
                 border-radius: 0;
                 margin-bottom: 30px;
             }
@@ -329,7 +331,7 @@
                 width: 100%;
             }
 
-            
+
 
             #menuItems .tiffinmaindiv {
                 flex-direction: column !important;
@@ -424,7 +426,7 @@
                     const windowHeight = window.innerHeight;
 
                     // Adjust the threshold as needed
-                    const scrollThreshold = windowHeight -50;
+                    const scrollThreshold = windowHeight - 50;
 
                     if (scrollY >= scrollThreshold) {
                         fixedDiv.style.display = 'block';

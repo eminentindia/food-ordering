@@ -44,16 +44,21 @@
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
                         <h4 class="h4">Quick Shop</h4>
-                        <ul>
+                        <ul class="position-relative">
                             <?php
-                            $query = "select * from category ORDER BY RAND()";
+                            $query = "SELECT * FROM category ORDER BY RAND()";
                             $sel = mysqli_query($conn, $query);
+
                             while ($row = mysqli_fetch_array($sel)) {
-                                $ID = $row['ID'];
                                 $slug = $row['slug'];
+                                $category = $row['category'];
+                                $discount = $row['discount'];
+
+                                $discountHTML = $discount ? '<div class="light offdiscountPillFooter">' . $discount . '% Off</div>' : '';
+
+                                echo '<li><a href="' . SITE_PATH . 'category/' . $slug . '" class="site-nav">' . $category . ' ' . $discountHTML . '</a></li>';
+                            }
                             ?>
-                                <li><a href="<?php echo SITE_PATH ?>category/<?php echo $slug; ?>" class="site-nav"><?php echo $row['category']; ?></a></li>
-                            <?php } ?>
                         </ul>
                     </div>
                     <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">

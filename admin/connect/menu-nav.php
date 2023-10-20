@@ -152,8 +152,6 @@ include('connect/loader/foodieezloader.php')
 										</h6>
 									</a>
 								</div>
-
-
 								<div class="menu-item py-3 	300ms">
 									<a class="menu-link sidenavBtn " href="banner.php" title="banner" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
 										<span class="menu-icon">
@@ -165,8 +163,6 @@ include('connect/loader/foodieezloader.php')
 										</h6>
 									</a>
 								</div>
-
-
 								<div class="menu-item py-3 	300ms">
 									<a class="menu-link sidenavBtn " href="festivals.php" title="festivals" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
 										<span class="menu-icon">
@@ -178,8 +174,6 @@ include('connect/loader/foodieezloader.php')
 										</h6>
 									</a>
 								</div>
-
-
 								<div class="menu-item py-3 	300ms">
 									<a class="menu-link sidenavBtn " href="dish.php" title="dish" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
 										<span class="menu-icon">

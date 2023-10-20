@@ -56,6 +56,12 @@ if (isset($_SESSION['ATECHFOOD_USER'])) {
                     <div class="prFeatures">
                         <div class="row mb-0 pb-0">
                             <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature">
+                                <img src="<?php echo SITE_PATH ?>images/delicious.png" alt="Delicious" title="Delicious" />
+                                <div class="details">
+                                    <h3>Delicious Food</h3>
+                                </div>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature">
                                 <img src="<?php echo SITE_PATH ?>images/credit-card.png" alt="Safe Payment" title="Safe Payment" />
                                 <div class="details">
                                     <h3>Safe Payment</h3>
@@ -67,12 +73,7 @@ if (isset($_SESSION['ATECHFOOD_USER'])) {
                                     <h3>Fast Delivery</h3>
                                 </div>
                             </div>
-                            <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature">
-                                <img src="<?php echo SITE_PATH ?>images/phone-call.png" alt="Hotline" title="Hotline" style="width:35px" />
-                                <div class="details">
-                                    <h3>Hotline</h3> <?php echo $site_phone ?>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </form>

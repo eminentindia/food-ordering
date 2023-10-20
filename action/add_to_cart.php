@@ -99,7 +99,10 @@ if ($selectedPrice < 0 or $selectedPrice == 'NaN') {
         $selectedPrice = $_POST['selectedPrice'];
         $tiffin = $_POST['tiffin'];
         // Fetch dish information
-        $query = "SELECT * FROM dish WHERE ID='$dishID'";
+        $query = "SELECT dish.*, dish.ID AS dish_id, category.discount AS category_discount
+        FROM dish
+        JOIN category ON category.ID = dish.category_id
+        WHERE dish.ID='$dishID'";
         $result = mysqli_query($conn, $query);
         $dishassoc = mysqli_fetch_assoc($result);
         if (!$dishassoc) {
@@ -109,9 +112,19 @@ if ($selectedPrice < 0 or $selectedPrice == 'NaN') {
         $dish_name = $dishassoc['dish'];
         $dish_image = $dishassoc['image'];
         $type = $dishassoc['type'];
+        $category_discount = $dishassoc['category_discount'];
+        $selling_price = $dishassoc['selling_price'];
         if (empty($attributeID)) {
             $attribute = '';
-            $price = $dishassoc['selling_price'];
+            if ($category_discount != '') {
+                $discount_percent = $category_discount; // Assuming $category_discount is in percentage.
+                $price = $selling_price - ($selling_price * ($discount_percent / 100));
+            } else {
+                $price = $dishassoc['selling_price'];
+            }
+
+
+
             $sku = $dishassoc['main_sku'];
         } else {
             // Fetch attribute information

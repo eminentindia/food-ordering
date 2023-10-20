@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2023 at 01:55 PM
+-- Generation Time: Oct 20, 2023 at 01:37 PM
 -- Server version: 10.4.28-MariaDB-log
 -- PHP Version: 8.0.28
 
@@ -114,6 +114,7 @@ CREATE TABLE `cart` (
 CREATE TABLE `category` (
   `ID` int(11) NOT NULL,
   `category` varchar(255) NOT NULL,
+  `discount` varchar(244) DEFAULT NULL,
   `slug` varchar(255) NOT NULL,
   `order_number` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
@@ -125,16 +126,16 @@ CREATE TABLE `category` (
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`ID`, `category`, `slug`, `order_number`, `image`, `status`, `added_on`) VALUES
-(9, 'Sandwich', 'sandwich', '4', 'sandwich.webp', 1, '2023-10-11 00:00:00'),
-(20, 'Noodles', 'noodles', '3', 'noodles.webp', 1, '2023-10-11 00:00:00'),
-(11, 'Rolls', 'rolls', '6', 'rolls.webp', 1, '2023-10-11 00:00:00'),
-(19, 'Oats', 'oats', '7', 'oats.jpg', 1, '2023-09-19 00:00:00'),
-(14, 'Thali', 'thali', '1', 'thali.jpg', 1, '2023-09-02 00:00:00'),
-(15, 'Biryani', 'biryani', '1', 'biryani.jpg', 1, '2023-09-19 00:00:00'),
-(16, 'Shake', 'shake', '4', 'shake.jpg', 1, '2023-09-19 00:00:00'),
-(17, 'Paratha', 'paratha', '2', 'paratha.jpg', 1, '2023-09-19 00:00:00'),
-(18, 'Maggie', 'maggie', '6', 'maggie.jpg', 1, '2023-09-19 00:00:00');
+INSERT INTO `category` (`ID`, `category`, `discount`, `slug`, `order_number`, `image`, `status`, `added_on`) VALUES
+(9, 'Sandwich', '10', 'sandwich', '4', 'sandwich.webp', 1, '2023-10-11 00:00:00'),
+(20, 'Noodles', NULL, 'noodles', '3', 'noodles.webp', 1, '2023-10-11 00:00:00'),
+(11, 'Rolls', NULL, 'rolls', '6', 'rolls.webp', 1, '2023-10-11 00:00:00'),
+(19, 'Oats', NULL, 'oats', '7', 'oats.jpg', 1, '2023-09-19 00:00:00'),
+(14, 'Thali', NULL, 'thali', '1', 'thali.jpg', 1, '2023-09-02 00:00:00'),
+(15, 'Biryani', NULL, 'biryani', '1', 'biryani.jpg', 1, '2023-09-19 00:00:00'),
+(16, 'Shake', NULL, 'shake', '4', 'shake.jpg', 1, '2023-09-19 00:00:00'),
+(17, 'Paratha', NULL, 'paratha', '2', 'paratha.jpg', 1, '2023-09-19 00:00:00'),
+(18, 'Maggie', NULL, 'maggie', '6', 'maggie.jpg', 1, '2023-09-19 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -293,12 +294,12 @@ INSERT INTO `dish` (`ID`, `category_id`, `type`, `price_tagline`, `is_detailed_d
 (49, 17, 'veg', '', '0', '0', 'breakfast,', 'Paneer Paratha', 159, 159, 'PARATHA-5', 'paneer-paratha2023-3691.jpg', 'Multi Grain Wheat, Foodieez, Masala, Onion, Paneer, Paratha', '', 'paneer-paratha', '0', '1', '1', 'Paneer Paratha', 'Multi Grain Wheat, Foodieez, Masala, Onion, Paneer, Paratha', 'panner paratha,paratha', '0', '2023-09-19', '2023-10-09 16:21:54'),
 (50, 17, 'veg', '', '0', '0', 'breakfast,', 'Paneer Pyaz Paratha', 165, 165, 'PARATHA-6', 'paneer-pyaz-paratha2023-9176.jpg', 'Multi Grain Wheat, Black Pepper, Butter, Coriander, Curd, Garam Masala, Green Chilli, Green Chutney, Oil, Onion, Paneer, Salt', '', 'paneer-pyaz-paratha', '0', '1', '1', 'Paneer Pyaz Paratha', 'Multi Grain Wheat, Black Pepper, Butter, Coriander, Curd, Garam Masala, Green Chilli, Green Chutney, Oil, Onion, Paneer, Salt', 'panner pyaz paratha,panner paratha,paratha', '0', '2023-09-19', '2023-10-09 16:18:48'),
 (51, 20, 'veg', '', '0', '0', 'noodles,', 'Veg Noodles', 119, 119, 'Veg-Noodles-01', 'veg-noodles2023-1326.webp', '', '', 'veg-noodles', '0', '1', '1', 'Veg Noodles', 'Veg Noodles', 'Veg Noodles,noodles,veg,Chinese', '0', '2023-09-25', '2023-10-16 13:40:11'),
-(52, 20, 'veg', '', '0', '0', 'noodles,', 'Singaporean Noodles', 129, 129, 'singaporean noodles-01', 'singaporean-noodles2023-5498.com__recipes__images__2015__05__20150424-singapore-noodles-shao-zhong-20-130b0ed9d8ad45b3bd164cbe1328abef', 'Singapore Noodles', '', 'singaporean-noodles', '0', '1', '1', 'Singapore Noodles', 'Singapore Noodles', 'Singapore Noodles,singaporean noodles,singaporean,noodles', '0', '2023-09-25', '2023-10-09 16:21:54'),
+(52, 20, 'veg', '', '0', '0', 'noodles,', 'Singaporean Noodles', 129, 129, 'singaporean noodles-01', 'singaporean-noodles2023-5498.com__recipes__images__2015__05__20150424-singapore-noodles-shao-zhong-20-130b0ed9d8ad45b3bd164cbe1328abef', 'Singapore Noodles', '', 'singaporean-noodles', '0', '1', '1', 'Singapore Noodles', 'Singapore Noodles', 'Singapore Noodles,singaporean noodles,singaporean,noodles', '0', '2023-09-25', '2023-10-20 14:18:51'),
 (53, 20, 'veg', '', '0', '0', 'noodles,', 'Chilli Garlic Noodles', 129, 129, 'NOODLES-03', 'chilli-garlic-noodles2023-4064.webp', '', '', 'chilli-garlic-noodles', '0', '1', '0', 'Chilli Garlic Noodles', 'Chilli Garlic Noodles', 'Chilli Garlic Noodles,noodles,chilli garlic', '0', '2023-09-27', '2023-10-16 14:24:38'),
 (54, 20, 'veg', '', '0', '0', 'noodles,', 'Hakka Noodles', 139, 139, 'NOODLES-04', 'hakka-noodles2023-2710.jpg', '', '', 'hakka-noodles', '1', '1', '0', 'Hakka Noodles', 'Hakka Noodles', 'Hakka Noodles,noodles,chinise', '0', '2023-09-27', '2023-10-16 14:24:36'),
 (55, 20, 'veg', '', '0', '0', 'noodles,', 'Paneer Noodles', 149, 149, 'NOODLES-05', 'paneer-noodles2023-6872.webp', '', '', 'paneer-noodles', '1', '1', '0', 'Paneer Noodles', 'Paneer Noodles', 'Paneer Noodles,panner,noodles', '0', '2023-09-27', '2023-10-16 14:25:37'),
-(56, 20, 'non-veg', NULL, '0', '0', 'noodles,', 'Egg Noodles', 159, 159, 'NOODLES-06', 'egg-noodles2023-1627.webp', '', '', 'egg-noodles', '1', '1', '1', 'Egg Noodles', 'Egg Noodles', 'Egg Noodles,egg,noodles', '0', '2023-09-27', '2023-10-16 13:37:16'),
-(57, 20, 'non-veg', '', '0', '0', 'noodles', 'Chicken Noodles', 179, 179, 'NOODLES-07', 'chicken-noodles2023-2763.jpg', 'erg', NULL, 'chicken-noodles', '1', '1', '1', 'Chicken Noodles', 'Chicken Noodles', 'Chicken Noodles,chicken,noodles,non-veg', '0', '2023-09-27', '2023-10-16 13:40:06');
+(56, 20, 'non-veg', NULL, '0', '0', 'noodles,', 'Egg Noodles', 159, 159, 'NOODLES-06', 'egg-noodles2023-1627.webp', '', '', 'egg-noodles', '1', '1', '1', 'Egg Noodles', 'Egg Noodles', 'Egg Noodles,egg,noodles', '0', '2023-09-27', '2023-10-20 12:10:36'),
+(57, 20, 'non-veg', '', '0', '0', 'noodles', 'Chicken Noodles', 179, 179, 'NOODLES-07', 'chicken-noodles2023-2763.jpg', 'erg', NULL, 'chicken-noodles', '1', '1', '1', 'Chicken Noodles', 'Chicken Noodles', 'Chicken Noodles,chicken,noodles,non-veg', '0', '2023-09-27', '2023-10-20 12:10:35');
 
 -- --------------------------------------------------------
 
@@ -320,36 +321,21 @@ CREATE TABLE `dish_details` (
 --
 
 INSERT INTO `dish_details` (`dish_detail_id`, `dish_id`, `attribute`, `price`, `status`, `sku`) VALUES
-(8, '6', 'Chole', 50, '0', 'Thali-004-02'),
-(7, '6', 'Rajma', 50, '0', 'Thali-004-01'),
-(9, '6', 'Shahi Paneer', 75, '0', 'Thali-004-03'),
-(10, '6', 'Dal Makhani', 65, '0', 'Thali-004-04'),
-(11, '6', 'Plain Roti', 8, '0', 'Thali-004-05'),
-(12, '6', 'Rice', 25, '0', 'Thali-004-06'),
-(13, '6', 'Raita', 25, '0', 'Thali-004-07'),
-(14, '6', 'Salad', 25, '0', 'Thali-004-08'),
-(15, '6', 'Butter Roti', 10, '0', 'Thali-004-09'),
-(16, '7', 'Rajma', 199, '0', 'Thali-003-01'),
-(17, '7', 'Chole', 199, '0', 'Thali-003-02'),
-(18, '8', ' Shahi Paneer', 149, '0', 'Thali-002-01'),
-(19, '8', ' Dal Makhani', 149, '0', 'Thali-002-02'),
-(20, '9', 'Rajma', 99, '0', 'Thali-001-01'),
-(21, '9', 'Chole', 99, '0', 'Thali-001-02'),
-(147, '134', '234234', 234, '0', '234234'),
-(148, '134', '234234', 234234, '0', '234234'),
-(146, '134', '23423', 234324, '0', '234'),
-(145, '134', '4', 5, '0', '6'),
-(144, '134', '1', 2, '', '3'),
-(143, '134', 'ewfwe', 0, '0', '23423'),
-(142, '134', 'fefw', 34234200000000, '0', '234234234'),
-(141, '134', '234234', 234234, '0', '234234'),
-(140, '134', '234234', 234, '0', '234234'),
-(138, '134', '23423', 234324, '0', '234'),
-(137, '134', '234234', 234, '0', '234234'),
-(136, '134', '234234', 234234, '0', '234234'),
-(139, '134', '23423', 234324, '0', '234'),
-(135, '134', 'fefw', 34234200000000, '', '234234234'),
-(134, '134', 'ewfwe', 0, '0', '23423');
+(8, '6', 'Chole', 50, '1', 'Thali-004-02'),
+(7, '6', 'Rajma', 50, '1', 'Thali-004-01'),
+(9, '6', 'Shahi Paneer', 75, '1', 'Thali-004-03'),
+(10, '6', 'Dal Makhani', 65, '1', 'Thali-004-04'),
+(11, '6', 'Plain Roti', 8, '1', 'Thali-004-05'),
+(12, '6', 'Rice', 25, '1', 'Thali-004-06'),
+(13, '6', 'Raita', 25, '1', 'Thali-004-07'),
+(14, '6', 'Salad', 25, '1', 'Thali-004-08'),
+(15, '6', 'Butter Roti', 10, '1', 'Thali-004-09'),
+(16, '7', 'Rajma', 199, '1', 'Thali-003-01'),
+(17, '7', 'Chole', 199, '1', 'Thali-003-02'),
+(18, '8', 'Shahi Paneer', 149, '1', 'Thali-002-01'),
+(19, '8', 'Dal Makhani', 149, '1', 'Thali-002-02'),
+(20, '9', 'Rajma', 99, '1', 'Thali-001-01'),
+(21, '9', 'Chole', 99, '1', 'Thali-001-02');
 
 -- --------------------------------------------------------
 
@@ -371,8 +357,7 @@ CREATE TABLE `faq` (
 INSERT INTO `faq` (`faq_id`, `q`, `a`, `display_priority`) VALUES
 (17, 'What is Lorem Ipsum ?', '<p>Nullam sed neque luctus, maximus diam sed, facilisis orci. Nunc ultricies neque a aliquam sollicitudin. Vivamus sit amet finibus sapien. Duis est dui, sodales nec pretium a, interdum in lacus. Sed et est vel velit vestibulum tincidunt non a felis. Phasellus convallis, diam eu facilisis tincidunt, ex nibh vulputate dolor, eu maximus massa libero vel eros. In vulputate metus lacus, eu vehicula dolor feugiat id. Nulla vitae nisl in ex consequat porttitor vel a lectus. Vestibulum viverra in velit ac consequat. Nullam porta nulla eu dignissim cursus.</p>', 1),
 (18, 'Why do we use it?', 'Cras non gravida urna. Ut venenatis nulla in tellus lobortis, vel mollis lectus condimentum. Duis elementum sapien purus, et sagittis nulla efficitur in. Phasellus vitae eros sed nisi fringilla auctor nec quis nunc. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque rutrum faucibus nibh vitae fermentum. Aliquam commodo sem sit amet malesuada consectetur. Ut sit amet vestibulum diam. Etiam quis dictum turpis, eget condimentum velit. Sed cursus odio dapibus, consectetur massa sit amet, fringilla purus.', 2),
-(19, 'Where does it come from?', 'Aliquam erat volutpat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin tortor enim, lacinia nec malesuada eget, laoreet eget quam. Suspendisse quis mauris quis tellus rutrum imperdiet nec id ipsum. Suspendisse non nisi in metus viverra convallis. Nam dictum erat sed libero eleifend, a venenatis ipsum elementum. Nulla placerat metus nec nisl malesuada, et mattis mauris faucibus. Cras blandit efficitur condimentum. Nam euismod sapien et iaculis tempus. Duis vitae ullamcorper libero.', 3),
-(42, '', '<p>wefwef</p>', 0);
+(19, 'Where does it come from?', 'Aliquam erat volutpat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin tortor enim, lacinia nec malesuada eget, laoreet eget quam. Suspendisse quis mauris quis tellus rutrum imperdiet nec id ipsum. Suspendisse non nisi in metus viverra convallis. Nam dictum erat sed libero eleifend, a venenatis ipsum elementum. Nulla placerat metus nec nisl malesuada, et mattis mauris faucibus. Cras blandit efficitur condimentum. Nam euismod sapien et iaculis tempus. Duis vitae ullamcorper libero.', 3);
 
 -- --------------------------------------------------------
 
@@ -395,7 +380,7 @@ CREATE TABLE `festivals` (
 --
 
 INSERT INTO `festivals` (`festival_id`, `festival_name`, `festival_banner`, `festival_status`, `timing`, `redirect_page`, `fesival_added_on`) VALUES
-(1, 'Diwali', '1.avif', '1', '1000', 'dishes', '2023-10-18 16:42:38');
+(6, 'Diwali', 'diwali249196501.png', '1', '1000', 'dishes', '2023-10-20 11:46:24');
 
 -- --------------------------------------------------------
 
@@ -499,7 +484,8 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`ID`, `name`, `user_id`, `email`, `phone`, `address`, `appartment`, `postcode`, `city`, `coupon_code`, `order_status`, `payment_type`, `razorpayPaymentId`, `razorpayOrderId`, `paymentstatus`, `delieverytype`, `delievery_date`, `delievery_time`, `store`, `otp`, `otp_validate`, `feedback_icon`, `feedback`, `feedback_added_on`, `order_id`, `delievery_boy_id`, `delievered_on`, `order_cancelBy`, `order_cancelAt`, `order_added_on`, `updated_on`) VALUES
 (1, 'Sagar', 2, 'sagar@eminentcompliance.com', '7017742830', '', '', '', 'Delhi', '', '2', 'cod', NULL, NULL, 'captured', 'Takeaway', '2023-10-20', '12:00 - 12:30 PM', 2, '1885', '1', NULL, NULL, NULL, 'FOOD_2E46A', NULL, '2023-10-18 03:23:57', NULL, NULL, '2023-10-18 15:23:31', '2023-10-18 18:08:15'),
-(2, 'Sagar', 2, 'sagar@eminentcompliance.com', '7017742830', '', '', '', 'Delhi', NULL, '2', 'online', '', 'order_Mpd2z8B053rYM2', 'captured', 'Takeaway', '2023-10-20', '12:00 - 12:30 PM', 1, '2970', '0', 5, 'cftyuhjikol', '2023-10-18 16:15:52', 'FOOD_10273', NULL, '2023-10-18 03:31:02', NULL, NULL, '2023-10-18 15:29:22', '2023-10-18 18:31:28');
+(2, 'Sagar', 2, 'sagar@eminentcompliance.com', '7017742830', '', '', '', 'Delhi', NULL, '2', 'online', '', 'order_Mpd2z8B053rYM2', 'captured', 'Takeaway', '2023-10-20', '12:00 - 12:30 PM', 1, '2970', '0', 5, 'cftyuhjikol', '2023-10-18 16:15:52', 'FOOD_10273', NULL, '2023-10-18 03:31:02', NULL, NULL, '2023-10-18 15:29:22', '2023-10-18 18:31:28'),
+(3, 'Sagar', 2, 'sagar@eminentcompliance.com', '7017742830', '', '', '', 'Delhi', '', '4', 'cod', NULL, NULL, 'cancelled', 'Dinein', '2023-10-27', '12:00 - 12:30 PM', 1, '5882', '0', 4, 'jhngfbdvscxza', '2023-10-20 14:39:38', 'FOOD_3F180', NULL, NULL, 'user', '2023-10-20 02:39:53', '2023-10-20 13:16:39', '2023-10-20 14:39:53');
 
 -- --------------------------------------------------------
 
@@ -530,7 +516,9 @@ INSERT INTO `order_details` (`order_detail_id`, `order_id`, `invoice_order_id`, 
 (2, 1, 'FOOD_2E46A', 199, 1, 'Super Deluxe Thali', 'Thali-003-01', 'lunch', 7, '16', '2023-10-18 15:23:31'),
 (3, 1, 'FOOD_2E46A', 149, 1, 'Deluxe Thali', 'Thali-002-01', 'lunch', 8, '18', '2023-10-18 15:23:31'),
 (4, 1, 'FOOD_2E46A', 99, 1, 'Ghar Ki Thali', 'Thali-001-01', 'lunch', 9, '20', '2023-10-18 15:23:31'),
-(5, 2, 'FOOD_10273', 60, 1, 'Plain Maggi', 'Maggi-1', 'regular', 25, '', '2023-10-18 15:29:22');
+(5, 2, 'FOOD_10273', 60, 1, 'Plain Maggi', 'Maggi-1', 'regular', 25, '', '2023-10-18 15:29:22'),
+(6, 3, 'FOOD_3F180', 80, 6, 'Bombay Sandwich', 'SANDWITCH-03', 'regular', 34, '', '2023-10-20 13:16:39'),
+(7, 3, 'FOOD_3F180', 104, 1, 'Veg Cheese Sandwich', 'SANDWITCH-04', 'regular', 35, '', '2023-10-20 13:16:39');
 
 -- --------------------------------------------------------
 
@@ -677,7 +665,7 @@ CREATE TABLE `user_online` (
 --
 
 INSERT INTO `user_online` (`session`, `time`, `name`, `userID`, `ses_id`) VALUES
-('5tne47hiq2t4d5399vo9lkfv93', 1697708024, 'Developer', '21', 458578);
+('fb5tp7c56dgr898rbdngbl40bn', 1697801571, 'Developer', '21', 458581);
 
 --
 -- Indexes for dumped tables
@@ -887,7 +875,7 @@ ALTER TABLE `faq`
 -- AUTO_INCREMENT for table `festivals`
 --
 ALTER TABLE `festivals`
-  MODIFY `festival_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `festival_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `images`
@@ -905,13 +893,13 @@ ALTER TABLE `monthly_plan`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `order_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `order_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `order_status`
@@ -941,7 +929,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_online`
 --
 ALTER TABLE `user_online`
-  MODIFY `ses_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=458579;
+  MODIFY `ses_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=458582;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

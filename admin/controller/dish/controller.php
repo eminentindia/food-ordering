@@ -455,64 +455,6 @@ if (isset($_POST['param']) &&  decryptpost($conn, $_POST['param']) === 'dish_is_
     $response = updatekro($conn, 'dish', $columnsToUpdate, $conditionColumn, $conditionValue);
 }
 
-if (isset($_POST['param']) &&  decryptpost($conn, $_POST['param']) === 'add_dish') {
-    $dish = decryptpost($conn, $_POST['dish']);
-    $slug = str_replace(' ', '-', strtolower($dish));
-    $order_number = decryptpost($conn, $_POST['order_number']);
-    $extn = explode('.', $_FILES["image"]["name"]);
-    $str = str_replace(' ', '-', strtolower($dish));
-    $image   = $str . "." . $extn[1];
-    $upath = "../../media/dish/" . $image;
-    move_uploaded_file($_FILES["image"]["tmp_name"], $upath);
-
-
-    $dish_dish_id = generateUniqueNumber(10);
-    $dataToInsert = array(
-        'dish' => $dish,
-        'slug' => $slug,
-        'order_number' => $order_number,
-        'image' => $image,
-    );
-    $response = addkro($conn, 'dish', $dataToInsert);
-}
-
-
-if (isset($_POST['param']) &&  decryptpost($conn, $_POST['param']) === 'update_dish') {
-    $dish = decryptpost($conn, $_POST['dish']);
-    $ID = decryptpost($conn, $_POST['ID']);
-    $order_number = decryptpost($conn, $_POST['order_number']);
-    $slug = str_replace(' ', '-', strtolower($dish));
-    $columnsToUpdate = array(
-        'dish' => $dish,
-        'slug' => $slug,
-        'order_number' => $order_number,
-    );
-    $conditionColumn = 'ID'; // Adjust this to your actual condition column
-    $conditionValue = $ID;
-    $response = updatekro($conn, 'dish', $columnsToUpdate, $conditionColumn, $conditionValue);
-
-
-    if (isset($_FILES['image']['name']) && $_FILES['image']['name'] != '') {
-
-        $logoExistsInDatabase = checkImageExistsInDatabase($conn, 'dish', 'image');
-        if ($logoExistsInDatabase) {
-            $old_img = getImageNameInDatabase($conn, 'dish', 'image');
-            unlink('../../media/dish/' . $old_img); // Remove the old file
-        }
-
-        $extn = explode('.', $_FILES["image"]["name"]);
-        $str = str_replace(' ', '-', strtolower($dish));
-        $image   = $str . "." . $extn[1];
-        $upath = "../../media/dish/" . $image;
-        move_uploaded_file($_FILES["image"]["tmp_name"], $upath);
-        $columnsToUpdate = array(
-            'image' => $image,
-        );
-        $conditionColumn = 'ID'; // Adjust this to your actual condition column
-        $conditionValue = $ID;
-        $response = updatekro($conn, 'dish', $columnsToUpdate, $conditionColumn, $conditionValue);
-    }
-}
 
 if (isset($_POST['param']) &&  decryptpost($conn, $_POST['param']) === 'change_dish_type') {
     try {

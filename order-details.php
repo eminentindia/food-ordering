@@ -237,12 +237,12 @@ if (!isset($_SESSION['ATECHFOOD_USER']) && !isset($_SESSION['ATECHFOOD_USER_ID']
                         <p class="p-2"> <strong>Delivery Time:</strong> <?php echo $delievery_time ?></p>
 
                         <?php if ($order['paymentstatus'] != 'captured' && $order['order_status'] == '1') { ?>
-                            <form id="cancelOrder" method="post">
+                            <!-- <form id="cancelOrder" method="post">
                                 <input type="hidden" name="ID" value="<?php echo $order['ID']; ?>">
                                 <input type="hidden" name="user_email" value="<?php echo $order['email']; ?>">
                                 <button class="btn btn-danger mb-4" id="CancelorderBtn" type="button">Cancel Order</button>
                             </form>
-                            <p id="cancelordersuccess" style="margin-left: 8px;color: #d0a117;font-size: 15px;margin-bottom: 20px"></p>
+                            <p id="cancelordersuccess" style="margin-left: 8px;color: #d0a117;font-size: 15px;margin-bottom: 20px"></p> -->
                         <?php } ?>
 
 
@@ -638,32 +638,32 @@ if (!isset($_SESSION['ATECHFOOD_USER']) && !isset($_SESSION['ATECHFOOD_USER_ID']
     <!-- f end  -->
     <script>
         $("#order-again").hide();
-        $("#CancelorderBtn").click(function(e) {
-            e.preventDefault();
-            $.ajax({
-                type: "post",
-                url: "action/cancel-order.php",
-                data: $("#cancelOrder").serialize(),
-                beforeSend: function() {
-                    $('#loader').removeClass('hidden')
-                },
-                success: function(response) {
-                    var response = JSON.parse(response);
-                    if (response.success == true) {
-                        $("#cancelordersuccess").html("Order Cancelled !");
-                        $("#cancelordersuccess").show();
-                        $("#cancelordersuccess").focus();
-                        $("#CancelorderBtn").hide();
-                        $("#order-again").show();
-                        return false;
-                    }
-                },
-                complete: function() {
-                    $('#loader').addClass('hidden');
+        // $("#CancelorderBtn").click(function(e) {
+        //     e.preventDefault();
+        //     $.ajax({
+        //         type: "post",
+        //         url: "action/cancel-order.php",
+        //         data: $("#cancelOrder").serialize(),
+        //         beforeSend: function() {
+        //             $('#loader').removeClass('hidden')
+        //         },
+        //         success: function(response) {
+        //             var response = JSON.parse(response);
+        //             if (response.success == true) {
+        //                 $("#cancelordersuccess").html("Order Cancelled !");
+        //                 $("#cancelordersuccess").show();
+        //                 $("#cancelordersuccess").focus();
+        //                 $("#CancelorderBtn").hide();
+        //                 $("#order-again").show();
+        //                 return false;
+        //             }
+        //         },
+        //         complete: function() {
+        //             $('#loader').addClass('hidden');
 
-                },
-            });
-        });
+        //         },
+        //     });
+        // });
     </script>
 </body>
 

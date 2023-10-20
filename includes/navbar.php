@@ -119,14 +119,20 @@
                             <li class="lvl1 parent dropdown"><a href="javascript:void(0)">Category <i class="anm anm-angle-down-l"></i></a>
                                 <ul class="dropdown">
                                     <?php
-                                    $query = "select * from category ORDER BY RAND()";
+                                    $query = "SELECT * FROM category ORDER BY RAND()";
                                     $sel = mysqli_query($conn, $query);
+
                                     while ($row = mysqli_fetch_array($sel)) {
-                                        $ID = $row['ID'];
                                         $slug = $row['slug'];
+                                        $category = $row['category'];
+                                        $discount = $row['discount'];
+
+                                        $discountHTML = $discount ? '<div class="light offdiscountPill">' . $discount . '% Off</div>' : '';
+
+                                        echo '<li><a href="' . SITE_PATH . 'category/' . $slug . '" class="site-nav">' . $category . ' ' . $discountHTML . '</a></li>';
+                                    }
                                     ?>
-                                        <li><a href="<?php echo SITE_PATH ?>category/<?php echo $slug; ?>" class="site-nav"><?php echo $row['category']; ?></a></li>
-                                    <?php } ?>
+
                                 </ul>
                             </li>
                             <li class="lvl1 parent"><a href="<?php echo SITE_PATH ?>contact-us">Contact Us<i class="anm anm-angle-down-l"></i></a>

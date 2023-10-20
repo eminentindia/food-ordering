@@ -149,11 +149,15 @@ function getsingledish($conn, $ID)
 function getSingleSlugDish($conn, $slug)
 {
 	$response = array();
-	$sql = "SELECT * FROM dish WHERE slug='$slug'";
+	$sql = "SELECT dish.*, dish.ID AS dish_id, category.discount AS category_discount
+        FROM dish
+        JOIN category ON category.ID = dish.category_id
+        WHERE dish.slug = '$slug'";
+
 	$result_dish = mysqli_query($conn, $sql);
 
 	while ($row_dish = mysqli_fetch_assoc($result_dish)) {
-		$dish_id = $row_dish['ID'];
+		$dish_id = $row_dish['dish_id'];
 		$sql_details = "SELECT * FROM dish_details WHERE dish_id = '$dish_id'";
 		$result_details = mysqli_query($conn, $sql_details);
 

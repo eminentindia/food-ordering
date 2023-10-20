@@ -14,20 +14,12 @@ $getDishIdbySlug = getDishIdbySlug($conn, $single_dish);
 $DISH_id = $getDishIdbySlug['ID'];
 $dish_name_underscore = str_replace(' ', '_', $dish);
 $mulImg = getAllImg($DISH_id);
-
 $mainImg = []; // Initialize the $mainImg array
-
 if ($mulImg !== null && count($mulImg) > 0) {
-    // Check if $mulImg is not null and has elements
     $mainImg = $mulImg[0]['image'];
 } else {
-    // Handle the case when $mulImg is null or empty
     $mainImg = $image;
-    // You can set a default image or take some other action here
 }
-
-// Now you can safely use $mainImg without encountering the warning
-
 if (count($getdish) == '') {
     echo '<script>window.location.href="' . SITE_PATH . '404";</script>';
 }
@@ -223,8 +215,26 @@ if (count($getdish) == '') {
                                                         <?php
                                                         if ($is_attribute_product == '0') {
                                                         ?>
-                                                            <span class="price"> <i class="fa fa-inr" aria-hidden="true"></i> <span id="price_regular<?php echo $DISH_id; ?>" data-price="<?php echo $selling_price; ?>" data-sku="<?php echo $main_sku; ?>"><?php echo $selling_price ?></span></span>
+                                                            <span class="price">
+                                                                <i class="fa fa-inr" aria-hidden="true"></i>
+                                                                <?php
+                                                                if ($category_discount) {
+                                                                    $discount_percent = $category_discount; // Assuming $category_discount is in percentage.
+                                                                    $discounted_price = $selling_price - ($selling_price * ($discount_percent / 100));
+                                                                    echo '<span id="price_regular' . $DISH_id . '" data-price="' . $discounted_price . '" data-sku="' . $main_sku . '">' . $discounted_price . ' <span class="pricelinethrough">' . $selling_price . '</span></span>  <span class="light3 " style="    font-size: 1rem;">' . $category_discount . '% <span style="font-size: .7rem;">OFF</span></span>';
+                                                                } else if ($selling_price != $mrp) {
 
+                                                                    $discount = $mrp - $selling_price;
+
+                                                                    // Calculate the discount percentage
+                                                                    $discount_percent = round(($discount / $mrp) * 100, 1);
+
+                                                                    echo '<span id="price_regular' . $DISH_id . '" data-price="' . $selling_price . '" data-sku="' . $main_sku . '">' . $selling_price . ' <span class="pricelinethrough">' . $mrp . '</span></span>  <span class="light2 " style="    font-size: 1rem;">' . $discount_percent . '% <span style="font-size: .7rem;">OFF</span></span>';
+                                                                } else {
+                                                                    echo '<span id="price_regular' . $DISH_id . '" data-price="' . $selling_price . '" data-sku="' . $main_sku . '">' . $selling_price . '</span>';
+                                                                }
+                                                                ?>
+                                                            </span>
                                                         <?php } else {
                                                         ?>
                                                             <span class="price"> <i class="fa fa-inr" aria-hidden="true"></i> <span id="price_regular<?php echo $dish_name_underscore; ?>"></span></span>
@@ -232,7 +242,7 @@ if (count($getdish) == '') {
                                                         ?>
                                                         <?php }
                                                         ?><?php if ($price_tagline != '') {
-                                                        ?>
+                                                            ?>
                                                         <br>
                                                         <span class="mainprice_tagline2"><?php echo $price_tagline  ?></span>
                                                     <?php } ?>
