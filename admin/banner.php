@@ -50,9 +50,10 @@ include('connect/head.php'); ?>
                         <div class="card-body">
                             <div class="form-group row" id="product_box1">
                                 <label for="Attribute" class="col-sm-3 control-label col-form-label">Image</label>
-                                <div class="col-md-3"><input type="file" class="form-control mt-3 mb-2" name="image_attr[]" id="image_attr" required></div>
-                                <div class="col-md-3"><input type="text" class="form-control mt-3 mb-2" name="alt_attr[]" id="alt_attr" placeholder="Alt" required></div>
-                                <div class="col-md-3"><button type="button" class="mt-3 btn btn-sm btn-secondary waves-effect waves-light shadow-none" onclick="add_more()">Add More</button></div>
+                                <div class="col-md-2"><input type="file" class="form-control mt-3 mb-2" name="image_attr[]" id="image_attr" required></div>
+                                <div class="col-md-2"><input type="text" class="form-control mt-3 mb-2" name="alt_attr[]" id="alt_attr" placeholder="Alt" required></div>
+                                <div class="col-md-2"><input type="text" class="form-control mt-3 mb-2" value="javascript:void(0)" name="banner_link[]" id="banner_link" placeholder="Link" required></div>
+                                <div class="col-md-2"><button type="button" class="mt-3 btn btn-sm btn-secondary waves-effect waves-light shadow-none" onclick="add_more()">Add More</button></div>
                             </div>
                             <div class="container mt-5">
                                 <div class="row g-4 align-items-center">
@@ -98,10 +99,10 @@ include('connect/head.php'); ?>
         <script type="text/javascript" src="../js/light-gallery-delete-button.js"></script>
         <script>
             function add_more() {
-                var add_more = jQuery(' #add_more').val();
+                var add_more = jQuery('#add_more').val();
                 add_more++;
                 jQuery('#add_more').val(add_more);
-                var html = '<div class="form-group row" id="box' + add_more + '">  <label for="Attribute" class="col-sm-3 control-label col-form-label"></label><div class="col-md-3"><input type="file" class="form-control mt-3 mb-2" name="image_attr[]" id="image_attr" required></div><div class="col-md-3"><input type="text" class="form-control mt-3 mb-2" name="alt_attr[]" id="alt_attr" placeholder="Alt" required></div><div class="col-md-3"><button type="button" class=" mt-3 btn btn-sm btn-danger waves-effect waves-light shadow-none" onclick="remove_more(' + add_more + ')">Remove</button></div></div>';
+                var html = '<div class="form-group row p-0 m-0" id="box' + add_more + '">  <label for="Attribute" class="col-sm-3 control-label col-form-label"></label><div class="col-md-2"><input type="file" class="form-control mt-3 mb-2" name="image_attr[]" id="image_attr" required></div><div class="col-md-2"><input type="text" class="form-control mt-3 mb-2" name="alt_attr[]" id="alt_attr" placeholder="Alt" required></div><div class="col-md-2"><input type="text" class="form-control mt-3 mb-2" name="banner_link[]" id="banner_link" value="javascript:void(0)" placeholder="Banner Link" required></div><div class="col-md-2"><button type="button" class=" mt-3 btn btn-sm btn-danger waves-effect waves-light shadow-none" onclick="remove_more(' + add_more + ')">Remove</button></div></div>';
                 jQuery('#product_box1').append(html);
             }
 

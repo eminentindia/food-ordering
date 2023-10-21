@@ -9,18 +9,19 @@ foreach ($getsetting as $getsinglesetting) {
 include('../../controller/constant.inc.php');
 $response = array();
 
-
-
 if (isset($_POST['alt_attr'])) {
     $altArr = $_POST['alt_attr'];
+    $banner_linkArr= $_POST['banner_link'];
     foreach ($altArr as $key => $val) {
         $attribute = mysqli_real_escape_string($conn, $val);
+        $banner_link = $banner_linkArr[$key];
         $extn = pathinfo($_FILES["image_attr"]["name"][$key], PATHINFO_EXTENSION);
         $rand = rand(111, 999);
         $image =  $attribute . $rand . "." . $extn;
         // Insert data into the database using prepared statements
-        $stmt = mysqli_prepare($conn, "INSERT INTO banner (image, alt) VALUES (?, ?)");
-        mysqli_stmt_bind_param($stmt, "ss", $image, $attribute);
+        $stmt = mysqli_prepare($conn, "INSERT INTO banner (image, alt, banner_link) VALUES (?, ?, ?)");
+        mysqli_stmt_bind_param($stmt, "sss", $image, $attribute, $banner_link);
+
         if (mysqli_stmt_execute($stmt)) {
             $path = "../../media/banner/" . $image;
             if (move_uploaded_file($_FILES["image_attr"]["tmp_name"][$key], $path)) {
@@ -33,6 +34,7 @@ if (isset($_POST['alt_attr'])) {
         }
     }
 }
+
 
 if (isset($_POST['PhotoId']) &&  $_POST['Image']) {
     $PhotoId = $_POST['PhotoId'];

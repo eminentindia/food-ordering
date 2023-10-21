@@ -35,7 +35,7 @@ if (!checkAdminDeveloperSession()) {
                             <th> <strong>S.No</strong></th>
                             <th> <strong>Email</strong></th>
                             <th> <strong>Added On</strong></th>
-                            <th> <strong>Action</strong></th>
+                            <th> <strong>Active</strong></th>
                             </tr>
                         </thead>
                         <tbody>

@@ -311,7 +311,7 @@ var checked3 = aData[7] == '1' ? 'checked' : '';
             var add_more = jQuery(' #add_more').val();
             add_more++;
             jQuery('#add_more').val(add_more);
-            var html = ' <div class="row additionalrows pt-2" id="box' + add_more + '">  <div class="col-sm-3 mb-2 control-label col-form-label"></div><div class="col-sm-2"><input type="text" class="form-control ml-5 attribute" name="attribute[]" placeholder="ATTRIBUTE" id="attribute" required></div><div class="col-sm-2"><input type="number" class="price form-control ml-5" name="price[]" required placeholder="PRICE" id="price"></div><div class="col-sm-2"><input type="text" class="form-control ml-5 sku" name="sku[]" placeholder="SKU" id="sku" required></div> <div class="col-sm-1"><div class="adddivpositionwarn"><i title="Add More" class="fa fa-minus" style="cursor: pointer;" onclick="remove_more(' + add_more + ')"></i></div>';
+            var html = ' <div class="row additionalrows pt-2 p-0 m-0 pb-2" id="box' + add_more + '">  <div class="col-sm-3 mb-2 control-label col-form-label"></div><div class="col-sm-2"><input type="text" class="form-control ml-5 attribute" name="attribute[]" placeholder="ATTRIBUTE" id="attribute" required></div><div class="col-sm-2"><input type="number" class="price form-control ml-5" name="price[]" required placeholder="PRICE" id="price"></div><div class="col-sm-2"><input type="text" class="form-control ml-5 sku" name="sku[]" placeholder="SKU" id="sku" required></div> <div class="col-sm-1"><div class="adddivpositionwarn"><i title="Add More" class="fa fa-minus" style="cursor: pointer;" onclick="remove_more(' + add_more + ')"></i></div>';
             jQuery('#dish_box1').append(html);
         }
 
@@ -849,7 +849,7 @@ var checked3 = aData[7] == '1' ? 'checked' : '';
             edit_add_more_counter++; // Increment the counter
 
 
-            var html = ' <div class="row additionalrows pt-2" id="editbox' + edit_add_more_counter + '">  <div class="col-sm-3 mb-2 control-label col-form-label"></div><div class="col-sm-2"><input type="text" class="form-control ml-5 attribute" name="attribute[]" placeholder="ATTRIBUTE" id="attribute" required></div><div class="col-sm-2"><input type="number" class="price form-control ml-5" name="price[]" required placeholder="PRICE" id="price"></div><div class="col-sm-2"><input type="text" class="form-control ml-5 sku" name="sku[]" placeholder="SKU" id="sku" required></div> <div class="col-sm-1"><div class="adddivpositionwarn"><i title="Add More" class="fa fa-minus" style="cursor: pointer;" onclick="remove_more(' + edit_add_more_counter + ')"></i></div>';
+            var html = ' <div class="row additionalrows pt-2 p-0 m-0 pb-2" id="editbox' + edit_add_more_counter + '">  <div class="col-sm-3 mb-2 control-label col-form-label"></div><div class="col-sm-2"><input type="text" class="form-control ml-5 attribute" name="attribute[]" placeholder="ATTRIBUTE" id="attribute" required></div><div class="col-sm-2"><input type="number" class="price form-control ml-5" name="price[]" required placeholder="PRICE" id="price"></div><div class="col-sm-2"><input type="text" class="form-control ml-5 sku" name="sku[]" placeholder="SKU" id="sku" required></div> <div class="col-sm-1"><div class="adddivpositionwarn"><i title="Add More" class="fa fa-minus" style="cursor: pointer;" onclick="remove_more(' + edit_add_more_counter + ')"></i></div>';
 
             $('#editdish_box1').append(html);
         }
