@@ -19,6 +19,9 @@ $getusers = getusers($conn);
 $getusers = json_decode($getusers, true);
 $getsubscription = getsubscription($conn);
 $getsubscription = json_decode($getsubscription, true);
+
+$getfestivals = getfestivals($conn);
+$getfestivals = json_decode($getfestivals, true);
 ?>
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 	<div class="container-xxl" id="kt_content_container">
@@ -132,7 +135,9 @@ $getsubscription = json_decode($getsubscription, true);
 									<li class="nav-item">
 										<a class="quickbadgediv nav-link btn btn-sm btn-color-muted btn-active btn-active-dark fw-bolder px-4  me-1" href="user.php">Users <span class="quickbadge badge rounded-pill counter f-20 badge-primary badge"><?php echo count($getusers); ?></a>
 									</li>
-
+									<li class="nav-item">
+										<a class="quickbadgediv nav-link btn btn-sm btn-color-muted btn-active btn-active-dark fw-bolder px-4  me-1" href="subscription.php">Festivals <span class="quickbadge badge rounded-pill counter f-20 badge-primary badge"><?php echo count($getfestivals); ?></a>
+									</li>
 									<li class="nav-item">
 										<a class="quickbadgediv nav-link btn btn-sm btn-color-muted btn-active btn-active-dark fw-bolder px-4  me-1" href="subscription.php">Subscriptions <span class="quickbadge badge rounded-pill counter f-20 badge-primary badge"><?php echo count($getsubscription); ?></a>
 									</li>
