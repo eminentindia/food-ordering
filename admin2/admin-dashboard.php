@@ -237,39 +237,37 @@ $getsubscription = json_decode($getsubscription, true);
         <!-- Column -->
         <div class="container pt-5 pb-2">
             <div class="row align-items-stretch">
-
-
-                <div class="c-dashboardInfo col-lg-3 col-md-6">
+               <div class="c-dashboardInfo col-lg-3 col-md-6">
                     <div class="wrap">
                         <a href="<?= ADMIN_SITE_PATH ?>order/today-order.php">
-                            <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Today Orders</h4><span class="hind-font caption-12 c-dashboardInfo__count"><?php
-
-                                                                                                                                                                                        $start_date = date('Y-m-d') . ' 00-00-00';
-                                                                                                                                                                                        $end_date = date('Y-m-d') . ' 23-59-59';
-                                                                                                                                                                                        $getDashboard_orders = getDashboard_orders($conn, $start_date, $end_date);
-                                                                                                                                                                                        //   print_r($getDashboard_orders);
-                                                                                                                                                                                        if ($getDashboard_orders != '') {
-                                                                                                                                                                                            echo sizeof($getDashboard_orders);
-                                                                                                                                                                                        } else {
-                                                                                                                                                                                            echo '0';
-                                                                                                                                                                                        }
-                                                                                                                                                                                        ?></span>
+                            <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Today Orders</h4><span class="hind-font caption-12 c-dashboardInfo__count">
+                                <?php
+$start_date          = date('Y-m-d') . ' 00-00-00';
+$end_date            = date('Y-m-d') . ' 23-59-59';
+$getDashboard_orders = getDashboard_orders($conn, $start_date, $end_date);
+//   print_r($getDashboard_orders);
+if ($getDashboard_orders != '') {
+    echo sizeof($getDashboard_orders);
+} else {
+    echo '0';
+}
+?></span>
                     </div></a>
                 </div>
                 <div class="c-dashboardInfo col-lg-3 col-md-6">
                     <div class="wrap">
                         <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Order's Complete Today</h4><span class="hind-font caption-12 c-dashboardInfo__count"><?php
 
-                                                                                                                                                                                                $start_date = date('Y-m-d') . ' 00-00-00';
-                                                                                                                                                                                                $end_date = date('Y-m-d') . ' 23-59-59';
-                                                                                                                                                                                                $getDashboard_orders = getDashboardtodaycompleteOrders($conn, $start_date, $end_date);
-                                                                                                                                                                                                //   print_r($getDashboard_orders);
-                                                                                                                                                                                                if ($getDashboard_orders != '') {
-                                                                                                                                                                                                    echo sizeof($getDashboard_orders);
-                                                                                                                                                                                                } else {
-                                                                                                                                                                                                    echo '0';
-                                                                                                                                                                                                }
-                                                                                                                                                                                                ?></span>
+$start_date          = date('Y-m-d') . ' 00-00-00';
+$end_date            = date('Y-m-d') . ' 23-59-59';
+$getDashboard_orders = getDashboardtodaycompleteOrders($conn, $start_date, $end_date);
+//   print_r($getDashboard_orders);
+if ($getDashboard_orders != '') {
+    echo sizeof($getDashboard_orders);
+} else {
+    echo '0';
+}
+?></span>
                     </div>
                 </div>
                 <div class="c-dashboardInfo col-lg-3 col-md-6">
@@ -277,32 +275,32 @@ $getsubscription = json_decode($getsubscription, true);
                         <a href="<?= ADMIN_SITE_PATH ?>order/pending-order.php">
                             <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title"> Pending Orders</h4><span class="hind-font caption-12 c-dashboardInfo__count"><?php
 
-                                                                                                                                                                                            $start_date = date('Y-m-d') . ' 00-00-00';
-                                                                                                                                                                                            $end_date = date('Y-m-d') . ' 23-59-59';
-                                                                                                                                                                                            $getDashboard_orders = getDashboardpendingOrders($conn);
-                                                                                                                                                                                            //   print_r($getDashboard_orders);
-                                                                                                                                                                                            if ($getDashboard_orders != '') {
-                                                                                                                                                                                                echo sizeof($getDashboard_orders);
-                                                                                                                                                                                            } else {
-                                                                                                                                                                                                echo '0';
-                                                                                                                                                                                            }
-                                                                                                                                                                                            ?></span>
+$start_date          = date('Y-m-d') . ' 00-00-00';
+$end_date            = date('Y-m-d') . ' 23-59-59';
+$getDashboard_orders = getDashboardpendingOrders($conn);
+//   print_r($getDashboard_orders);
+if ($getDashboard_orders != '') {
+    echo sizeof($getDashboard_orders);
+} else {
+    echo '0';
+}
+?></span>
                     </div></a>
                 </div>
                 <div class="c-dashboardInfo col-lg-3 col-md-6">
                     <div class="wrap">
                         <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Order Cancelled Today</h4><span class="hind-font caption-12 c-dashboardInfo__count"><?php
 
-                                                                                                                                                                                                $start_date = date('Y-m-d') . ' 00-00-00';
-                                                                                                                                                                                                $end_date = date('Y-m-d') . ' 23-59-59';
-                                                                                                                                                                                                $getDashboard_orders = getDashboardcancelpendingOrders($conn, $start_date, $end_date);
-                                                                                                                                                                                                //   print_r($getDashboard_orders);
-                                                                                                                                                                                                if ($getDashboard_orders != '') {
-                                                                                                                                                                                                    echo sizeof($getDashboard_orders);
-                                                                                                                                                                                                } else {
-                                                                                                                                                                                                    echo '0';
-                                                                                                                                                                                                }
-                                                                                                                                                                                                ?></span>
+$start_date          = date('Y-m-d') . ' 00-00-00';
+$end_date            = date('Y-m-d') . ' 23-59-59';
+$getDashboard_orders = getDashboardcancelpendingOrders($conn, $start_date, $end_date);
+//   print_r($getDashboard_orders);
+if ($getDashboard_orders != '') {
+    echo sizeof($getDashboard_orders);
+} else {
+    echo '0';
+}
+?></span>
                     </div>
                 </div>
             </div>
