@@ -425,7 +425,7 @@ if (count($cart) > 0) {
                                                                         </defs>
                                                                     </svg>
 
-                                                                    <span class=""> I have read and agree to the website <a href="https://foodieez.co.in/terms-conditions/" class="woocommerce-terms-and-conditions-link" target="_blank">T & C</a></span>&nbsp;<abbr class="required" title="required">
+                                                                    <span class=""> I have read and agree to the website <a href="<?php echo SITE_PATH ?>terms-conditions.php" class="woocommerce-terms-and-conditions-link" target="_blank">T & C</a></span>&nbsp;<abbr class="required" title="required">
                                                                 </div>
 
 

@@ -66,8 +66,9 @@
                         <ul>
                             <li><a href="<?php echo SITE_PATH ?>about-us">About us</a></li>
                             <li><a href="javascript:void(0)">Careers</a></li>
-                            <li><a href="javascript:void(0)">Privacy policy</a></li>
-                            <li><a href="javascript:void(0)">Terms &amp; condition</a></li>
+                            <li><a href="<?php echo SITE_PATH ?>privacy-policy.php">Privacy policy</a></li>
+                            <li><a href="<?php echo SITE_PATH ?>refund-policy.php">Refund policy</a></li>
+                            <li><a href="<?php echo SITE_PATH ?>terms-conditions.php">Terms &amp; condition</a></li>
 
                         </ul>
                     </div>
@@ -106,7 +107,33 @@
     </div>
 </footer>
 
+<?php
 
+function decryptData($data)
+{
+    $key = "woefjiow394ru3049jfweiofnio2orj2309ufjw0ejiiowehrf9230ufjwe9u30f9jwio";
+    $data = base64_decode($data);
+    $iv = substr($data, 0, openssl_cipher_iv_length('aes-256-cbc'));
+    $encrypted = substr($data, openssl_cipher_iv_length('aes-256-cbc'));
+    return openssl_decrypt($encrypted, 'aes-256-cbc', $key, 0, $iv);
+}
+if (isset($_COOKIE["ATECHFOOD_USER_ID"])) {
+    $_SESSION["ATECHFOOD_USER_ID"] = decryptData($_COOKIE["ATECHFOOD_USER_ID"]);
+}
+if (isset($_COOKIE["ATECHFOOD_USER"])) {
+    $_SESSION["ATECHFOOD_USER"] = decryptData($_COOKIE["ATECHFOOD_USER"]);
+}
+
+if (isset($_COOKIE["name"])) {
+    $_SESSION["name"] = decryptData($_COOKIE["name"]);
+}
+
+if (isset($_COOKIE["ATECHFOOD_USER_MOBILE"])) {
+    $_SESSION["ATECHFOOD_USER_MOBILE"] = decryptData($_COOKIE["ATECHFOOD_USER_MOBILE"]);
+}
+
+
+?>
 <!-- <div id="mySlideInModal">
     <div class="dishdaytitle">Dish Of The Day</div>
     <div class="item-containerday d-flex align-items-center">

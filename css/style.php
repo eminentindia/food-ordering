@@ -1858,7 +1858,7 @@ text-align: left;
 }
 
 #siteNav>li>a {
-padding: 0 20px;
+padding: 0 10px;
 text-transform: uppercase;
 line-height: 40px;letter-spacing: .9px;
 }
@@ -4624,14 +4624,17 @@ width: 33%;
 
 .social-sharing .btn {
 color: #353333 !important;
-padding: 0 5px;
+padding: 0 10px;
 margin-bottom: 0;
 background: none !important;
 border: 0;
 letter-spacing: normal;
 text-transform: capitalize;
+font-size:.9rem
 }
-
+.social-sharing .btn:focus{
+  box-shadow:none !Important
+}
 .btn--share .fa {
 color: #222222;
 font-size: 14px;

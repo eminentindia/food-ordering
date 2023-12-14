@@ -18,6 +18,12 @@ if (isset($_POST["numbers"])) {
         if (mysqli_num_rows($result) > 0) {
             $q = mysqli_fetch_assoc($result);
             $uid = $q["ID"];
+            $username = $q["name"];
+            $_SESSION["ATECHFOOD_USER_ID"] = $uid;
+            $_SESSION["ATECHFOOD_USER"] = "yes";
+            $_SESSION["name"] = $username;
+            $_SESSION["ATECHFOOD_USER_MOBILE"] = $loginmobile;
+            echo "success";
         } else {
             $ins = "INSERT INTO users (
         name,
@@ -37,9 +43,6 @@ if (isset($_POST["numbers"])) {
         )";
             mysqli_query($conn, $ins);
             $uid = mysqli_insert_id($conn);
-        }
-
-        if ($uid) {
             $_SESSION["ATECHFOOD_USER_ID"] = $uid;
             $_SESSION["ATECHFOOD_USER"] = "yes";
             $_SESSION["name"] = "guest";
@@ -49,5 +52,28 @@ if (isset($_POST["numbers"])) {
     } else {
         echo "fail";
     }
-}
 
+
+    function encryptData($data)
+    {
+        $key = "woefjiow394ru3049jfweiofnio2orj2309ufjw0ejiiowehrf9230ufjwe9u30f9jwio";
+        $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+        $encrypted = openssl_encrypt($data, 'aes-256-cbc', $key, 0, $iv);
+        return base64_encode($iv . $encrypted);
+    }
+
+    function decryptData($data)
+    {
+        $key = "woefjiow394ru3049jfweiofnio2orj2309ufjw0ejiiowehrf9230ufjwe9u30f9jwio";
+        $data = base64_decode($data);
+        $iv = substr($data, 0, openssl_cipher_iv_length('aes-256-cbc'));
+        $encrypted = substr($data, openssl_cipher_iv_length('aes-256-cbc'));
+        return openssl_decrypt($encrypted, 'aes-256-cbc', $key, 0, $iv);
+    }
+
+    $expiration_time = time() + 7 * 24 * 60 * 60;
+    setcookie("ATECHFOOD_USER_ID", encryptData($uid), $expiration_time, "/");
+    setcookie("ATECHFOOD_USER", encryptData("yes"), $expiration_time, "/");
+    setcookie("name", encryptData($_SESSION["name"]), $expiration_time, "/");
+    setcookie("ATECHFOOD_USER_MOBILE", encryptData($loginmobile), $expiration_time, "/");
+}

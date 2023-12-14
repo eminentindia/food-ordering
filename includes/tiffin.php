@@ -355,9 +355,7 @@
                                                             <?php }
                                                             if ($dish['is_popular'] == '1') {
                                                             ?>
-                                                                <div class="light">
-                                                                    POPULAR
-                                                                </div>
+                                                               
                                                             <?php }
 
                                                             ?>
