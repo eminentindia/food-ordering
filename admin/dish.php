@@ -12,7 +12,7 @@ $categorydata = getcategory($conn);
 $categorydata = json_decode($categorydata, true);
 
 
-if (!checkAdminDeveloperSession()) {
+if (!checkSuperAdminSession()) {
 	echo '<script>window.location.href="dashboard.php"</script>';
 }
 ?>
@@ -460,7 +460,7 @@ var checked3 = aData[7] == '1' ? 'checked' : '';
                 this.on('sendingmultiple', function(data, xhr, formData) {
                     var formFields = [
                         "dish", "ID", "oldImg", "category_id", "short_description",
-                        "dish_detail", "meta_title", "slug", "is_available",
+                        "dish_detail", "meta_title", "slug", "is_available", "is_combo",
                         "meta_description", "meta_keywords", "type", "is_attribute_product", "is_detailed_dish", "price_tagline", "mrp", "selling_price", "main_sku"
                     ];
                     for (const field of formFields) {
@@ -668,7 +668,7 @@ var checked3 = aData[7] == '1' ? 'checked' : '';
                     this.on('sendingmultiple', function(data, xhr, formData) {
                         var formFields = [
                             "edit_dish", "ID", "edit_oldImg", "edit_category_id", "edit_short_description",
-                            "dish_detail", "edit_meta_title", "edit_slug", "edit_is_available",
+                            "dish_detail", "edit_meta_title", "edit_slug", "edit_is_available", "edit_is_combo",
                             "meta_description", "edit_meta_keywords", "edit_type", "edit_is_attribute_product", "edit_is_detailed_dish", "edit_price_tagline", "edit_mrp", "edit_selling_price", "edit_main_sku", "edit_dish_detail", "edit_meta_description"
                         ];
                         for (const field of formFields) {

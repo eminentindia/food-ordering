@@ -691,7 +691,7 @@ if (isset($_POST['finalcheckout'])) {
             [
                 RequestOptions::MULTIPART => [
                     ['name' => 'from', 'contents' => "FD_Order@foodieez.co.in"],
-                    ['name' => 'to', 'contents' => "atechseva@gmail.com"],
+                    ['name' => 'to', 'contents' => $store_email],
                     ['name' => 'subject', 'contents' => 'New Order !'],
                     ['name' => 'html', 'contents' => $html2],
                 ],

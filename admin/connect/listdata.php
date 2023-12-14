@@ -163,7 +163,7 @@ if (isset($_GET['show']) and $_GET['show'] == md5('coupon')) {
 }
 if (isset($_GET['show']) and $_GET['show'] == 'order') {
 
-    if (checkAdminDeveloperSession()) {
+    if (checkSuperAdminSession()) {
         $filter = " ";
     } else {
         $filter = "AND orders.store='" . $_SESSION['store'] . "'";
@@ -235,7 +235,7 @@ if (isset($_GET['show']) and $_GET['show'] == 'order') {
 
 
 if (isset($_GET['show']) and $_GET['show'] == 'cancel') {
-    if (checkAdminDeveloperSession()) {
+    if (checkSuperAdminSession()) {
         $filter = " ";
     } else {
         $filter = "AND orders.store='" . $_SESSION['store'] . "'";
@@ -306,7 +306,7 @@ if (isset($_GET['show']) and $_GET['show'] == 'cancel') {
 
 
 if (isset($_GET['show']) and $_GET['show'] == 'complete') {
-    if (checkAdminDeveloperSession()) {
+    if (checkSuperAdminSession()) {
         $filter = " ";
     } else {
         $filter = "AND orders.store='" . $_SESSION['store'] . "'";

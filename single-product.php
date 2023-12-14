@@ -221,7 +221,7 @@ if (count($getdish) == '') {
                                                                 if ($category_discount) {
                                                                     $discount_percent = $category_discount; // Assuming $category_discount is in percentage.
                                                                     $discounted_price = $selling_price - ($selling_price * ($discount_percent / 100));
-                                                                    echo '<span id="price_regular' . $DISH_id . '" data-price="' . $discounted_price . '" data-sku="' . $main_sku . '">' . $discounted_price . ' <span class="pricelinethrough">' . $selling_price . '</span></span>  <span class="light3 " style="    font-size: 1rem;">' . $category_discount . '% <span style="font-size: .7rem;">OFF</span></span>';
+                                                                    echo '<span id="price_regular' . $DISH_id . '" data-price="' . $discounted_price . '" data-sku="' . $main_sku . '">' . $discounted_price . ' <span class="pricelinethrough">' . $selling_price . '</span></span>  ';
                                                                 } else if ($selling_price != $mrp) {
 
                                                                     $discount = $mrp - $selling_price;
@@ -229,7 +229,7 @@ if (count($getdish) == '') {
                                                                     // Calculate the discount percentage
                                                                     $discount_percent = round(($discount / $mrp) * 100, 1);
 
-                                                                    echo '<span id="price_regular' . $DISH_id . '" data-price="' . $selling_price . '" data-sku="' . $main_sku . '">' . $selling_price . ' <span class="pricelinethrough">' . $mrp . '</span></span>  <span class="light2 " style="    font-size: 1rem;">' . $discount_percent . '% <span style="font-size: .7rem;">OFF</span></span>';
+                                                                    echo '<span id="price_regular' . $DISH_id . '" data-price="' . $selling_price . '" data-sku="' . $main_sku . '">' . $selling_price . ' <span class="pricelinethrough">' . $mrp . '</span></span>  ';
                                                                 } else {
                                                                     echo '<span id="price_regular' . $DISH_id . '" data-price="' . $selling_price . '" data-sku="' . $main_sku . '">' . $selling_price . '</span>';
                                                                 }
@@ -279,9 +279,9 @@ if (count($getdish) == '') {
                                                         echo "<span class='price'> <i class='fa fa-inr' aria-hidden='true'></i>" . $dish_attr_row['price'] . "</span>";
                                                         echo '</div>';
                                                         echo '<div class="quantity-controls smallControl">
-                                                        <button class="quantity-decrement">-</button>
+                                                    <button class="quantity-decrement" style="width:35px;height:35px">-</button>
                                                         <input type="text" class="quantity-input" name="quantity_regular' . $DISH_id . '' . $sku . '" value="1">
-                                                        <button class="quantity-increment">+</button>
+                                                        <button class="quantity-increment" style="width:35px;height:35px">+</button>
                                                     </div>';
                                                         echo '</label>';
                                                     } else {
@@ -289,7 +289,7 @@ if (count($getdish) == '') {
                                                         echo "<input onchange='changeprice(" . $dish_attr_row['price'] . ")'  type='radio' " . $isChecked . " name='attribute_regular" . $DISH_id . "[]' value='" . $attr_id . "' id='" . $attribute_id . "' data-price='" . $price . "' data-sku='" . $main_sku . "'  />";
                                                         echo '<div class="radio-box-content">';
                                                         echo '<span class="attrlabel badge dishbadge">' . $dish_attr_row['attribute'] . '</span>';
-                                                        echo "<span class='price'> <i class='fa fa-inr' aria-hidden='true'></i>" . $dish_attr_row['price'] . "</span>";
+                                                        // echo "<span class='price'> <i class='fa fa-inr' aria-hidden='true'></i>" . $dish_attr_row['price'] . "</span>";
                                                         echo '</div>';
                                                         echo '</label>';
                                                     }
@@ -311,9 +311,9 @@ if (count($getdish) == '') {
                                             <div class="product-form__item--quantity">
                                                 <div class="wrapQtyBtn">
                                                     <div class="quantity-controls smallControl">
-                                                        <button class="quantity-decrement">-</button>
+                                                        <button class="quantity-decrement" style="width:35px;height:35px">-</button>
                                                         <input type="text" class="quantity-input" name="quantity_regular<?php echo $DISH_id ?><?php echo $main_sku; ?>" value="1">
-                                                        <button class="quantity-increment">+</button>
+                                                        <button class="quantity-increment" style="width:35px;height:35px">+</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -322,9 +322,9 @@ if (count($getdish) == '') {
                                             <div class="product-form__item--quantity">
                                                 <div class="wrapQtyBtn">
                                                     <div class="quantity-controls smallControl">
-                                                        <button class="quantity-decrement">-</button>
+                                                        <button class="quantity-decrement" style="width:35px;height:35px">-</button>
                                                         <input type="text" class="quantity-input" name="quantity_regular<?php echo $DISH_id ?><?php echo $main_sku; ?>" value="1">
-                                                        <button class="quantity-increment">+</button>
+                                                        <button class="quantity-increment" style="width:35px;height:35px">+</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -377,37 +377,41 @@ if (count($getdish) == '') {
                         <a target="_blank" href="https://facebook.com/share.php?u=<?php echo $meta_url ?>" class="btn btn--small btn--secondary btn--share share-facebook" title="Share on Facebook">
                             <i class="fa fa-facebook-square" aria-hidden="true"></i> <span class="share-title" aria-hidden="true">Share</span>
                         </a>
-                        <a target="_blank" href="https://twitter.com/share?text=<?php echo $meta_title ?>&url=<?php echo $meta_url ?>" class="btn btn--small btn--secondary btn--share share-twitter" title="Tweet on Twitter">
+                        <a target="_blank" href="https://twitter.com/share?text=<?php echo $dish ?>&url=<?php echo $meta_url ?>" class="btn btn--small btn--secondary btn--share share-twitter" title="Tweet on Twitter">
                             <i class="fa fa-twitter" aria-hidden="true"></i> <span class="share-title" aria-hidden="true">Tweet</span>
                         </a>
 
-                        <a href="https://api.whatsapp.com/send?text=<?php echo $meta_title; ?> <?php echo $meta_url ?>" class="btn btn--small btn--secondary btn--share share-pinterest" title="Share by Email" target="_blank">
+                        <a href="https://api.whatsapp.com/send?text=<?php echo $dish; ?> <?php echo $meta_url ?>" class="btn btn--small btn--secondary btn--share share-pinterest" title="Share On Whatsapp" target="_blank">
                             <i class="fa fa-whatsapp" aria-hidden="true"></i> <span class="share-title" aria-hidden="true">Whatsapp</span>
                         </a>
                     </div>
                 </div>
+
                 <div class="prFeatures">
-                    <div class="row mt-5">
-                        <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature">
-                            <img src="<?php echo SITE_PATH ?>images/credit-card.png" alt="Safe Payment" title="Safe Payment" />
-                            <div class="details">
-                                <h3>Safe Payment</h3>
-                            </div>
-                        </div>
-                        <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature">
-                            <img src="<?php echo SITE_PATH ?>images/worldwide.png" alt="Worldwide Delivery" title="Worldwide Delivery" />
-                            <div class="details">
-                                <h3>Fast Delivery</h3>
-                            </div>
-                        </div>
-                        <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature">
-                            <img src="<?php echo SITE_PATH ?>images/phone-call.png" alt="Hotline" title="Hotline" style="width:35px" />
-                            <div class="details">
-                                <h3>Hotline</h3> <?php echo $site_phone ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+<div class="row mb-0 pb-0">
+    <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature card py-3 shadow-sm">
+        <img src="<?php echo SITE_PATH ?>images/delicious.png" alt="Delicious" title="Delicious" />
+        <div class="details">
+            <h3>Delicious Food</h3>
+        </div>
+    </div>
+    <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature card py-3 shadow-sm">
+        <img src="<?php echo SITE_PATH ?>images/credit-card.png" alt="Safe Payment" title="Safe Payment" />
+        <div class="details">
+            <h3>Safe Payment</h3>
+        </div>
+    </div>
+    <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature card py-3 shadow-sm">
+        <img src="<?php echo SITE_PATH ?>images/worldwide.png" alt="Worldwide Delivery" title="Worldwide Delivery" />
+        <div class="details">
+            <h3>Fast Delivery</h3>
+        </div>
+    </div>
+</div>
+
+
+</div>
             </div>
 
         </div>
@@ -448,6 +452,38 @@ if (count($getdish) == '') {
         function changeprice(id) {
             $("#dishmainprice").html('<i class="fa fa-inr" aria-hidden="true"></i> ' + id);
         }
+    </script>
+    <script>
+        const cards = document.querySelectorAll('.feature');
+        let currentCardIndex = 0;
+
+        function zoomInOut() {
+            if (cards.length > 0) {
+                cards.forEach((card, index) => {
+                    if (index === currentCardIndex) {
+                        if (card) {
+                            card.style.transform = 'scale(1.2)';
+                            card.style.zIndex = '999';
+                        }
+                    } else {
+                        if (card) {
+                            card.style.transform = 'scale(1)';
+                            card.style.zIndex = '1';
+
+                        }
+                    }
+                });
+
+                setTimeout(() => {
+                    if (cards[currentCardIndex]) {
+                        cards[currentCardIndex].style.transform = 'scale(1)';
+                        currentCardIndex = (currentCardIndex + 1) % cards.length;
+                    }
+                }, 500);
+            }
+        }
+
+        setInterval(zoomInOut, 1000);
     </script>
     <script>
         function showMultipleImg(imgSrc) {

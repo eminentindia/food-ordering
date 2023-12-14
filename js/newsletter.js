@@ -11,7 +11,8 @@ $("#newsletter_submit").click(function(e) {
         $("#newsletter_email").focus();
         return false;
     } else {
-        document.getElementById("newsletter_submit").innerHTML = "Please Wait..";
+        document.getElementById("newsletter_submit").innerHTML = '<div class="spinner-border spinner-sm text-light" role="status"></div>';
+
         $.ajax({
             type: "post",
             url: "http://localhost/food-ordering/action/newsletter-action",

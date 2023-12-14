@@ -114,12 +114,13 @@
                             <li class="lvl1 parent"><a href="<?php echo SITE_PATH ?>index">Home <i class="anm anm-angle-down-l"></i></a>
 
                             </li>
-                            <li class="lvl1 parent"><a href="<?php echo SITE_PATH ?>dishes">Dishes <i class="anm anm-angle-down-l"></i></a>
-                            </li>
+                            <!-- <li class="lvl1 parent"><a href="<?php echo SITE_PATH ?>dishes">Dishes <i class="anm anm-angle-down-l"></i></a>
+                            </li> -->
+
                             <li class="lvl1 parent dropdown"><a href="javascript:void(0)">Category <i class="anm anm-angle-down-l"></i></a>
                                 <ul class="dropdown">
                                     <?php
-                                    $query = "SELECT * FROM category ORDER BY RAND()";
+                                    $query = "SELECT * FROM category ORDER BY order_number ASC";
                                     $sel = mysqli_query($conn, $query);
 
                                     while ($row = mysqli_fetch_array($sel)) {
@@ -135,7 +136,30 @@
 
                                 </ul>
                             </li>
-                            <li class="lvl1 parent"><a href="<?php echo SITE_PATH ?>contact-us">Contact Us<i class="anm anm-angle-down-l"></i></a>
+                            <li class="lvl1 parent"><a href="<?php echo SITE_PATH ?>combos">Combos <i class="anm anm-angle-down-l"></i></a>
+                            </li>
+
+                            <?php
+                            $query = "SELECT * FROM category WHERE category IN ('Sandwich', 'Wrap', 'Thali', 'Biryani', 'Paratha', 'Burger') ORDER BY order_number ASC";
+
+                            // $query = "SELECT * FROM category WHERE category IN ('Sandwich',  'Thali') ORDER BY order_number ASC";
+
+                            $sel = mysqli_query($conn, $query);
+
+                            while ($row = mysqli_fetch_array($sel)) {
+                                $slug = $row['slug'];
+                                $category = $row['category'];
+                                $discount = $row['discount'];
+
+                                $discountHTML = $discount ? '<div class="light offdiscountPill">' . $discount . '% Off</div>' : '';
+
+                                echo '<li><a href="' . SITE_PATH . 'category/' . $slug . '" class="lvl1 parent">' . $category . ' ' . $discountHTML . '</a></li>';
+                            }
+                            ?>
+
+
+
+                            <!-- <li class="lvl1 parent"><a href="<?php echo SITE_PATH ?>contact-us">Contact Us<i class="anm anm-angle-down-l"></i></a> -->
                             </li>
                         </ul>
                     </nav>
@@ -198,7 +222,7 @@
             <li class="lvl1 parent dropdown"><a href="#">Category <i class="anm anm-angle-down-l"></i></a>
                 <ul class="dropdown">
                     <?php
-                    $query = "select * from category";
+                    $query = "select * from category  ORDER BY order_number ASC";
                     $sel = mysqli_query($conn, $query);
                     while ($row = mysqli_fetch_array($sel)) {
                         $ID = $row['ID'];
@@ -208,6 +232,25 @@
                     <?php } ?>
                 </ul>
             </li>
+
+
+            <?php
+            $query = "SELECT * FROM category WHERE category IN ('Sandwich', 'Wrap', 'Thali', 'Biryani', 'Paratha', 'Burger') ORDER BY order_number ASC";
+
+            // $query = "SELECT * FROM category WHERE category IN ('Sandwich',  'Thali') ORDER BY order_number ASC";
+
+            $sel = mysqli_query($conn, $query);
+
+            while ($row = mysqli_fetch_array($sel)) {
+                $slug = $row['slug'];
+                $category = $row['category'];
+                $discount = $row['discount'];
+
+                $discountHTML = $discount ? '<div class="light offdiscountPill">' . $discount . '% Off</div>' : '';
+
+                echo '<li><a href="' . SITE_PATH . 'category/' . $slug . '" class="site-nav">' . $category . ' ' . $discountHTML . '</a></li>';
+            }
+            ?>
 
 
             <li class="lvl1 parent"><a href="<?php echo SITE_PATH ?>contact-us">Contact</a>

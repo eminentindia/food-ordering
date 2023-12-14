@@ -4,7 +4,7 @@ include('connect/head.php'); ?>
 <?php include('connect/menu-nav.php');
 ?><?php
 
-if (!checkAdminDeveloperSession()) {
+if (!checkSuperAdminSession()) {
 	echo '<script>window.location.href="dashboard.php"</script>';
 }
 ?>

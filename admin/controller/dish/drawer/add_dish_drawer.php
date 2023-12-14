@@ -27,6 +27,20 @@
                 <div class="scroll-y me-n5 pe-5" data-kt-element="messages" data-kt-scroll="true" data-kt-scroll-activate="true" data-kt-scroll-dependencies="#add_dish_drawer_messenger_header, #add_dish_drawer_messenger_footer" data-kt-scroll-wrappers="#add_dish_drawer_messenger_body" data-kt-scroll-offset="0px">
                     <div class="card-body">
                         <div class="form-group row mb-3">
+
+                            <label for="is_combo" class="col-sm-3 control-label col-form-label">Is Combo</label>
+                            <div class="col-sm-3 radiocenter">
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" name="is_combo" id="is_combo" name="radio-stacked" value="1" >
+                                    <label class="form-check-label mb-0" for="is_combo">Yes</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" checked  name="is_combo" id="is_combo" name="radio-stacked" value="0">
+                                    <label class="form-check-label mb-0" for="is_combo">No</label>
+                                </div>
+                            </div>
+
+
                             <label for="is_available" class="col-sm-3 control-label col-form-label">Is Available</label>
                             <div class="col-sm-3 radiocenter">
                                 <div class="form-check">
@@ -180,7 +194,8 @@
                             <div class="col-sm-2"><input type="text" class="form-control attribute" name="attribute[]" placeholder="ATTRIBUTE" id="attribute"></div>
                             <div class="col-sm-2"><input type="number" class="form-control price" name="price[]" placeholder="PRICE" id="price"></div>
                             <div class="col-sm-2"><input type="text" class="form-control sku" name="sku[]" placeholder="SKU" id="sku"></div>
-                            <div class="col-sm-1"><div class="adddivposition"><i title="Add More" class="fa fa-plus" style="cursor: pointer;" onclick="add_more()"></i></div>
+                            <div class="col-sm-1">
+                                <div class="adddivposition"><i title="Add More" class="fa fa-plus" style="cursor: pointer;" onclick="add_more()"></i></div>
                             </div>
                         </div>
                         <div class="form-group row mb-3">

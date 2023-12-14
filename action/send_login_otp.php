@@ -24,7 +24,7 @@ if (isset($_POST['phone']) !== '') {
         // Check for errors
         $_SESSION['cod_otp'] = $otp;
         include('vendor\cod_otp.php');
-        $htmlOutput = '<div class="position-relative" style="    box-shadow: 0px 0px 20px 7px #1a9f0e1c;">
+        $htmlOutput = '<div class="position-relative" style="    box-shadow:0px 0px 20px 7px #bdbb542b;">
                 <div class="card p-2 text-center" style="padding: 30px !important;margin-bottom: 10px; margin-top: 0px;">
                     <h6>Please enter the one-time password <br> to verify your account</h6>
                     <div> <span>A code has been sent to</span> <small>' . $formattedPhoneNumber . '</small> </div>

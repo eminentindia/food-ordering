@@ -1,11 +1,11 @@
 <?php
 session_start();
+include('../admin/controller/common-controller.php');
 require('config.php');
 require('Razorpay.php');
 require_once 'common.php';
-include('../admin/controller/common-controller.php');
 
-$conn = _connectodb();
+// $conn = _connectodb();
 $getsetting = getsetting($conn);
 $getsetting = json_decode($getsetting, true);
 foreach ($getsetting as $getsinglesetting) {
@@ -76,7 +76,7 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
 
 
   $onlinePay = new MYORDERS();
-  $sql9 = $DB_con->prepare("SELECT MAX(id) AS id FROM orders");
+  $sql9 = $DB_con->prepare("SELECT MAX(ID) AS id FROM orders");
   $sql9->execute();
   $result9 = $sql9->fetch(PDO::FETCH_ASSOC);
   $pID = $result9['id'];
@@ -139,7 +139,7 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
     }
 
     // Callback URL
-    $callbackUrl = "" . SITE_PATH . "pre-orders/razorpay/verify.php"; // Replace with your actual callback URL
+    $callbackUrl = "" . SITE_PATH . "razorpay/verify.php"; // Replace with your actual callback URL
 
 
     $data = [
@@ -147,7 +147,7 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
       "amount"            => $amount,
       "name"              => "FOODIEEZ",
       "description"       => "Foodieez Pre-Order",
-      "image"             => "" . SITE_PATH . "wp-content/uploads/2021/12/logo-transparent.png",
+      "image"             => "https://foodieez.co.in/pre-orders/img/logo.png",
       "prefill"           => [
         "name"              => $fname,
         "email"             => $email,

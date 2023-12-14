@@ -23,63 +23,82 @@ if (isset($_SESSION['ATECHFOOD_USER'])) {
             </div>
         </div>
         <!--End Page Title-->
+        <!-- login-bg-back -->
 
+        <div class="row" style="margin: auto;display: flex;justify-content: center;">
+            <div class="col-md-9 d-flex justify-content-center px-4">
+                <div class="row d-flex align-items-center">
+                    <div class="col-md-6">
+                        <img src="<?php echo SITE_PATH ?>/images/login-sidebg.jpg" alt="">
+                    </div>
+                    <div class="col-md-6  d-flex justify-content-center">
+                        <div class="mb-4">
+                            <form method="post" id="loginformwithmobile" class="contact-form">
+                                <div class="row">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 p-0 m-0">
 
-        <div class="col-12 col-sm-12 col-md-4 col-lg-4 main-col offset-md-4 mt-5 mb-5" style="padding: 20px; background: #f9f9f9;box-shadow: 0px 0px 20px rgb(0 0 0 / 11%);border: 1px solid #dbdada;
-    -webkit-box-shadow: 0px 0px 20px rgb(0 0 0 / 11%);">
-            <div class="mb-4">
-                <form method="post" id="loginformwithmobile" class="contact-form">
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-
-                            <div class="phone-input">
-                                <div class="flag-icon">
-                                    <img src="<?php echo SITE_PATH ?>images/india.png" alt="Indian Flag">
-                                    <span>+91 </span>
+                                        <div class="phone-input">
+                                            <div class="flag-icon">
+                                                <img src="<?php echo SITE_PATH ?>images/india.png" alt="Indian Flag">
+                                                <span>+91 </span>
+                                            </div>
+                                            <input required type="tel" name="phone" placeholder="Enter Your Mobile No." id="loginmobile" autocorrect="off" autocapitalize="off" autofocus="on" style="margin-bottom: 0  !important;">
+                                        </div>
+                                        <div id="otpBOX">
+                                        </div>
+                                        <div id="invalidotp">
+                                        </div>
+                                    </div>
                                 </div>
-                                <input required type="tel" name="phone" placeholder="Enter Your Mobile No." id="loginmobile" autocorrect="off" autocapitalize="off" autofocus="on" style="margin-bottom: 0  !important;">
-                            </div>
-                            <div id="otpBOX">
-                            </div>
-                            <div id="invalidotp">
-                            </div>
+                                <div class="error_field"></div>
+                                <input type="hidden" name="type" value="login">
+                                <div class="row">
+                                    <div class="text-center col-12 col-sm-12 col-md-12 col-lg-12 p-0 m-0">
+                                        <div id="form_msg"></div>
+                                        <button type="submit" style="height:50px;background: #aab950 !important;" class="btn btn-block btn-success mb-3 text-center shadow-none w-100" id="sendotp">Send OTP</button>
+                                    </div>
+                                </div>
+                                <style>
+
+                                </style>
+
+
+
+                                <div class="prFeatures">
+
+                                    <div class="row mb-0 pb-0">
+                                        <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature card py-3 shadow-sm">
+                                            <img src="<?php echo SITE_PATH ?>images/delicious.png" alt="Delicious" title="Delicious" />
+                                            <div class="details">
+                                                <h3>Delicious Food</h3>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature card py-3 shadow-sm">
+                                            <img src="<?php echo SITE_PATH ?>images/credit-card.png" alt="Safe Payment" title="Safe Payment" />
+                                            <div class="details">
+                                                <h3>Safe Payment</h3>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature card py-3 shadow-sm">
+                                            <img src="<?php echo SITE_PATH ?>images/worldwide.png" alt="Worldwide Delivery" title="Worldwide Delivery" />
+                                            <div class="details">
+                                                <h3>Fast Delivery</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </form>
+
                         </div>
                     </div>
-                    <div class="error_field"></div>
-                    <input type="hidden" name="type" value="login">
-                    <div class="row">
-                        <div class="text-center col-12 col-sm-12 col-md-12 col-lg-12">
-                            <div id="form_msg"></div>
-                            <button type="submit" class="btn btn-block btn-success mb-3 text-center shadow-none w-100" id="sendotp">Send OTP</button>
-                        </div>
-                    </div>
-                    <div class="prFeatures">
-                        <div class="row mb-0 pb-0">
-                            <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature">
-                                <img src="<?php echo SITE_PATH ?>images/delicious.png" alt="Delicious" title="Delicious" />
-                                <div class="details">
-                                    <h3>Delicious Food</h3>
-                                </div>
-                            </div>
-                            <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature">
-                                <img src="<?php echo SITE_PATH ?>images/credit-card.png" alt="Safe Payment" title="Safe Payment" />
-                                <div class="details">
-                                    <h3>Safe Payment</h3>
-                                </div>
-                            </div>
-                            <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature">
-                                <img src="<?php echo SITE_PATH ?>images/worldwide.png" alt="Worldwide Delivery" title="Worldwide Delivery" />
-                                <div class="details">
-                                    <h3>Fast Delivery</h3>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </form>
-
+                </div>
             </div>
         </div>
+
+
+
     </div>
     <!--End Body Content-->
 
@@ -90,6 +109,39 @@ if (isset($_SESSION['ATECHFOOD_USER'])) {
     <script src="<?php echo SITE_PATH ?>js/login-register.js"></script>
 
     <script>
+        const cards = document.querySelectorAll('.feature');
+        let currentCardIndex = 0;
+
+        function zoomInOut() {
+            if (cards.length > 0) {
+                cards.forEach((card, index) => {
+                    if (index === currentCardIndex) {
+                        if (card) {
+                            card.style.transform = 'scale(1.2)';
+                            card.style.zIndex = '99999';
+                        }
+                    } else {
+                        if (card) {
+                            card.style.transform = 'scale(1)';
+                            card.style.zIndex = '1';
+
+                        }
+                    }
+                });
+
+                setTimeout(() => {
+                    if (cards[currentCardIndex]) {
+                        cards[currentCardIndex].style.transform = 'scale(1)';
+                        currentCardIndex = (currentCardIndex + 1) % cards.length;
+                    }
+                }, 500);
+            }
+        }
+
+        setInterval(zoomInOut, 1000);
+
+
+
         $(document).ready(function() {
             $("#loginformwithmobile").validate({
                 rules: {

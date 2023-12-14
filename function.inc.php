@@ -13,7 +13,7 @@ function getUserCart()
   return $arr;
 }
 
-function checkAdminDeveloperSession()
+function checkSuperAdminSession()
 {
     if (session_status() == PHP_SESSION_ACTIVE && $_SESSION['store'] == '100') {
         return true;
@@ -22,8 +22,17 @@ function checkAdminDeveloperSession()
     }
 }
 
+function checkAdminSession()
+{
+    if (session_status() == PHP_SESSION_ACTIVE && $_SESSION['store'] == '99') {
+        return true;
+    } else {
+        return false;
+    }
+}
 
-function checkAdminDCMSession()
+
+function checkDCMSession()
 {
     if (session_status() == PHP_SESSION_ACTIVE && $_SESSION['store'] == '2') {
         return true;
@@ -32,7 +41,7 @@ function checkAdminDCMSession()
     }
 }
 
-function checkAdminArunachalSession()
+function checkArunachalSession()
 {
     if (session_status() == PHP_SESSION_ACTIVE && $_SESSION['store'] == '1') {
         return true;
@@ -3592,7 +3601,7 @@ function get_dish_Attibutes($conn, $id)
 
 function getDashboardtodaycompleteOrders($conn, $start, $end)
 {
-  if (checkAdminDeveloperSession()) {
+  if (checkSuperAdminSession()) {
     $filter = " ";
 } else {
     $filter = "AND orders.store='" . $_SESSION['store'] . "'";
@@ -3613,7 +3622,7 @@ function getDashboardtodaycompleteOrders($conn, $start, $end)
 function gettodaytotalorder($conn, $start, $end)
 {
 
-     if (checkAdminDeveloperSession()) {
+     if (checkSuperAdminSession()) {
         $filter = " ";
     } else {
         $filter = "AND orders.store='" . $_SESSION['store'] . "'";
@@ -3632,7 +3641,7 @@ function gettodaytotalorder($conn, $start, $end)
 
 function getDashboardpendingOrders($conn)
 {
-    if (checkAdminDeveloperSession()) {
+    if (checkSuperAdminSession()) {
         $filter = " ";
     } else {
         $filter = "AND orders.store='" . $_SESSION['store'] . "'";
@@ -3651,7 +3660,7 @@ function getDashboardpendingOrders($conn)
 function getDashboardcancelpendingOrders($conn, $start, $end)
 {
 
-  if (checkAdminDeveloperSession()) {
+  if (checkSuperAdminSession()) {
     $filter = " ";
 } else {
     $filter = "AND orders.store='" . $_SESSION['store'] . "'";

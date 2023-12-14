@@ -32,6 +32,7 @@ if (isset($_POST['ID'])) {
     $meta_title = safe_value($conn, $_POST['edit_meta_title']);
     $slug = safe_value($conn, $_POST['edit_slug']);
     $is_available = safe_value($conn, $_POST['edit_is_available']);
+    $is_combo = safe_value($conn, $_POST['edit_is_combo']);
     $is_attribute_product = safe_value($conn, $_POST['edit_is_attribute_product']);
     $meta_description = safe_value($conn, $_POST['edit_meta_description']);
     $meta_keywords = safe_value($conn, $_POST['edit_meta_keywords']);
@@ -106,6 +107,7 @@ if (isset($_POST['ID'])) {
         'meta_description' => $meta_description,
         'meta_keywords' => $meta_keywords,
         'is_available' => $is_available,
+        'is_combo' => $is_combo,
         'mrp' => $mrp,
         'selling_price' => $selling_price,
         'main_sku' => $main_sku,

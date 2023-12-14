@@ -108,7 +108,7 @@ $getfestivals = json_decode($getfestivals, true);
 
 				</div>
 				<?php
-				if (checkAdminDeveloperSession()) {
+				if (checkSuperAdminSession()) {
 				?>
 					<div class="card mb-5 mb-xl-8">
 						<div class="card-header border-0 pt-5">
@@ -148,38 +148,43 @@ $getfestivals = json_decode($getfestivals, true);
 				<?php }
 				?>
 				<div class="card mb-5 mb-xl-8">
-					<div class="card-header align-items-center border-0 mt-4" style="    min-height: 20px;">
+					<div class="card-header align-items-center border-0 mt-4" style="min-height: 20px;">
 						<h3 class="card-title align-items-start flex-column">
 							<span class="fw-bolder mb-2 text-dark">Most Sale Dish</span>
 						</h3>
 						<?php
-						if (checkAdminDeveloperSession()) {
+						$mostsalesql = null; // Initialize $mostsalesql to avoid "Undefined variable" warning
+
+						if (checkSuperAdminSession()) {
 							$filter = " ";
 						} else {
 							$filter = " AND orders.store='" . $_SESSION['store'] . "'";
 						}
+
 						$mostsalesql_result = mysqli_query($conn, "SELECT count(order_details.dish_order_id) as dish_count, dish.dish, dish.image FROM order_details, dish_details, dish, orders WHERE order_details.dish_order_id=dish_details.dish_detail_id AND dish_details.dish_id=dish.id $filter  GROUP BY order_details.dish_order_id ORDER BY count(order_details.dish_order_id) DESC LIMIT 1");
 
 						if ($mostsalesql_result && mysqli_num_rows($mostsalesql_result) > 0) {
 							$mostsalesql = mysqli_fetch_assoc($mostsalesql_result);
 						?>
+							<div class="card-body pt-0">
+								<div class="d-flex gap-4 align-items-center mb-4">
+									<h4 class="pt-3" style="background: #daff88; font-size: 1.2rem; width: max-content; padding: 4px 20px; margin: 0; padding-top: 4px !important;border-radius: 10px;"><?php echo $mostsalesql['dish']; ?></h4>
+									<br>
+									<h6 class="dishtimes"><?php echo $mostsalesql['dish_count']; ?> Times</h6>
+								</div>
+								<div class="card bgi-position-y-bottom bgi-position-x-end bgi-no-repeat bgi-size-cover min-h-150px mb-5 mb-xl-8" style="  font-family: 'Kalam', cursive;background-color: #fd7d16;  background-size: cover;background-image:url('<?php echo PRODUCT_IMAGE_SITE_PATH . $mostsalesql['image'] ?>')">
 
+								</div>
+
+							</div><!-- Your code continues here -->
 						<?php
 						}
 						?>
-
 					</div>
-					<div class="card-body pt-0">
-						<div class="d-flex gap-4 align-items-center mb-4">
-							<h4 class="pt-3" style="background: #daff88; font-size: 1.2rem; width: max-content; padding: 4px 20px; margin: 0; padding-top: 4px !important;border-radius: 10px;"><?php echo $mostsalesql['dish']; ?></h4>
-							<br>
-							<h6 class="dishtimes"><?php echo $mostsalesql['dish_count']; ?> Times</h6>
-						</div>
-						<div class="card bgi-position-y-bottom bgi-position-x-end bgi-no-repeat bgi-size-cover min-h-150px mb-5 mb-xl-8" style="  font-family: 'Kalam', cursive;background-color: #fd7d16;  background-size: cover;background-image:url('<?php echo PRODUCT_IMAGE_SITE_PATH . $mostsalesql['image'] ?>')">
 
-						</div>
+					<!-- Other parts of your code -->
 
-					</div>
+
 				</div>
 
 			</div>
@@ -190,9 +195,9 @@ $getfestivals = json_decode($getfestivals, true);
 
 
 					<?php
-					if (checkAdminDCMSession() || checkAdminDeveloperSession()) {
+					if (checkDCMSession() || checkSuperAdminSession()) {
 					?>
-						<div class=" <?php if (checkAdminDeveloperSession() ? 'col-md-6' : 'col-md-12') ?>" style="background: white;border: 1px solid #dbdbdb; padding: 0; -webkit-box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%); -moz-box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%); box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%);">
+						<div class=" <?php if (checkSuperAdminSession() ? 'col-md-6' : 'col-md-12') ?>" style="background: white;border: 1px solid #dbdbdb; padding: 0; -webkit-box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%); -moz-box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%); box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%);">
 							<!--begin::Item-->
 							<div class="d-flex align-items-center bg-light-info rounded p-5 changedash" style="border-bottom: 1px solid #d3d3d3ab;padding-bottom: 20px !important;margin-bottom: 20px;     padding-top: 20px !important;   background: #a6dd79;">
 								<!--begin::Icon-->
@@ -237,9 +242,9 @@ $getfestivals = json_decode($getfestivals, true);
 					?>
 
 					<?php
-					if (checkAdminArunachalSession() || checkAdminDeveloperSession()) {
+					if (checkArunachalSession() || checkSuperAdminSession()) {
 					?>
-						<div class=" <?php if (checkAdminDeveloperSession() ? 'col-md-6' : 'col-md-12') ?>" style="background: white;border: 1px solid #dbdbdb;padding: 0;-webkit-box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%);-moz-box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%);box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%);">
+						<div class=" <?php if (checkSuperAdminSession() ? 'col-md-6' : 'col-md-12') ?>" style="background: white;border: 1px solid #dbdbdb;padding: 0;-webkit-box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%);-moz-box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%);box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%);">
 							<div class="d-flex align-items-center bg-light-success rounded p-5 changedash" style="border-bottom: 1px solid #d3d3d3ab; padding-bottom: 20px !important;    padding-top: 20px !important;  margin-bottom: 20px;    background: #98cae5;">
 								<span class="svg-icon svg-icon-success me-5">
 									<span class="svg-icon svg-icon-1">
@@ -363,7 +368,7 @@ $getfestivals = json_decode($getfestivals, true);
 
 
 	<?php
-	if (checkAdminDCMSession() || checkAdminDeveloperSession()) {
+	if (checkDCMSession() || checkSuperAdminSession()) {
 	?>
 		var chart = new CanvasJS.Chart("dcmcontainer", {
 			animationEnabled: true,
@@ -381,7 +386,7 @@ $getfestivals = json_decode($getfestivals, true);
 
 	<?php } ?>
 	<?php
-	if (checkAdminArunachalSession() || checkAdminDeveloperSession()) {
+	if (checkArunachalSession() || checkSuperAdminSession()) {
 	?>
 		var chart2 = new CanvasJS.Chart("cpcontainer", {
 			animationEnabled: true,

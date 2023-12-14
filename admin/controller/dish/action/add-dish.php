@@ -24,6 +24,7 @@ if (isset($_POST['dish'])) {
     $meta_title = safe_value($conn, $_POST['meta_title']);
     $slug = safe_value($conn, $_POST['slug']);
     $is_available = safe_value($conn, $_POST['is_available']);
+    $is_combo = safe_value($conn, $_POST['is_combo']);
     $is_attribute_product = safe_value($conn, $_POST['is_attribute_product']);
     $meta_description = safe_value($conn, $_POST['meta_description']);
     $meta_keywords = safe_value($conn, $_POST['meta_keywords']);
@@ -83,6 +84,7 @@ if (isset($_POST['dish'])) {
         'meta_keywords' => $meta_keywords,
         'status' => '1',
         'is_available' => $is_available,
+        'is_combo' => $is_combo,
         'mrp' => $mrp,
         'selling_price' => $selling_price,
         'main_sku' => $main_sku,

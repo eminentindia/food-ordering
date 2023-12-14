@@ -46,7 +46,7 @@
                         <h4 class="h4">Quick Shop</h4>
                         <ul class="position-relative">
                             <?php
-                            $query = "SELECT * FROM category ORDER BY RAND()";
+                            $query = "SELECT * FROM category  ORDER BY order_number ASC";
                             $sel = mysqli_query($conn, $query);
 
                             while ($row = mysqli_fetch_array($sel)) {
@@ -105,9 +105,131 @@
         </div>
     </div>
 </footer>
-<style>
 
-</style>
+
+<!-- <div id="mySlideInModal">
+    <div class="dishdaytitle">Dish Of The Day</div>
+    <div class="item-containerday d-flex align-items-center">
+        <div class="details-containerday">
+            <div class="dishtitileday">
+                <img src="images/veg.png" alt="" class="typeicon">
+                <h3 class="item-name-textday mb-0">Chole Rice</h3>
+            </div>
+
+            <div class="item-priceday-containerday" aria-hidden="true">
+                <span class="priceday">
+                    <i class="fa fa-inr" aria-hidden="true"></i>
+                    <span id="priceday_lunch12" data-priceday="99" data-sku="RICE-3">99</span>
+                </span>
+            </div>
+        </div>
+        <div class="image-containerday">
+            <div aria-hidden="true">
+                <button class="image-buttonday" aria-label="chole-rice">
+                    <img alt="chole-rice" class="item-imageday" loading="lazy" src="http://localhost/food-ordering/admin/media/dish/chole-rice2023-9472.png">
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    #mySlideInModal {
+        height: max-content;
+        box-shadow: 0 0 20px 2px #729a1bb5;
+        width: max-content;
+        background: white;
+        position: fixed;
+        top: 50%;
+        left: -400px;
+        /* Center horizontally */
+        transform: translate(0, -50%);
+        /* Center vertically and horizontally */
+        z-index: 9999;
+        transition: left 1s ease-in-out;
+    }
+
+    .item-containerday {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-direction: column-reverse;
+        margin-bottom: 15px;
+        width: 100%;
+        /* padding-right: 30px; */
+        justify-content: start;
+        align-items: flex-start !important;
+        ;
+    }
+
+    .dishtitileday {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .details-containerday {
+        flex: 1;
+        padding: 0 15px;
+    }
+
+    .details-containerday img.typeicon {
+        width: 25px;
+    }
+
+    .item-name-textday {
+        margin-bottom: 0;
+        white-space: nowrap !important;
+    }
+
+    .item-priceday-containerday {
+        font-size: 1.3rem;
+        margin-top: 10px;
+        color: #0c800c;
+    }
+
+    .priceday {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 700;
+    }
+
+    .image-containerday {
+        flex: 1;
+    }
+
+    .image-buttonday {
+        background: rgb(246, 246, 246);
+        width: 200px;
+        padding: 0;
+    }
+
+    .item-imageday {
+        width: 256px;
+    }
+
+    .dishdaytitle {
+        position: absolute;
+        top: -20px;
+        white-space: nowrap;
+        left: 50%;
+        transform: translate(-50%, 0);
+        background: #729a1b;
+        padding: 10px;
+        color: white;
+        font-weight: 700;
+        border-radius: 10px
+    }
+</style> -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Trigger the animation after the page has loaded
+        var modal = document.getElementById('mySlideInModal');
+        modal.style.left = '0'; // Slide into the viewport
+    });
+</script>
+
 
 <?php
 $requestUri = $_SERVER['REQUEST_URI'];
@@ -119,7 +241,7 @@ if ($pageName == 'cart' || $pageName == 'checkout') {
     <div class="bottomfilter">
         <div class="atech-sticky-navbar has-ccols ccols-4  fixed">
             <div class="sticky-icon link-home">
-                <a href="https://handikart.co.in">
+                <a href="">
                     <div class="site-header__search">
                         <a href="<?php echo SITE_PATH ?>" class="">
                             <img src="<?php echo SITE_PATH ?>images/home.png" alt="Home" class="home-icon footerIcon">

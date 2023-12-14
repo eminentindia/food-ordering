@@ -295,6 +295,7 @@ color: #ff5353;
 
 #siteNav a {
 color: #535353 !important;
+font-weight:600 !important
 }
 
 .store {
@@ -1430,6 +1431,7 @@ border: 1px solid #ccc;
 border-radius: 5px;
 padding: 5px;
 margin-bottom: 20px;
+background:white;
 font-size: 15px;
 }
 
@@ -1858,7 +1860,7 @@ text-align: left;
 #siteNav>li>a {
 padding: 0 20px;
 text-transform: uppercase;
-line-height: 40px;
+line-height: 40px;letter-spacing: .9px;
 }
 
 #siteNav.medium>li>a .anm {
@@ -4672,6 +4674,7 @@ width: 25px;
 
 .prFeatures {
 padding: 20px 0;
+padding-bottom:0 !Important
 }
 
 .prFeatures .feature {
@@ -8010,9 +8013,7 @@ color: #ffe15e;
 .cartquantity-controls {
 display: flex;
 align-items: center;
-
 border: 1px dashed white;
-padding: 4px 8px;padding-left: 0;
 }
 
 /* Style for the quantity input */
@@ -9241,7 +9242,7 @@ background-color: #fd7d16; /* Change this color to your desired scrollbar color 
 border-radius:20px;
 }
     .grid-products .item .product-image{
-height:100px
+      height: 150px;
 }
 .grid-products .item .product-name a {
 font-size: 1.1em;

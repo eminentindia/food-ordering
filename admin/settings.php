@@ -10,7 +10,7 @@ include('connect/menu-nav.php'); ?>
 <link rel="stylesheet" href="<?php echo ADMIN_SITE_PATH ?>assets/css/color-picker.css">
 <?php
 
-if (!checkAdminDeveloperSession()) {
+if (!checkSuperAdminSession()) {
 	echo '<script>window.location.href="dashboard.php"</script>';
 }
 ?>
