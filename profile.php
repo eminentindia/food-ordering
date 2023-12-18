@@ -95,15 +95,7 @@ $getuserdetail = getUserDetailsByid();
                                                             <div class="col-lg-6">
                                                                 <div class="single-input-item">
                                                                     <label for="email" class="required">Email Addres</label>
-                                                                    <input type="email" id="email" placeholder="Email Address" value="<?php if (isset($_SESSION['email'])) {
-                                                                                                                                            echo $_SESSION['email'];
-                                                                                                                                        } else {
-                                                                                                                                            echo '';
-                                                                                                                                        } ?>" <?php if (isset($_SESSION['email']) != '') {
-                                                                                                                                                    echo "readonly";
-                                                                                                                                                }
-
-                                                                                                                                                ?> />
+                                                                    <input type="email" id="email" placeholder="Email Address" value="<?php echo $getuserdetail['email'] ?>" <?php if (isset($_SESSION['email']) != '') { echo "readonly";  } ?> />
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-6 ">

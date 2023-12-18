@@ -1,11 +1,8 @@
 <?php
 include('includes/header.php'); ?>
-
 <?php include('smtp/PHPMailerAutoload.php'); ?>
 <?php
-
 $user_data = getUserDetailsByid();
-
 ?>
 <?php
 if ($website_close == '1') {
@@ -23,11 +20,9 @@ if (count($cart) > 0) {
 <body class="page-template belle">
     <?php include('includes/navbar.php') ?>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.rtl.min.css" />
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <link rel="stylesheet" href="css/checkout.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
     <div id="page-content" class="checkoutPage">
         <?php
         if (isset($_SESSION['ATECHFOOD_USER'])) {
@@ -51,7 +46,6 @@ if (count($cart) > 0) {
                                                                 <label for="exampleInputEmail1">Email address <span class="required-f">*</span></label>
                                                                 <input type="text" class="no-margin" name="email" placeholder="Email" id="loginemail">
                                                                 <p id="invalidemail" class="errmsg"></p>
-
                                                             </div>
                                                             <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                                                 <label for="exampleInputPassword1">Password <span class="required-f">*</span></label>
@@ -67,7 +61,6 @@ if (count($cart) > 0) {
                                                                 </div>
                                                                 <button type="button" class="btn btn-warning mt-3 shadow-none" id="loginnow">Login</button>
                                                                 <p id="loginsuccess" class="successmsg mb-3"></p>
-
                                                             </div>
                                                         </div>
                                                     </form>
@@ -110,7 +103,6 @@ if (count($cart) > 0) {
                                                     <input style="height: inherit;font-size: 1rem;" type="text" name="delievery_date" required placeholder="Enter Delivery Date" id="delievery_date" class="form-control">
                                                 </div>
                                             </div>
-
                                             <div class="col-md-6">
                                                 <div class="checkout__form__input">
                                                     <p class="text-uppercase mycheckoutlabel">Time <span style="color: white !important;">Slot</span> <span style="color: white !important;">*</span> <?php
@@ -136,7 +128,6 @@ if (count($cart) > 0) {
                                                         font-weight: 500;
                                                         letter-spacing: 1px;
                                                     ">Choose <span>Outlet</span></h2>
-
                                             <div class="d-block">
                                                 <div class="align-items-baseline" style="display: flex;gap: 7px;border: 1px dashed #5b9a5b;padding: 5px;margin-bottom: 10px;background: #e4ffc5;">
                                                     <label style="user-select: none; cursor:pointer;margin-bottom:0;font-size:14px;gap:8px" class="d-flex align-items-center">
@@ -161,10 +152,7 @@ if (count($cart) > 0) {
                                                                 </svg>
                                                             </div>
                                                         </div>
-
                                                         &nbsp; 07A, Ground Floor, Arunachal Building, Barakhamba Road, Connaught Place
-
-
                                                     </label>
                                                 </div>
                                                 <div class="align-items-baseline" style="display: flex;gap: 7px;border: 1px dashed #FF9800;padding: 5px;margin-bottom: 10px;background: #ffe3b9;">
@@ -207,14 +195,12 @@ if (count($cart) > 0) {
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-
                                                     <div class="checkout__form__input">
                                                         <p>Town/City <span>*</span></p>
                                                         <input type="text" name="city" value="Delhi" id="Delhi" readonly>
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                         <div class="col-lg-12" id="showsindelievery">
                                             <div class="checkout__form__input">
@@ -222,7 +208,6 @@ if (count($cart) > 0) {
                                                 <input type="text" name="address" placeholder="Street Address" value="<?php echo $user_data['address'] ?>">
                                                 <input type="text" class="mt-2" name="apartment" value="<?php echo $user_data['appartment'] ?>" placeholder="Apartment, suite etc ( optional )">
                                             </div>
-
                                             <div class="checkout__form__input">
                                                 <p>Postcode/Zip <span>*</span></p>
                                                 <input type="text" name="zip" id="zip" value="<?php echo $user_data['postcode'] ?>">
@@ -270,7 +255,6 @@ if (count($cart) > 0) {
                                     <div class="your-order-payment">
                                         <div class="your-order">
                                             <h2 class="order-title mb-4">Your <span>Order</span></h2>
-
                                             <div class="table-responsive-sm order-table myorder-table">
                                                 <table class="bg-white table table-bordered table-hover text-center">
                                                     <thead>
@@ -285,7 +269,6 @@ if (count($cart) > 0) {
                                                         <?php
                                                         $ftotal = 0;
                                                         $cartArr = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
-
                                                         foreach ($cartArr as $key => $cart) {
                                                             $total = $cart['price'] * $cart['quantity'];
                                                             $ftotal += $total;
@@ -311,7 +294,6 @@ if (count($cart) > 0) {
                                                             </tr>
                                                         <?php } ?>
                                                     </tbody>
-
                                                     <tfoot class="font-weight-600" style="color: var(--mainbtn); font-weight: bold;">
                                                         <tr>
                                                             <td colspan="3" class="text-right">Total (Inclusive Taxes) </td>
@@ -332,7 +314,6 @@ if (count($cart) > 0) {
                                                     </tfoot>
                                                 </table>
                                             </div>
-
                                             <div class="table-responsive-sm order-table myorder-table2">
                                                 <?php
                                                 $ftotal = 0;
@@ -384,8 +365,6 @@ if (count($cart) > 0) {
                                                 </tfoot>
                                                 </table>
                                             </div>
-
-
                                         </div>
                                         <div class="your-payment">
                                             <h2 class="payment-title mb-3">payment <span>method</span></h2>
@@ -401,11 +380,9 @@ if (count($cart) > 0) {
                                                             <input type="radio" id="online" name="payment_type" value="online" class="mt-3" checked>
                                                             <label for="online" id="onlinepayment"> <img src="<?php echo SITE_PATH ?>images/mobile-shopping.png" alt="Online Payment"></label>
                                                         </div>
-
                                                         <img src="images/payment-img.jpg" alt="Payment">
                                                         <div class="checkout__order__widget" style="margin-top: 20px; border: 1px solid #80808069; padding: 10px; background: #eeeeee;">
                                                             <div class="">
-
                                                                 <div class="checkbox-wrapper-12">
                                                                     <div class="cbx">
                                                                         <input type="checkbox" name="terms" id="terms" style="margin-bottom: 0 !important;">
@@ -414,7 +391,6 @@ if (count($cart) > 0) {
                                                                             <path d="M2 8.36364L6.23077 12L13 2"></path>
                                                                         </svg>
                                                                     </div>
-
                                                                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
                                                                         <defs>
                                                                             <filter id="goo-12">
@@ -424,11 +400,8 @@ if (count($cart) > 0) {
                                                                             </filter>
                                                                         </defs>
                                                                     </svg>
-
                                                                     <span class=""> I have read and agree to the website <a href="<?php echo SITE_PATH ?>terms-conditions.php" class="woocommerce-terms-and-conditions-link" target="_blank">T & C</a></span>&nbsp;<abbr class="required" title="required">
                                                                 </div>
-
-
                                                             </div>
                                                         </div>
                                                     </div>
@@ -446,7 +419,6 @@ if (count($cart) > 0) {
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -498,13 +470,8 @@ if (count($cart) > 0) {
                                         </div>
                                     </div>
                                     <style>
-
                                     </style>
-
-
-
                                     <div class="prFeatures">
-
                                         <div class="row mb-0 pb-0">
                                             <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature card py-3 shadow-sm">
                                                 <img src="<?php echo SITE_PATH ?>images/delicious.png" alt="Delicious" title="Delicious" />
@@ -525,17 +492,13 @@ if (count($cart) > 0) {
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </div>
                                 </form>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <script>
                 const cards = document.querySelectorAll('.feature');
                 let currentCardIndex = 0;
@@ -578,361 +541,7 @@ if (count($cart) > 0) {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
         <script src="js/checkout.js"></script>
-        <script>
-            function applycoupon() {
-                var couponcode = $("#couponcode").val();
-                if (couponcode == "") {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Please Enter Coupon Code',
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 4000,
-                        background: '#ff9999',
-                    });
-                } else {
-                    $.ajax({
-                        type: "post",
-                        url: "action/check-coupon.php",
-                        data: "couponcode=" + couponcode,
-                        success: function(response) {
-                            var response = JSON.parse(response);
-                            if (response.status == "success") {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Success',
-                                    text: response.msg,
-                                    toast: true,
-                                    position: 'top-end',
-                                    showConfirmButton: false,
-                                    timer: 4000,
-                                    background: '#99ff99',
-                                });
-                                jQuery(".shopping-cart-total").show();
-                                $("#couponsuccess").html(response.msg);
-                                jQuery(".final_price").html("Rs. " + response.coupon_code_apply);
-                                jQuery(".coupon_code_str").html(" Rs. " + response.value);
-                                $(".coupon-btn").html("UPDATE");
-                                $("#couponsuccess").show();
-                            } else if (response.status == "percent") {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Success',
-                                    text: response.msg,
-                                    toast: true,
-                                    position: 'top-end',
-                                    showConfirmButton: false,
-                                    timer: 4000,
-                                    background: '#99ff99',
-                                });
-                                jQuery(".shopping-cart-total").show();
-                                $("#couponsuccess").html(response.msg);
-                                jQuery(".final_price").html(" Rs. " + response.coupon_code_apply);
-                                jQuery(".coupon_code_str").html(response.value + "%");
-                                $("#couponsuccess").show();
-                            } else if (response.status == "error") {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: response.msg,
-                                    toast: true,
-                                    position: 'top-end',
-                                    showConfirmButton: false,
-                                    timer: 4000,
-                                    background: '#ff9999',
-                                });
-                                $("#couponerror").delay(4000).fadeOut("slow");
-                                $("#couponerror").show();
-                            }
-                        },
-                    });
-                }
-            }
-            $(document).ready(function() {
-                $("#loginformwithmobile").validate({
-                    rules: {
-                        phone: {
-                            required: true,
-                            rangelength: [10, 10],
-                            number: true,
-                        },
-                    },
-                    highlight: function(element) {
-                        $(element).addClass("error");
-                    },
-                    unhighlight: function(element) {
-                        $(element).removeClass("error");
-                    },
-                    errorPlacement: function(error, element) {
-                        // Do not show any error messages
-                    },
-                    submitHandler: function(form) {
-                        var loginmobile = $("#loginmobile").val();
-                        $('#sendotp').attr("disabled", true);
-                        $('#sendotp').html("Please Wait...");
-                        $.ajax({
-                            type: "POST",
-                            url: "action/send_login_otp.php",
-                            data: {
-                                phone: loginmobile
-                            },
-                            success: function(response) {
-                                if (response.status === "success") {
-                                    $("#loginmobile").attr("disabled", true);
-                                    $('#sendotp').attr("disabled", false);
-                                    $('#sendotp').html("Send OTP");
-                                    $("#otpBOX").html(response.html);
-                                    $('#sendotp').hide();
-                                    OTPInput();
-                                    initializeResendButton();
-
-
-                                } else {
-                                    $("#otpBOX").html(response.html);
-                                    OTPInput();
-                                    initializeResendButton();
-                                }
-                            }
-                        });
-                    },
-                });
-            });
-
-            function OTPInput() {
-                const inputs = document.querySelectorAll("#otp > *[id]");
-
-                for (let i = 0; i < inputs.length; i++) {
-                    inputs[i].addEventListener("input", function(event) {
-                        const inputValue = event.data;
-                        if (event.inputType === "deleteContentBackward" || event.key === "Backspace") {
-                            if (inputValue === null || inputValue === "") {
-                                if (i !== 0) {
-                                    inputs[i - 1].value = "";
-                                    inputs[i - 1].focus();
-                                }
-                            }
-                        } else {
-                            if (i === inputs.length - 1 && inputValue !== null && inputValue !== "") {
-                                return true;
-                            } else if (/^[0-9a-zA-Z]$/.test(inputValue)) {
-                                inputs[i].value = inputValue;
-                                if (i !== inputs.length - 1) inputs[i + 1].focus();
-                            }
-                        }
-                    });
-
-                    // Handle the Backspace key press separately
-                    inputs[i].addEventListener("keydown", function(event) {
-                        if (event.key === "Backspace" && i !== 0 && inputs[i].value === "") {
-                            inputs[i - 1].value = "";
-                            inputs[i - 1].focus();
-                        }
-                    });
-                }
-            }
-
-            function initializeResendButton() {
-                var count = 1;
-                var resendButton = document.getElementById("ResendOTP");
-                var countdown = 10;
-                var resendTimer;
-
-                function startTimer() {
-                    resendButton.setAttribute("disabled", "disabled");
-                    resendButton.innerHTML = "Resend (" + count + "/3)";
-
-                    countdown = 10;
-                    resendTimer = setInterval(function() {
-                        countdown--;
-
-                        if (countdown >= 0) {
-                            var seconds = countdown;
-                            resendButton.innerHTML =
-                                "Resend (" + (seconds < 10 ? "0" : "") + seconds + ")";
-                        } else {
-                            clearInterval(resendTimer);
-                            if (count < 3) {
-                                resendButton.removeAttribute("disabled");
-                                resendButton.innerHTML = "Resend";
-                            } else {
-                                resendButton.remove();
-                            }
-                        }
-                    }, 1000);
-                }
-
-                resendButton.addEventListener("click", function() {
-                    if (!resendButton.hasAttribute("disabled")) {
-                        count++;
-                        if (count <= 3) {
-                            startTimer();
-                            //box show (hit again)
-                        }
-                    }
-                });
-                startTimer();
-            }
-            $(document).on("click", ".validatethis", function(e) {
-                var loginmobile = $("#loginmobile").val();
-                e.preventDefault();
-                const inputs = document.querySelectorAll("#otp input");
-                const numbers = [];
-                inputs.forEach(function(input) {
-                    const value = parseInt(input.value);
-                    if (!isNaN(value)) {
-                        numbers.push(value);
-                    }
-                });
-                const numberString = numbers.join("");
-
-                $('.validatethis').prop("disabled", true).html("Please Wait...");
-                $.ajax({
-                    type: "post",
-                    url: "action/validate_otp.php",
-                    data: {
-                        numbers: numberString,
-                        loginmobile: loginmobile
-                    },
-                    success: function(response) {
-                        if (response.trim() == "success") {
-                            var success_html =
-                                '<div class="alert alert-success d-flex align-items-center" role="alert"><div>OTP VALIDATED SUCCESSFULLY !! Redirecting...</div></div>';
-                            $("#otpBOX").html(success_html);
-                            setTimeout(function() {
-                                location.reload();
-                            }, 1000);
-                        } else {
-                            var fail_html =
-                                '<div class="alert alert-warning d-flex align-items-center" role="alert"><div>INVALID OTP !!</div></div>';
-                            $("#invalidotp").html(fail_html);
-                        }
-                    },
-                    complete: function() {
-                        $('.validatethis').prop("disabled", false).html("Continue");
-                    }
-                });
-
-            });
-        </script>
-        <script>
-            $(document).ready(function() {
-                $("#checkmain").validate({
-                    rules: {
-                        fname: {
-                            required: true,
-                        },
-                        phone: {
-                            required: true,
-                            rangelength: [10, 12],
-                            number: true,
-                        },
-                        zip: {
-                            required: true,
-                            number: true,
-                        },
-                        address: {
-                            required: true,
-                        },
-                        city: {
-                            required: true,
-                        },
-                        email: {
-                            required: true,
-                            email: true,
-                        },
-                        time_slot: {
-                            required: true,
-                        },
-                        delievery_date: {
-                            required: true,
-                        },
-                    },
-                    highlight: function(element) {
-                        $(element).addClass("error");
-                    },
-                    unhighlight: function(element) {
-                        $(element).removeClass("error");
-                    },
-                    errorPlacement: function(error, element) {
-                        // Do not show any error messages
-                    },
-                    submitHandler: function(form) {
-                        var zip = $("#zip").val();
-                        var Delhi = $("#Delhi").val();
-                        var inputValue1 = $('input[name="delieverytype"]:checked').val();
-                        if ($('input[name="store"]:checked').length == 0) {
-                            showError('Please Choose your Nearest store !!');
-                            $('input[name="store"]').focus();
-                            return false;
-                        }
-
-                        if (zip !== "110001" && inputValue1 == "Delivery") {
-                            showError('We Only Deliver in 110001, BARAKHAMBA ROAD, KG MARG & CONNAUGHT PLACE');
-                            $("#zip").focus();
-                            return false;
-                        }
-
-                        if (Delhi !== "Delhi") {
-                            showError('We only deliver in Delhi');
-                            $("#Delhi").focus();
-                            return false;
-                        }
-
-                        if ($('input[name="terms"]:checked').length == 0) {
-                            showError('Please Accept Terms and Conditions !!');
-                            $('input[name="terms"]').focus();
-                            return false;
-                        }
-
-                        var paymenttype = $('input[name="payment_type"]:checked').val();
-                        if (paymenttype !== '') {
-                            $(".finalcheckout").prop("disabled", true).html('<div style="width: 1rem !important; height: 1rem !important;" class="spinner-grow" role="status"><span class="sr-only">Loading...</span></div> Processing...');
-                            if (paymenttype == "online") {
-                                $(".maincheckout").attr("value", "Processing...");
-                                $(".maincheckout").attr("disabled", true);
-                                form.submit();
-                                $(".maincheckout").attr("disabled", false);
-                            } else if (paymenttype == "cod") {
-                                $.post(SITE_PATH + "action/check_order.php", $("#checkmain").serialize())
-                                    .done(function(response) {
-                                        window.location.href = SITE_PATH + "success?ORDER_ID=" + response + "";
-                                    })
-                                    .fail(function() {
-                                        showError('Something Went Wrong. Please Try Again');
-                                    })
-                                    .always(function() {
-                                        $(".finalcheckout").prop("disabled", false).html("Checkout");
-                                    });
-                            } else {
-                                showError('Please Choose Payment Mode');
-                            }
-                            return false;
-                        } else {
-                            showError('Please Choose Payment Mode');
-                            return false;
-                        }
-
-
-
-                    },
-                });
-            });
-
-            function showError(message) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: message,
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 4000,
-                    background: '#ff9999',
-                });
-            }
-        </script>
+        <script src="js/checkout2.js"></script>
         <?php
         if (isset($_SESSION['COUPON_CODE'])) {
             unset($_SESSION['COUPON_CODE']);

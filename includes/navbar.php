@@ -1,39 +1,13 @@
 <div id="pre-loader">
-    <div class="ui-loader loader-blk">
-        <svg viewBox="22 22 44 44" class="multiColor-loader">
-            <circle cx="44" cy="44" r="20.2" fill="none" stroke-width="3.6" class="loader-circle loader-circle-animation"></circle>
-        </svg>
+    <div class="PREloader">
+        <div class="face">
+            <div class="circle"></div>
+        </div>
+        <div class="face">
+            <div class="circle"></div>
+        </div>
     </div>
 </div>
-<style>
-    .wallet-container {
-        display: flex;
-        align-items: center;
-    }
-
-    .wallet-link {
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        margin-right: 15px;
-        color: #333;
-        /* Adjust the color as needed */
-        font-weight: bold;
-    }
-
-    .wallet-icon {
-        width: 20px;
-        margin-right: 5px;
-    }
-
-    .wallet-amount {
-        background-color: #729a1b;
-        padding: 2px 10px;
-        border-radius: 10px;
-        color: white;
-        font-weight: 100;
-    }
-</style>
 
 <div class="pageWrapper ">
     <?php

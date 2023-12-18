@@ -44,7 +44,38 @@
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
                         <h4 class="h4">Quick Shop</h4>
-                        <ul class="position-relative">
+                        <ul class="position-relative footerli">
+                            <style>
+                                .footerli {
+                                    display: flex;
+                                    gap: 10px;
+                                    flex-wrap: wrap;
+                                    text-transform: uppercase;
+                                }
+
+                                .libutton {
+                                    background: #fd7d16;
+                                    padding: 5px 15px;
+                                    border-radius: 10px;
+                                    color: #fff !important;
+                                    border: 1px solid #fd7d16;
+
+                                }
+
+                                .libutton a {
+                                    color: white !Important
+                                }
+
+                                .libutton:hover a {
+                                    color: #fd7d16 !Important
+                                }
+
+                                .libutton:hover {
+                                    background: white;
+                                    color: #fd7d16;
+                                    border: 1px solid #fd7d16;
+                                }
+                            </style>
                             <?php
                             $query = "SELECT * FROM category  ORDER BY order_number ASC";
                             $sel = mysqli_query($conn, $query);
@@ -56,7 +87,7 @@
 
                                 $discountHTML = $discount ? '<div class="light offdiscountPillFooter">' . $discount . '% Off</div>' : '';
 
-                                echo '<li><a href="' . SITE_PATH . 'category/' . $slug . '" class="site-nav">' . $category . ' ' . $discountHTML . '</a></li>';
+                                echo '<li class="libutton"><a href="' . SITE_PATH . 'category/' . $slug . '" class="site-nav">' . $category . ' ' . $discountHTML . '</a></li>';
                             }
                             ?>
                         </ul>
@@ -65,35 +96,39 @@
                         <h4 class="h4">Informations</h4>
                         <ul>
                             <li><a href="<?php echo SITE_PATH ?>about-us">About us</a></li>
-                            <li><a href="javascript:void(0)">Careers</a></li>
+                            <!-- <li><a href="javascript:void(0)">Careers</a></li> -->
                             <li><a href="<?php echo SITE_PATH ?>privacy-policy.php">Privacy policy</a></li>
                             <li><a href="<?php echo SITE_PATH ?>refund-policy.php">Refund policy</a></li>
                             <li><a href="<?php echo SITE_PATH ?>terms-conditions.php">Terms &amp; condition</a></li>
-
-                        </ul>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
-                        <h4 class="h4">Customer Services</h4>
-                        <ul>
-
-                            <li><a href="faq">FAQ's</a></li>
                             <li><a href="contact-us">Contact Us</a></li>
                             <li><a href="<?php echo SITE_PATH ?>login">My Account</a></li>
                         </ul>
                     </div>
                     <div class="col-12 col-sm-12 col-md-3 col-lg-3 contact-box">
-                        <h4 class="h4">Contact Us</h4>
-                        <ul class="addressFooter">
-                            <li><i class="icon anm anm-map-marker-al"></i>
-                                <p><?php echo $site_address ?></p>
-                            </li>
-                            <li class="phone"><i class="icon anm anm-phone-s"></i>
-                                <p><?php echo $site_phone ?></p>
-                            </li>
-                            <li class="email"><i class="icon anm anm-envelope-l"></i>
-                                <p><?php echo $site_email ?></p>
-                            </li>
-                        </ul>
+                        <div class="addressFooter">
+                            <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact Outlet 1</h4>
+                            <p class="mb-2"><i class="fa fa-map-marker mr-1"></i>Address: 07A, Ground Floor, Arunachal Building,
+                                Barakhamba Road, Connaught Place</p>
+                            <p class="mb-2"> <a href="tel:+91 88260 55975"> <i class="fa fa-mobile mr-1"></i>+91 88260 55975</a>
+                            </p>
+                            <p class="mb-2"> <a href="mailto:cp@foodieez.in"><i class="fa fa-envelope mr-1"></i>cp@foodieez.in</a>
+                            </p>
+                            <p class="mb-2"> <i class="fa fa-clock-o mr-1"></i>Working Days/Hours: Mon - Sat / 9:00 AM – 8:00 PM
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 contact-box">
+                        <div class="addressFooter">
+                            <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact Outlet 2</h4>
+                            <p class="mb-2"><i class="fa fa-map-marker mr-1"></i>Address: Ground Floor, DCM Building, Barakhamba Road, Connaught Place</p>
+                            <p class="mb-2"> <a href="tel:+91 8130654257"> <i class="fa fa-mobile mr-1"></i>+91 8130654257</a>
+                            </p>
+                            <p class="mb-2"> <a href="mailto:dcm@foodieez.in"><i class="fa fa-envelope mr-1"></i>dcm@foodieez.in</a>
+                            </p>
+                            <p class="mb-2"> <i class="fa fa-clock-o mr-1"></i>Working Days/Hours: Mon - Sat / 9:00 AM – 8:00 PM
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -248,16 +283,13 @@ if (isset($_COOKIE["ATECHFOOD_USER_MOBILE"])) {
         border-radius: 10px
     }
 </style> -->
-
-<script>
+<!-- <script>
     document.addEventListener("DOMContentLoaded", function() {
         // Trigger the animation after the page has loaded
         var modal = document.getElementById('mySlideInModal');
         modal.style.left = '0'; // Slide into the viewport
     });
-</script>
-
-
+</script> -->
 <?php
 $requestUri = $_SERVER['REQUEST_URI'];
 $pageName = basename($requestUri);
@@ -320,15 +352,12 @@ if ($pageName == 'cart' || $pageName == 'checkout') {
 
 <?php
 include('includes/cart.php');
-
 ?>
 <!--End Footer-->
 <!--Scoll Top-->
 <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
 <!--End Scoll Top-->
-
 <script src="<?php echo SITE_PATH ?>js/newsletter.js"></script>
-
 <script>
     function websiteclose() {
         Swal.fire({

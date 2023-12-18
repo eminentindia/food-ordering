@@ -109,7 +109,7 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
   $delievery_time = $_GET['time_slot'];
   $store = $_GET['store'];
   $razorpayPaymentId = '';
-  $paymentstatus = 'pending';
+  $paymentstatus = '';
 
   $_SESSION['name'] = $fname;
   $_SESSION['email'] = $email;
@@ -117,6 +117,12 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
   $_SESSION['total'] = $total;
   $order_id = $_GET['ORDERID'];
   $_SESSION['ORDER_ID'] = $order_id;
+
+
+  $insertu = "UPDATE `users` SET `address`='$address', `appartment`='$apartment', `postcode`='$zip', `city`='$city' ,`email`='$email' WHERE `ID`='" . $_SESSION['ATECHFOOD_USER_ID'] . "'";
+  $mysqliins = mysqli_query($conn, $insertu);
+
+
   try {
     $orderData = [
       'receipt'         => $order_id,

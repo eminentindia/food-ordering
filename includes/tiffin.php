@@ -39,7 +39,7 @@
                 </li>
                 <li class="w-100">
                     <div class="max-content w-100"> <a class="nav-link text-uppercase" data-toggle="tab" href="#beverages">
-                            <img class="img-icon-tiffin" src="<?php echo SITE_PATH ?>images/beverages-icon.png" alt=""> <span>Beverages/ </br> Noodles</span>
+                            <img class="img-icon-tiffin" src="<?php echo SITE_PATH ?>images/beverages-icon.png" alt=""> <span>Beverages</span>
                         </a>
                     </div>
                 </li>
@@ -52,7 +52,7 @@
             </ul>
         </div>
         <!-- Tab panes -->
-        <div class="tab-content" style=" ">
+        <div class="tab-content" >
             <div class="tab-pane container fade" id="breakfast">
                 <?php
                 $not_detailed_dish = get_not_detailed_dish_breakfast($conn);

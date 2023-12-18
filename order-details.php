@@ -8,7 +8,7 @@ $orderID = safe_value($conn, $_GET['id']);
 $getsingleorder = getsingleorderBYuser($conn, $orderID);
 $getsingleorder = json_decode($getsingleorder, true);
 
-if (count($getsingleorder) == '') {
+if (count($getsingleorder) == '' || count($getsingleorder) == 0) {
     echo '<script>window.location.href="' . SITE_PATH . 'orders.php";</script>';
 }
 

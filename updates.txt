@@ -1,0 +1,7 @@
+checkout.css,
+js folder
+checkout.php
+tiffin.php
+index.php
+maggie spelling
+footer.php

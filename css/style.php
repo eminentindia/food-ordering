@@ -5,7 +5,6 @@ header("Content-type: text/css; charset: UTF-8");
 <?php
 include('../admin/controller/common-controller.php');
 $conn = _connectodb();
-include('../admin/setting/controller/setting-controller.php');
 $getsetting = getsetting($conn);
 $getsetting = json_decode($getsetting, true);
 foreach ($getsetting as $getsinglesetting) {
@@ -364,8 +363,6 @@ gap: 8px;
 padding: 10px;
 color: #545454;
 font-size: 1rem;
-<!-- border: 1px dashed rgb(113 153 26); -->
-<!-- background: #71991a1f -->
 }
 
 .text-primary {
@@ -1116,127 +1113,90 @@ text-decoration: none;
 8. Pre Loader
 ========================================================================*/
 #pre-loader {
-background-color: #fff;
-height: 100%;
-width: 100%;
-position: fixed;
-z-index: 1;
-margin-top: 0px;
-top: 0px;
-left: 0px;
-bottom: 0px;
-overflow: hidden !important;
-right: 0px;
-z-index: 999999;
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden !important;
+  z-index: 999999;
 }
 
-#pre-loader img {
-text-align: center;
-left: 0;
-position: absolute;
-right: 0;
-top: 50%;
-transform: translateY(-50%);
--webkit-transform: translateY(-50%);
--o-transform: translateY(-50%);
--ms-transform: translateY(-50%);
--moz-transform: translateY(-50%);
-z-index: 99;
-margin: 0 auto;
+.PREloader {
+  width: 6em;
+  height: 6em;
+  font-size: 10px;
+  background-color: #fff;
+  position: fixed;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto; /* Center the .PREloader inside #pre-loader */
 }
 
-
-
-.ui-loader {
-display: inline-block;
-width: 50px;
-
-height: 50px;
-
-text-align: center;
-left: 0;
-position: absolute;
-right: 0;
-top: 50%;
-transform: translateY(-50%);
--webkit-transform: translateY(-50%);
--o-transform: translateY(-50%);
--ms-transform: translateY(-50%);
--moz-transform: translateY(-50%);
-z-index: 99;
-margin: 0 auto;
+.PREloader .face {
+  position: absolute;
+  border-radius: 50%;
+  border-style: solid;
+  animation: animate023845 1s linear infinite;
 }
 
-.loader-blk {
-color: #3f51b5;
-animation: rotate-outer08 1.4s linear infinite;
+.PREloader .face:nth-child(1) {
+  width: 100%;
+  height: 100%;
+  color: #fd7d16;
+  border-color: currentColor transparent transparent currentColor;
+  border-width: 0.2em 0.2em 0em 0em;
+  --deg: -45deg;
+  animation-direction: normal;
 }
 
-.multiColor-loader {
-display: block;
-animation: color-anim08 1.4s infinite;
+.PREloader .face:nth-child(2) {
+  width: 70%;
+  height: 70%;
+  color: #729a1b;
+  border-color: currentColor currentColor transparent transparent;
+  border-width: 0.2em 0em 0em 0.2em;
+  --deg: -135deg;
+  animation-direction: reverse;
 }
 
-.loader-circle {
-stroke: currentColor;
+.PREloader .face .circle {
+  position: absolute;
+  width: 50%;
+  height: 0.1em;
+  top: 50%;
+  left: 50%;
+  background-color: transparent;
+  transform: rotate(var(--deg));
+  transform-origin: left;
 }
 
-.MuiCircularProgress-circleStatic {
-transition: stroke-dashoffset 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+.PREloader .face .circle::before {
+  position: absolute;
+  top: -0.5em;
+  right: -0.5em;
+  content: '';
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  border-radius: 50%;
+
 }
 
-.loader-circle-animation {
-animation: rotate-inner08 1.4s ease-in-out
-infinite;
-stroke-dasharray: 80px, 200px;
-stroke-dashoffset: 0;
+@keyframes animate023845 {
+  to {
+    transform: rotate(1turn);
+  }
 }
-
-@keyframes rotate-outer08 {
-0% {
-transform-origin: 50% 50%;
-}
-
-100% {
-transform: rotate(360deg);
-}
-}
-
-@keyframes rotate-inner08 {
-0% {
-stroke-dasharray: 1px, 200px;
-stroke-dashoffset: 0;
-}
-
-50% {
-stroke-dasharray: 100px, 200px;
-stroke-dashoffset: -15px;
-}
-
-100% {
-stroke-dasharray: 100px, 200px;
-stroke-dashoffset: -125px;
-}
-}
-
-@keyframes color-anim08 {
-0% {
-color: #4285f4;
-}
-
-25% {
-color: #ea4335;
-}
-
-50% {
-color: #f9bb2d;
-}
-
-75% {
-color: #34a853;
-}
-}
-
 
 /*======================================================================
 9. Header Style

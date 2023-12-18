@@ -163,6 +163,19 @@ $getfestivals = json_decode($getfestivals, true);
 
 						$mostsalesql_result = mysqli_query($conn, "SELECT count(order_details.dish_order_id) as dish_count, dish.dish, dish.image FROM order_details, dish_details, dish, orders WHERE order_details.dish_order_id=dish_details.dish_detail_id AND dish_details.dish_id=dish.id $filter  GROUP BY order_details.dish_order_id ORDER BY count(order_details.dish_order_id) DESC LIMIT 1");
 
+
+
+						// 				$query = "SELECT COUNT(order_details.dish_order_id) AS dish_count, 
+						//          dish.dish, 
+						//          dish.image 
+						//   FROM order_details
+						//   INNER JOIN dish_details ON order_details.dish_order_id = dish_details.dish_detail_id
+						//   INNER JOIN dish ON dish_details.dish_id = dish.id
+						//   INNER JOIN orders ON order_details.order_id = orders.id
+						//   $filter
+						//   GROUP BY order_details.dish_order_id
+						//   ORDER BY dish_count DESC
+						//   LIMIT 1";
 						if ($mostsalesql_result && mysqli_num_rows($mostsalesql_result) > 0) {
 							$mostsalesql = mysqli_fetch_assoc($mostsalesql_result);
 						?>

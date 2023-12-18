@@ -118,7 +118,7 @@ if (isset($_SESSION['ATECHFOOD_USER'])) {
                     if (index === currentCardIndex) {
                         if (card) {
                             card.style.transform = 'scale(1.2)';
-                            card.style.zIndex = '99999';
+                            card.style.zIndex = '9';
                         }
                     } else {
                         if (card) {

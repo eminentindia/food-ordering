@@ -664,7 +664,7 @@ if (isset($_POST['finalcheckout'])) {
         $customer_name = $fname;
         $order_number = $order_id;
         $delivery_otp = $otp;
-        // include('vendor\confirm.php');
+        include('vendor\confirm.php');
         $client = new Client([
             'base_uri' => "https://yrg6nd.api.infobip.com/",
             'headers' => [

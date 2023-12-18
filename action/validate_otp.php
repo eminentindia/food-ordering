@@ -5,7 +5,6 @@ include "../admin/controller/common-controller.php";
 include "../function.inc.php";
 $conn = _connectodb();
 setTimeZone();
-
 if (isset($_POST["numbers"])) {
     $referral_code = bin2hex(random_bytes(6));
     $token = bin2hex(random_bytes(15));
@@ -52,8 +51,6 @@ if (isset($_POST["numbers"])) {
     } else {
         echo "fail";
     }
-
-
     function encryptData($data)
     {
         $key = "woefjiow394ru3049jfweiofnio2orj2309ufjw0ejiiowehrf9230ufjwe9u30f9jwio";
@@ -61,7 +58,6 @@ if (isset($_POST["numbers"])) {
         $encrypted = openssl_encrypt($data, 'aes-256-cbc', $key, 0, $iv);
         return base64_encode($iv . $encrypted);
     }
-
     function decryptData($data)
     {
         $key = "woefjiow394ru3049jfweiofnio2orj2309ufjw0ejiiowehrf9230ufjwe9u30f9jwio";
@@ -70,7 +66,6 @@ if (isset($_POST["numbers"])) {
         $encrypted = substr($data, openssl_cipher_iv_length('aes-256-cbc'));
         return openssl_decrypt($encrypted, 'aes-256-cbc', $key, 0, $iv);
     }
-
     $expiration_time = time() + 7 * 24 * 60 * 60;
     setcookie("ATECHFOOD_USER_ID", encryptData($uid), $expiration_time, "/");
     setcookie("ATECHFOOD_USER", encryptData("yes"), $expiration_time, "/");

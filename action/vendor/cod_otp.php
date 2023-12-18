@@ -13,8 +13,6 @@ $client = new Client([
     ]
 ]);
 
-$amount='500';
-
 $response = $client->request(
     'POST',
     'whatsapp/1/message/template',
@@ -26,14 +24,14 @@ $response = $client->request(
                     'to' => '91' . $phoneNumber,
                     'content' => [
                         // 'templateName' => 'final_delivery',
-                        'templateName' => 'new_order',
+                        'templateName' => 'verified_user_only',
                         'templateData' => [
                             'body' => [
-                                'placeholders' => [$amount,$otp]
+                                'placeholders' => [$otp]
                             ],
 
                         ],
-                        'language' => 'en_US',
+                        'language' => 'en',
                     ],
                 ]
             ]

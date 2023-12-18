@@ -1,24 +1,17 @@
 <?php include('includes/header.php');  ?>
-
 <body class="contact-template page-template belle">
     <?php include('includes/navbar.php') ?>
-
     <div id="page-content">
         <div class="bredcrumbWrap">
             <div class="container breadcrumbs">
                 <a href="index.html" title="Back to the home page">Home</a><span aria-hidden="true">›</span><span>Terms &amp; Conditions</span>
             </div>
         </div>
-
-
         <div class="container">
             <div class="row">
-              
-
                 <div style="display: flex;justify-content: space-between; align-items:center;width: 100%;">
                 <h1>Terms &amp; Conditions</h1>
                     <pre class="float-end">Updated at 2021-12-01</pre>
-
                 </div>
                 <p>By accessing and placing an order with , you confirm that you are in agreement with and bound by the terms of service contained in the Terms &amp; Conditions outlined below. These terms apply to the entire website and any email or other type of communication between you and .</p>
                 <p>Foodieez Barakhamba grants you a revocable, non-exclusive, non- transferable, limited license to download, install and use our service strictly in accordance with the terms of this Agreement.</p>
@@ -63,7 +56,5 @@ Via this Address: 07A, Ground Floor, Arunachal Building, Barakhamba Rd, New Delh
     </div>
     <?php include('includes/footer.php');  ?>
     <?php include('includes/scripts.php');  ?>
-
 </body>
-
 </html>

@@ -6,7 +6,6 @@ include('../smtp/PHPMailerAutoload.php');
 include('../function.inc.php');
 $conn = _connectodb();
 setTimeZone();
-
 $added_on = date("Y-m-d h:i:s");
 $name = safe_value($conn, $_POST['name']);
 $email = safe_value($conn, $_POST['email']);
@@ -14,20 +13,16 @@ $mobile = safe_value($conn, $_POST['mobile']);
 $getpassword = safe_value($conn, $_POST['password']);
 $password = password_hash($getpassword, PASSWORD_BCRYPT);
 $token = bin2hex(random_bytes(15));
-
 $referral_code = bin2hex(random_bytes(6));
 $response = array();
 if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $selectemail = "SELECT * FROM users WHERE email = '$email'";
     $executeEmail = mysqli_query($conn, $selectemail);
-
     // Check if the email exists
     if ($executeEmail->num_rows == 1) {
         $response['regexist_email'] = true;
     } else { // Assuming a 10-digit phone number
-
         $pattern = '/^\d{10}$/'; // This pattern assumes a 10-digit phone number
-
         if (preg_match($pattern, $mobile)) {
             $selectphone = "SELECT * FROM users WHERE mobile = '$mobile'";
             $executePhone = mysqli_query($conn, $selectphone);
@@ -64,9 +59,6 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     )";
                 // echo $sql;
                 // die();
-
-
-
                 $result  = mysqli_query($conn, $sql);
                 $uid = mysqli_insert_id($conn);
                 unset($_SESSION['referral_from']);

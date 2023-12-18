@@ -389,29 +389,29 @@ if (count($getdish) == '') {
 
                 <div class="prFeatures">
 
-<div class="row mb-0 pb-0">
-    <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature card py-3 shadow-sm">
-        <img src="<?php echo SITE_PATH ?>images/delicious.png" alt="Delicious" title="Delicious" />
-        <div class="details">
-            <h3>Delicious Food</h3>
-        </div>
-    </div>
-    <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature card py-3 shadow-sm">
-        <img src="<?php echo SITE_PATH ?>images/credit-card.png" alt="Safe Payment" title="Safe Payment" />
-        <div class="details">
-            <h3>Safe Payment</h3>
-        </div>
-    </div>
-    <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature card py-3 shadow-sm">
-        <img src="<?php echo SITE_PATH ?>images/worldwide.png" alt="Worldwide Delivery" title="Worldwide Delivery" />
-        <div class="details">
-            <h3>Fast Delivery</h3>
-        </div>
-    </div>
-</div>
+                    <div class="row mb-0 pb-0">
+                        <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature card py-3 shadow-sm">
+                            <img src="<?php echo SITE_PATH ?>images/delicious.png" alt="Delicious" title="Delicious" />
+                            <div class="details">
+                                <h3>Delicious Food</h3>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature card py-3 shadow-sm">
+                            <img src="<?php echo SITE_PATH ?>images/credit-card.png" alt="Safe Payment" title="Safe Payment" />
+                            <div class="details">
+                                <h3>Safe Payment</h3>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-4 col-lg-4 nowrap no-wrap feature card py-3 shadow-sm">
+                            <img src="<?php echo SITE_PATH ?>images/worldwide.png" alt="Worldwide Delivery" title="Worldwide Delivery" />
+                            <div class="details">
+                                <h3>Fast Delivery</h3>
+                            </div>
+                        </div>
+                    </div>
 
 
-</div>
+                </div>
             </div>
 
         </div>
@@ -463,7 +463,7 @@ if (count($getdish) == '') {
                     if (index === currentCardIndex) {
                         if (card) {
                             card.style.transform = 'scale(1.2)';
-                            card.style.zIndex = '999';
+                            card.style.zIndex = '9';
                         }
                     } else {
                         if (card) {
