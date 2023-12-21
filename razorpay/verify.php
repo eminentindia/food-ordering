@@ -609,6 +609,7 @@ if ($success === true) {
 					   </table>
 				   </section>
 			   </body>
+			   
 			</html>
 			';
 			$mobile = $phone;

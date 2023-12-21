@@ -47,7 +47,7 @@
                         <ul class="position-relative footerli">
                             <style>
                                 .footerli {
-                                    display: flex;
+                                    display: flex !important;
                                     gap: 10px;
                                     flex-wrap: wrap;
                                     text-transform: uppercase;
@@ -100,7 +100,7 @@
                             <li><a href="<?php echo SITE_PATH ?>privacy-policy.php">Privacy policy</a></li>
                             <li><a href="<?php echo SITE_PATH ?>refund-policy.php">Refund policy</a></li>
                             <li><a href="<?php echo SITE_PATH ?>terms-conditions.php">Terms &amp; condition</a></li>
-                            <li><a href="contact-us">Contact Us</a></li>
+                            <li><a href="<?php echo SITE_PATH ?>contact-us">Contact Us</a></li>
                             <li><a href="<?php echo SITE_PATH ?>login">My Account</a></li>
                         </ul>
                     </div>
@@ -169,127 +169,8 @@ if (isset($_COOKIE["ATECHFOOD_USER_MOBILE"])) {
 
 
 ?>
-<!-- <div id="mySlideInModal">
-    <div class="dishdaytitle">Dish Of The Day</div>
-    <div class="item-containerday d-flex align-items-center">
-        <div class="details-containerday">
-            <div class="dishtitileday">
-                <img src="images/veg.png" alt="" class="typeicon">
-                <h3 class="item-name-textday mb-0">Chole Rice</h3>
-            </div>
 
-            <div class="item-priceday-containerday" aria-hidden="true">
-                <span class="priceday">
-                    <i class="fa fa-inr" aria-hidden="true"></i>
-                    <span id="priceday_lunch12" data-priceday="99" data-sku="RICE-3">99</span>
-                </span>
-            </div>
-        </div>
-        <div class="image-containerday">
-            <div aria-hidden="true">
-                <button class="image-buttonday" aria-label="chole-rice">
-                    <img alt="chole-rice" class="item-imageday" loading="lazy" src="http://localhost/food-ordering/admin/media/dish/chole-rice2023-9472.png">
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-<style>
-    #mySlideInModal {
-        height: max-content;
-        box-shadow: 0 0 20px 2px #729a1bb5;
-        width: max-content;
-        background: white;
-        position: fixed;
-        top: 50%;
-        left: -400px;
-        /* Center horizontally */
-        transform: translate(0, -50%);
-        /* Center vertically and horizontally */
-        z-index: 9999;
-        transition: left 1s ease-in-out;
-    }
-
-    .item-containerday {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        flex-direction: column-reverse;
-        margin-bottom: 15px;
-        width: 100%;
-        /* padding-right: 30px; */
-        justify-content: start;
-        align-items: flex-start !important;
-        ;
-    }
-
-    .dishtitileday {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .details-containerday {
-        flex: 1;
-        padding: 0 15px;
-    }
-
-    .details-containerday img.typeicon {
-        width: 25px;
-    }
-
-    .item-name-textday {
-        margin-bottom: 0;
-        white-space: nowrap !important;
-    }
-
-    .item-priceday-containerday {
-        font-size: 1.3rem;
-        margin-top: 10px;
-        color: #0c800c;
-    }
-
-    .priceday {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-weight: 700;
-    }
-
-    .image-containerday {
-        flex: 1;
-    }
-
-    .image-buttonday {
-        background: rgb(246, 246, 246);
-        width: 200px;
-        padding: 0;
-    }
-
-    .item-imageday {
-        width: 256px;
-    }
-
-    .dishdaytitle {
-        position: absolute;
-        top: -20px;
-        white-space: nowrap;
-        left: 50%;
-        transform: translate(-50%, 0);
-        background: #729a1b;
-        padding: 10px;
-        color: white;
-        font-weight: 700;
-        border-radius: 10px
-    }
-</style> -->
-<!-- <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Trigger the animation after the page has loaded
-        var modal = document.getElementById('mySlideInModal');
-        modal.style.left = '0'; // Slide into the viewport
-    });
-</script> -->
+<?php include('dish_of_the_day.php') ?>
 <?php
 $requestUri = $_SERVER['REQUEST_URI'];
 $pageName = basename($requestUri);

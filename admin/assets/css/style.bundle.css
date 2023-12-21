@@ -724,7 +724,7 @@ progress {
     .container-sm,
     .container-xl,
     .container-xxl {
-        max-width: 1320px
+        max-width: 95%
     }
 }
 
@@ -54688,7 +54688,7 @@ body {
     .container-sm,
     .container-xl,
     .container-xxl {
-        padding: 0 30px
+        padding: 0 20px !important
     }
 
     .docs-wrapper {
@@ -55593,4 +55593,13 @@ body [contenteditable="true"]:focus {
 .toast.toast-success {
     background-color: #4dac5a !important; 
     color: #fff;
+}
+div#kt_footer {
+    position: fixed;
+    bottom: 0;
+    background: white;
+    width: 100%;
+    right: 0;
+    left: 0;
+    z-index: 991;
 }

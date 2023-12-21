@@ -44,6 +44,18 @@ if (isset($_POST['param']) &&  decryptpost($conn, $_POST['param']) === 'get_dish
                             <label class="form-check-label mb-0" for="edit_is_available">No</label>
                         </div>
                     </div>
+                    <label for="edit_is_available" class="col-sm-3 control-label col-form-label">Is Combo</label>
+
+                    <div class="col-sm-3 radiocenter">
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="edit_is_combo"  ' . ($is_combo == '1' ? 'checked' : '') . '  id="edit_is_combo" name="radio-stacked" value="1" >
+                            <label class="form-check-label mb-0" for="edit_is_combo">Yes</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="edit_is_combo" ' . ($is_combo == '0' ? 'checked ' : '') . '  id="edit_is_combo" name="radio-stacked" value="0">
+                            <label class="form-check-label mb-0" for="edit_is_combo">No</label>
+                        </div>
+                    </div>
 
                     <label for="edit_is_detailed_dish" class="col-sm-3 control-label col-form-label">Is Detailed Dish</label>
                     <div class="col-sm-3 radiocenter">

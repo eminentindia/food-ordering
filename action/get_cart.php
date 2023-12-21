@@ -34,7 +34,7 @@ $html = '';
 $html .= '<nav id="main-nav">
     <a class="cart-button" href="#">
         <span class="bag-count">' . $totalQty . '</span>
-        <span> <img src="img/bag-icon.png" alt=""></span>
+        <span> <img src="img/bag-icon.png" alt="foodieez menu"></span>
     </a>
 </nav>
 <aside id="sidebar-cart">
@@ -59,7 +59,7 @@ if (empty($cart)) {
                         data-src="' . SITE_PATH . 'admin/media/category/' . $image . '"
                         src="' . SITE_PATH . 'admin/media/category/' . $image . '"
                         alt="' . $category . '"
-                        class="blur-up lazyload" style="
+                        class="blur-up lazyload" width="30" height="30" style="
                             width: 35px;"
                     />
                     <div class="collection-grid-item__title-wrapper">

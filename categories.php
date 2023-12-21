@@ -101,8 +101,8 @@ $arrType = array("veg", "non-veg", "both");
                                                                                                                                             }
                                                                                                                                                 ?> class="grid-view-item__link">
 
-                                                <img class="primary blur-up lazyload" data-src="<?php echo SITE_DISH_IMAGE . $row['image']; ?>" src="<?php echo SITE_DISH_IMAGE . $row['image']; ?>" alt="image" title="<?php echo $row['dish']; ?>">
-                                                <img class="hover blur-up lazyload" data-src="<?php echo SITE_DISH_IMAGE . $row['image']; ?>" src="<?php echo SITE_DISH_IMAGE . $row['image']; ?>" alt="image" title="<?php echo $row['dish']; ?>">
+                                                <img class="primary blur-up lazyload" data-src="<?php echo SITE_DISH_IMAGE . $row['image']; ?>" src="<?php echo SITE_DISH_IMAGE . $row['image']; ?>" alt="<?php echo $dish ?>" title="<?php echo $row['dish']; ?>">
+                                                <img class="hover blur-up lazyload" data-src="<?php echo SITE_DISH_IMAGE . $row['image']; ?>" src="<?php echo SITE_DISH_IMAGE . $row['image']; ?>" alt="<?php echo $dish ?>" title="<?php echo $row['dish']; ?>">
                                                 <?php if ($row['is_available'] == '0') {
                                                 ?>
                                                     <div class="outfstock">
@@ -140,9 +140,9 @@ $arrType = array("veg", "non-veg", "both");
 
                                                     <?php
                                                     if ($row['type'] == 'veg') {
-                                                        echo '  <img src="' . SITE_PATH . 'images/veg.png" alt="">';
+                                                        echo '  <img src="' . SITE_PATH . 'images/veg.png" alt="veg">';
                                                     } else {
-                                                        echo '  <img src="' . SITE_PATH . 'images/non-veg.png" alt="">';
+                                                        echo '  <img src="' . SITE_PATH . 'images/non-veg.png" alt="non-veg">';
                                                     }
                                                     ?>
                                                 </span>

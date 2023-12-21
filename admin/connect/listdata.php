@@ -169,7 +169,7 @@ if (isset($_GET['show']) and $_GET['show'] == 'order') {
         $filter = "AND orders.store='" . $_SESSION['store'] . "'";
     }
 
-    $sql = "Select * from  orders JOIN order_status  ON orders.order_status=order_status.order_status_id WHERE orders.order_status='1' $filter ORDER BY order_added_on DESC";
+    $sql = "Select * from  orders JOIN order_status  ON orders.order_status=order_status.order_status_id WHERE orders.order_status='1' and orders.paymentstatus!='' $filter ORDER BY order_added_on DESC";
     $result = $conn->query($sql);
     $count = mysqli_num_rows($result);
     $data = array();

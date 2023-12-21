@@ -27,7 +27,7 @@ $getfestivals = json_decode($getfestivals, true);
 	<div class="container-xxl" id="kt_content_container">
 		<div class="row g-5 g-xl-8">
 			<div class="col-xl-4">
-				<div class="row mb-5 mb-xl-8 g-5 g-xl-8">
+				<div class="row mb-5 mb-xl-8  g-xl-4">
 					<div class="col-4">
 						<div class="card card-stretch">
 							<a href="order.php" target="_blank" class="btn btn-flex btn-text-gray-800 btn-icon-gray-400 btn-active-color-primary bg-body flex-column justfiy-content-start align-items-start text-start w-100 p-2 fs-1 mb-4 text-warning">
@@ -101,7 +101,7 @@ $getfestivals = json_decode($getfestivals, true);
 									echo '0';
 								}
 								?>
-								<span class="fs-8 fw-bolder text-success">Complete Orders </span>
+								<span class="fs-8 fw-bolder text-success">Completed Orders </span>
 							</a>
 						</div>
 					</div>
@@ -118,28 +118,28 @@ $getfestivals = json_decode($getfestivals, true);
 							<div class="card-toolbar">
 								<ul class="nav gap-4">
 									<li class="nav-item">
-										<a class="quickbadgediv nav-link btn btn-sm btn-color-muted btn-active btn-active-dark  fw-bolder px-4 me-1" href="category.php">Category <span class="quickbadge badge rounded-pill counter f-20 badge-primary badge"><?php echo count($getcategory); ?></span>
+										<a class="quickbadgediv fs-5 nav-link btn btn-sm btn-color-muted btn-active btn-active-dark  fw-bolder px-4 me-1" href="category.php">Category <span class="quickbadge badge rounded-pill counter f-20 badge-primary badge"><?php echo count($getcategory); ?></span>
 										</a>
 									</li>
 									<li class="nav-item">
-										<a class="quickbadgediv nav-link btn btn-sm btn-color-muted btn-active btn-active-dark fw-bolder px-4 me-1" href="coupon.php">Coupon <span class="quickbadge badge rounded-pill counter f-20 badge-primary badge"><?php echo count($getcoupon); ?></a>
+										<a class="quickbadgediv fs-5 nav-link btn btn-sm btn-color-muted btn-active btn-active-dark fw-bolder px-4 me-1" href="coupon.php">Coupon <span class="quickbadge badge rounded-pill counter f-20 badge-primary badge"><?php echo count($getcoupon); ?></a>
 									</li>
 									<li class="nav-item">
-										<a class="quickbadgediv nav-link btn btn-sm btn-color-muted btn-active btn-active-dark fw-bolder px-4  me-1" href="dish.php">Dishes <span class="quickbadge badge rounded-pill counter f-20 badge-primary badge"><?php echo count($getdish); ?></a>
-									</li>
-
-									<li class="nav-item">
-										<a class=" quickbadgediv nav-link btn btn-sm btn-color-muted btn-active btn-active-dark fw-bolder px-4  me-1" href="order.php">Orders <span class="quickbadge badge rounded-pill counter f-20 badge-primary badge"><?php echo count($getorder); ?></a>
+										<a class="quickbadgediv fs-5 nav-link btn btn-sm btn-color-muted btn-active btn-active-dark fw-bolder px-4  me-1" href="dish.php">Dishes <span class="quickbadge badge rounded-pill counter f-20 badge-primary badge"><?php echo count($getdish); ?></a>
 									</li>
 
 									<li class="nav-item">
-										<a class="quickbadgediv nav-link btn btn-sm btn-color-muted btn-active btn-active-dark fw-bolder px-4  me-1" href="user.php">Users <span class="quickbadge badge rounded-pill counter f-20 badge-primary badge"><?php echo count($getusers); ?></a>
+										<a class=" quickbadgediv fs-5 nav-link btn btn-sm btn-color-muted btn-active btn-active-dark fw-bolder px-4  me-1" href="order.php">Orders <span class="quickbadge badge rounded-pill counter f-20 badge-primary badge"><?php echo count($getorder); ?></a>
+									</li>
+
+									<li class="nav-item">
+										<a class="quickbadgediv fs-5 nav-link btn btn-sm btn-color-muted btn-active btn-active-dark fw-bolder px-4  me-1" href="user.php">Users <span class="quickbadge badge rounded-pill counter f-20 badge-primary badge"><?php echo count($getusers); ?></a>
 									</li>
 									<li class="nav-item">
-										<a class="quickbadgediv nav-link btn btn-sm btn-color-muted btn-active btn-active-dark fw-bolder px-4  me-1" href="subscription.php">Festivals <span class="quickbadge badge rounded-pill counter f-20 badge-primary badge"><?php echo count($getfestivals); ?></a>
+										<a class="quickbadgediv fs-5 nav-link btn btn-sm btn-color-muted btn-active btn-active-dark fw-bolder px-4  me-1" href="subscription.php">Festivals <span class="quickbadge badge rounded-pill counter f-20 badge-primary badge"><?php echo count($getfestivals); ?></a>
 									</li>
 									<li class="nav-item">
-										<a class="quickbadgediv nav-link btn btn-sm btn-color-muted btn-active btn-active-dark fw-bolder px-4  me-1" href="subscription.php">Subscriptions <span class="quickbadge badge rounded-pill counter f-20 badge-primary badge"><?php echo count($getsubscription); ?></a>
+										<a class="quickbadgediv fs-5 nav-link btn btn-sm btn-color-muted btn-active btn-active-dark fw-bolder px-4  me-1" href="subscription.php">Subscriptions <span class="quickbadge badge rounded-pill counter f-20 badge-primary badge"><?php echo count($getsubscription); ?></a>
 									</li>
 								</ul>
 							</div>
@@ -148,38 +148,38 @@ $getfestivals = json_decode($getfestivals, true);
 				<?php }
 				?>
 				<div class="card mb-5 mb-xl-8">
-					<div class="card-header align-items-center border-0 mt-4" style="min-height: 20px;">
+					<!-- <div class="card-header align-items-center border-0 mt-4" style="min-height: 20px;">
 						<h3 class="card-title align-items-start flex-column">
 							<span class="fw-bolder mb-2 text-dark">Most Sale Dish</span>
-						</h3>
-						<?php
-						$mostsalesql = null; // Initialize $mostsalesql to avoid "Undefined variable" warning
+						</h3> -->
+					<?php
+					$mostsalesql = null; // Initialize $mostsalesql to avoid "Undefined variable" warning
 
-						if (checkSuperAdminSession()) {
-							$filter = " ";
-						} else {
-							$filter = " AND orders.store='" . $_SESSION['store'] . "'";
-						}
+					if (checkSuperAdminSession()) {
+						$filter = " ";
+					} else {
+						$filter = " AND orders.store='" . $_SESSION['store'] . "'";
+					}
 
-						$mostsalesql_result = mysqli_query($conn, "SELECT count(order_details.dish_order_id) as dish_count, dish.dish, dish.image FROM order_details, dish_details, dish, orders WHERE order_details.dish_order_id=dish_details.dish_detail_id AND dish_details.dish_id=dish.id $filter  GROUP BY order_details.dish_order_id ORDER BY count(order_details.dish_order_id) DESC LIMIT 1");
+					$mostsalesql_result = mysqli_query($conn, "SELECT count(order_details.dish_order_id) as dish_count, dish.dish, dish.image FROM order_details, dish_details, dish, orders WHERE order_details.dish_order_id=dish_details.dish_detail_id AND dish_details.dish_id=dish.id $filter  GROUP BY order_details.dish_order_id ORDER BY count(order_details.dish_order_id) DESC LIMIT 1");
 
 
 
-						// 				$query = "SELECT COUNT(order_details.dish_order_id) AS dish_count, 
-						//          dish.dish, 
-						//          dish.image 
-						//   FROM order_details
-						//   INNER JOIN dish_details ON order_details.dish_order_id = dish_details.dish_detail_id
-						//   INNER JOIN dish ON dish_details.dish_id = dish.id
-						//   INNER JOIN orders ON order_details.order_id = orders.id
-						//   $filter
-						//   GROUP BY order_details.dish_order_id
-						//   ORDER BY dish_count DESC
-						//   LIMIT 1";
-						if ($mostsalesql_result && mysqli_num_rows($mostsalesql_result) > 0) {
-							$mostsalesql = mysqli_fetch_assoc($mostsalesql_result);
-						?>
-							<div class="card-body pt-0">
+					// 				$query = "SELECT COUNT(order_details.dish_order_id) AS dish_count, 
+					//          dish.dish, 
+					//          dish.image 
+					//   FROM order_details
+					//   INNER JOIN dish_details ON order_details.dish_order_id = dish_details.dish_detail_id
+					//   INNER JOIN dish ON dish_details.dish_id = dish.id
+					//   INNER JOIN orders ON order_details.order_id = orders.id
+					//   $filter
+					//   GROUP BY order_details.dish_order_id
+					//   ORDER BY dish_count DESC
+					//   LIMIT 1";
+					if ($mostsalesql_result && mysqli_num_rows($mostsalesql_result) > 0) {
+						$mostsalesql = mysqli_fetch_assoc($mostsalesql_result);
+					?>
+						<!-- <div class="card-body pt-0">
 								<div class="d-flex gap-4 align-items-center mb-4">
 									<h4 class="pt-3" style="background: #daff88; font-size: 1.2rem; width: max-content; padding: 4px 20px; margin: 0; padding-top: 4px !important;border-radius: 10px;"><?php echo $mostsalesql['dish']; ?></h4>
 									<br>
@@ -189,11 +189,11 @@ $getfestivals = json_decode($getfestivals, true);
 
 								</div>
 
-							</div><!-- Your code continues here -->
-						<?php
-						}
-						?>
-					</div>
+							</div> -->
+					<?php
+					}
+					?>
+					<!-- </div> -->
 
 					<!-- Other parts of your code -->
 
@@ -206,91 +206,94 @@ $getfestivals = json_decode($getfestivals, true);
 
 				<div class="row">
 
-
-					<?php
-					if (checkDCMSession() || checkSuperAdminSession()) {
-					?>
-						<div class=" <?php if (checkSuperAdminSession() ? 'col-md-6' : 'col-md-12') ?>" style="background: white;border: 1px solid #dbdbdb; padding: 0; -webkit-box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%); -moz-box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%); box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%);">
-							<!--begin::Item-->
-							<div class="d-flex align-items-center bg-light-info rounded p-5 changedash" style="border-bottom: 1px solid #d3d3d3ab;padding-bottom: 20px !important;margin-bottom: 20px;     padding-top: 20px !important;   background: #a6dd79;">
-								<!--begin::Icon-->
-								<span class="svg-icon svg-icon-info me-5">
-									<!--begin::Svg Icon | path: icons/duotune/abstract/abs027.svg-->
-									<span class="svg-icon svg-icon-1">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-											<path opacity="0.3" d="M21.25 18.525L13.05 21.825C12.35 22.125 11.65 22.125 10.95 21.825L2.75 18.525C1.75 18.125 1.75 16.725 2.75 16.325L4.04999 15.825L10.25 18.325C10.85 18.525 11.45 18.625 12.05 18.625C12.65 18.625 13.25 18.525 13.85 18.325L20.05 15.825L21.35 16.325C22.35 16.725 22.35 18.125 21.25 18.525ZM13.05 16.425L21.25 13.125C22.25 12.725 22.25 11.325 21.25 10.925L13.05 7.62502C12.35 7.32502 11.65 7.32502 10.95 7.62502L2.75 10.925C1.75 11.325 1.75 12.725 2.75 13.125L10.95 16.425C11.65 16.725 12.45 16.725 13.05 16.425Z" fill="black"></path>
-											<path d="M11.05 11.025L2.84998 7.725C1.84998 7.325 1.84998 5.925 2.84998 5.525L11.05 2.225C11.75 1.925 12.45 1.925 13.15 2.225L21.35 5.525C22.35 5.925 22.35 7.325 21.35 7.725L13.05 11.025C12.45 11.325 11.65 11.325 11.05 11.025Z" fill="black"></path>
-										</svg>
+					<div class="col-md-6">
+						<?php
+						if (checkDCMSession() || checkSuperAdminSession()) {
+						?>
+							<div class=" <?php if (checkSuperAdminSession() ? 'col-md-6' : 'col-md-12') ?>" style="background: white;border: 1px solid #dbdbdb; padding: 0; -webkit-box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%); -moz-box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%); box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%);">
+								<!--begin::Item-->
+								<div class="d-flex align-items-center bg-light-info rounded p-5 changedash" style="border-bottom: 1px solid #d3d3d3ab;padding-bottom: 20px !important;margin-bottom: 20px;     padding-top: 20px !important;   background: #a6dd79;">
+									<!--begin::Icon-->
+									<span class="svg-icon svg-icon-info me-5">
+										<!--begin::Svg Icon | path: icons/duotune/abstract/abs027.svg-->
+										<span class="svg-icon svg-icon-1">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+												<path opacity="0.3" d="M21.25 18.525L13.05 21.825C12.35 22.125 11.65 22.125 10.95 21.825L2.75 18.525C1.75 18.125 1.75 16.725 2.75 16.325L4.04999 15.825L10.25 18.325C10.85 18.525 11.45 18.625 12.05 18.625C12.65 18.625 13.25 18.525 13.85 18.325L20.05 15.825L21.35 16.325C22.35 16.725 22.35 18.125 21.25 18.525ZM13.05 16.425L21.25 13.125C22.25 12.725 22.25 11.325 21.25 10.925L13.05 7.62502C12.35 7.32502 11.65 7.32502 10.95 7.62502L2.75 10.925C1.75 11.325 1.75 12.725 2.75 13.125L10.95 16.425C11.65 16.725 12.45 16.725 13.05 16.425Z" fill="black"></path>
+												<path d="M11.05 11.025L2.84998 7.725C1.84998 7.325 1.84998 5.925 2.84998 5.525L11.05 2.225C11.75 1.925 12.45 1.925 13.15 2.225L21.35 5.525C22.35 5.925 22.35 7.325 21.35 7.725L13.05 11.025C12.45 11.325 11.65 11.325 11.05 11.025Z" fill="black"></path>
+											</svg>
+										</span>
+										<!--end::Svg Icon-->
 									</span>
-									<!--end::Svg Icon-->
-								</span>
-								<div class="flex-grow-1 me-2">
-									<span class="fw-bolder text-info text-hover-info fs-6">DCM Building</span>
+									<div class="flex-grow-1 me-2">
+										<span class="fw-bolder text-info text-hover-info fs-6">DCM Building</span>
+									</div>
+									<div class="d-flex flex-column">
+										<?php
+										$sel = "select * from orders where store='2' and otp_validate='0' and  ( paymentstatus='authorized' || paymentstatus='captured' ) ||  ( paymentstatus='created' and payment_type='cod' and store='2' ) ";
+										$res = mysqli_query($conn, $sel);
+										$count = mysqli_num_rows($res);
+
+										$sel2 = "select * from orders where store='2' and otp_validate='1'";
+										$res2 = mysqli_query($conn, $sel2);
+										$count2 = mysqli_num_rows($res2);
+
+										$dcm = array(
+											array("label" => "Completed Orders", "y" => $count2),
+											array("label" => "Pending Orders", "y" => $count)
+										)
+
+										?>
+										<span class="fw-bolder text-green py-1"><span style="font-size: 1.4rem;"><?php echo $count ?></span> Pending Orders</span>
+										<span class="fw-bolder text-green py-1"><span style="font-size: 1.4rem;"><?php echo $count2 ?></span> Completed Orders</span>
+
+
+									</div>
 								</div>
-								<div class="d-flex flex-column">
-									<?php
-									$sel = "select * from orders where store='2' and otp_validate='0' and  ( paymentstatus='authorized' || paymentstatus='captured' ) ||  ( paymentstatus='created' and payment_type='cod' and store='2' ) ";
-									$res = mysqli_query($conn, $sel);
-									$count = mysqli_num_rows($res);
-
-									$sel2 = "select * from orders where store='2' and otp_validate='1'";
-									$res2 = mysqli_query($conn, $sel2);
-									$count2 = mysqli_num_rows($res2);
-
-									$dcm = array(
-										array("label" => "Completed Orders", "y" => $count2),
-										array("label" => "Pending Orders", "y" => $count)
-									)
-
-									?>
-									<span class="fw-bolder text-green py-1"><span style="font-size: 1.4rem;"><?php echo $count ?></span> Pending Orders</span>
-									<span class="fw-bolder text-green py-1"><span style="font-size: 1.4rem;"><?php echo $count2 ?></span> Completed Orders</span>
-
-
-								</div>
+								<div id="dcmcontainer" style="height: 370px; width: 100%;"></div>
 							</div>
-							<div id="dcmcontainer" style="height: 370px; width: 100%;"></div>
-						</div>
-					<?php }
-					?>
-
-					<?php
-					if (checkArunachalSession() || checkSuperAdminSession()) {
-					?>
-						<div class=" <?php if (checkSuperAdminSession() ? 'col-md-6' : 'col-md-12') ?>" style="background: white;border: 1px solid #dbdbdb;padding: 0;-webkit-box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%);-moz-box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%);box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%);">
-							<div class="d-flex align-items-center bg-light-success rounded p-5 changedash" style="border-bottom: 1px solid #d3d3d3ab; padding-bottom: 20px !important;    padding-top: 20px !important;  margin-bottom: 20px;    background: #98cae5;">
-								<span class="svg-icon svg-icon-success me-5">
-									<span class="svg-icon svg-icon-1">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-											<path opacity="0.3" d="M21.25 18.525L13.05 21.825C12.35 22.125 11.65 22.125 10.95 21.825L2.75 18.525C1.75 18.125 1.75 16.725 2.75 16.325L4.04999 15.825L10.25 18.325C10.85 18.525 11.45 18.625 12.05 18.625C12.65 18.625 13.25 18.525 13.85 18.325L20.05 15.825L21.35 16.325C22.35 16.725 22.35 18.125 21.25 18.525ZM13.05 16.425L21.25 13.125C22.25 12.725 22.25 11.325 21.25 10.925L13.05 7.62502C12.35 7.32502 11.65 7.32502 10.95 7.62502L2.75 10.925C1.75 11.325 1.75 12.725 2.75 13.125L10.95 16.425C11.65 16.725 12.45 16.725 13.05 16.425Z" fill="black"></path>
-											<path d="M11.05 11.025L2.84998 7.725C1.84998 7.325 1.84998 5.925 2.84998 5.525L11.05 2.225C11.75 1.925 12.45 1.925 13.15 2.225L21.35 5.525C22.35 5.925 22.35 7.325 21.35 7.725L13.05 11.025C12.45 11.325 11.65 11.325 11.05 11.025Z" fill="black"></path>
-										</svg>
+						<?php }
+						?>
+					</div>
+					<div class="col-md-6"><?php
+											if (checkArunachalSession() || checkSuperAdminSession()) {
+											?>
+							<div class=" <?php if (checkSuperAdminSession() ? 'col-md-6' : 'col-md-12') ?>" style="background: white;border: 1px solid #dbdbdb;padding: 0;-webkit-box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%);-moz-box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%);box-shadow: -1px 10px 5px -7px rgb(0 0 0 / 10%);">
+								<div class="d-flex align-items-center bg-light-success rounded p-5 changedash" style="border-bottom: 1px solid #d3d3d3ab; padding-bottom: 20px !important;    padding-top: 20px !important;  margin-bottom: 20px;    background: #98cae5;">
+									<span class="svg-icon svg-icon-success me-5">
+										<span class="svg-icon svg-icon-1">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+												<path opacity="0.3" d="M21.25 18.525L13.05 21.825C12.35 22.125 11.65 22.125 10.95 21.825L2.75 18.525C1.75 18.125 1.75 16.725 2.75 16.325L4.04999 15.825L10.25 18.325C10.85 18.525 11.45 18.625 12.05 18.625C12.65 18.625 13.25 18.525 13.85 18.325L20.05 15.825L21.35 16.325C22.35 16.725 22.35 18.125 21.25 18.525ZM13.05 16.425L21.25 13.125C22.25 12.725 22.25 11.325 21.25 10.925L13.05 7.62502C12.35 7.32502 11.65 7.32502 10.95 7.62502L2.75 10.925C1.75 11.325 1.75 12.725 2.75 13.125L10.95 16.425C11.65 16.725 12.45 16.725 13.05 16.425Z" fill="black"></path>
+												<path d="M11.05 11.025L2.84998 7.725C1.84998 7.325 1.84998 5.925 2.84998 5.525L11.05 2.225C11.75 1.925 12.45 1.925 13.15 2.225L21.35 5.525C22.35 5.925 22.35 7.325 21.35 7.725L13.05 11.025C12.45 11.325 11.65 11.325 11.05 11.025Z" fill="black"></path>
+											</svg>
+										</span>
 									</span>
-								</span>
-								<div class="flex-grow-1 me-2">
-									<span class="fw-bolder text-primary text-hover-primary fs-6">Arunachal Building</span>
+									<div class="flex-grow-1 me-2">
+										<span class="fw-bolder text-primary text-hover-primary fs-6">Arunachal Building</span>
+									</div>
+									<div class="d-flex flex-column">
+										<?php
+												$sel = "select * from orders where store='1' and otp_validate='0' and  ( paymentstatus='authorized' || paymentstatus='captured' ) ||  ( paymentstatus='created' and payment_type='cod' and store='1' ) ";
+												$res = mysqli_query($conn, $sel);
+												$count = mysqli_num_rows($res);
+												$sel2 = "select * from orders where store='1' and otp_validate='1' ";
+												$res2 = mysqli_query($conn, $sel2);
+												$count2 = mysqli_num_rows($res2);
+												$cp = array(
+													array("label" => "Completed Orders", "y" => $count2),
+													array("label" => "Pending Orders", "y" => $count)
+												)
+										?>
+										<span class="fw-bolder text-green py-1"><span style="font-size: 1.4rem;"><?php echo $count ?> </span>Pending Orders</span>
+										<span class="fw-bolder text-green py-1"><span style="font-size: 1.4rem;"><?php echo $count2 ?></span> Completed Orders</span>
+									</div>
 								</div>
-								<div class="d-flex flex-column">
-									<?php
-									$sel = "select * from orders where store='1' and otp_validate='0' and  ( paymentstatus='authorized' || paymentstatus='captured' ) ||  ( paymentstatus='created' and payment_type='cod' and store='1' ) ";
-									$res = mysqli_query($conn, $sel);
-									$count = mysqli_num_rows($res);
-									$sel2 = "select * from orders where store='1' and otp_validate='1' ";
-									$res2 = mysqli_query($conn, $sel2);
-									$count2 = mysqli_num_rows($res2);
-									$cp = array(
-										array("label" => "Completed Orders", "y" => $count2),
-										array("label" => "Pending Orders", "y" => $count)
-									)
-									?>
-									<span class="fw-bolder text-green py-1"><span style="font-size: 1.4rem;"><?php echo $count ?> </span>Pending Orders</span>
-									<span class="fw-bolder text-green py-1"><span style="font-size: 1.4rem;"><?php echo $count2 ?></span> Completed Orders</span>
-								</div>
+								<div id="cpcontainer" style="height: 370px; width: 100%;"></div>
 							</div>
-							<div id="cpcontainer" style="height: 370px; width: 100%;"></div>
-						</div>
-					<?php }
-					?>
+						<?php }
+						?>
+					</div>
+
+
 
 				</div>
 

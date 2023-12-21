@@ -99,7 +99,7 @@
                                     <span class="mainprice_tagline"><?php echo $dish['price_tagline']  ?></span>
                                 <?php } ?>
                             </div>
-                            <div class="item-description" aria-hidden="true" style="width: 100%;">
+                            <div class="item-description w-100" aria-hidden="true" >
                                 <?php
                                 if ($dish['short_description'] != '') {
                                 ?>
@@ -177,7 +177,7 @@
                         <div class="image-container">
                             <div aria-hidden="true">
                                 <button class="image-button" aria-label="<?php echo $dish['slug'] ?>" style="background: rgb(246 246 246);">
-                                    <img alt="<?php echo $dish['slug'] ?>" class="item-image" loading="lazy" width="256" src="<?php echo SITE_PATH ?>admin/media/dish/<?php echo $dish['image'] ?>">
+                                    <img alt="<?php echo $dish['slug'] ?>" class="item-image" loading="lazy" width="100" height="100" src="<?php echo SITE_PATH ?>admin/media/dish/<?php echo $dish['image'] ?>">
                                     <?php if ($dish['is_available'] == '0') {
                                     ?>
                                         <div class="outfstock">
@@ -293,7 +293,7 @@
                                 <?php } ?>
 
                             </div>
-                            <div class="item-description" aria-hidden="true" style="width: 100%;">
+                            <div class="item-description w-100" aria-hidden="true" >
                                 <?php
                                 if ($dish['short_description'] != '') {
                                 ?>
@@ -346,7 +346,7 @@
                                                     </div>
                                                     <div aria-hidden="true">
                                                         <button class="image-button image-button2" aria-label="<?php echo $dish['slug'] ?>" style="background: rgb(246 246 246);">
-                                                            <img alt="<?php echo $dish['slug'] ?>" class="item-image" loading="lazy" width="256" src="<?php echo SITE_PATH ?>admin/media/dish/<?php echo $dish['image'] ?>">
+                                                            <img alt="<?php echo $dish['slug'] ?>" class="item-image" loading="lazy" width="100" height="100" src="<?php echo SITE_PATH ?>admin/media/dish/<?php echo $dish['image'] ?>">
                                                             <?php if ($dish['is_available'] == '0') {
                                                             ?>
                                                                 <div class="outfstock">
@@ -438,7 +438,7 @@
                                     <div class="image-container">
                                         <div aria-hidden="true">
                                             <button class="image-button" aria-label="<?php echo $dish['slug'] ?>" style="background: rgb(246 246 246);">
-                                                <img alt="<?php echo $dish['slug'] ?>" class="item-image" loading="lazy" width="256" src="<?php echo SITE_PATH ?>admin/media/dish/<?php echo $dish['image'] ?>">
+                                                <img alt="<?php echo $dish['slug'] ?>" class="item-image" loading="lazy" width="100" height="100" src="<?php echo SITE_PATH ?>admin/media/dish/<?php echo $dish['image'] ?>">
                                                 <?php if ($dish['is_available'] == '0') {
                                                 ?>
                                                     <div class="outfstock">
@@ -574,7 +574,7 @@
                                             <span class="mainprice_tagline"><?php echo $dish['price_tagline']  ?></span>
                                         <?php } ?>
                                     </div>
-                                    <div class="item-description" aria-hidden="true" style="width: 100%;">
+                                    <div class="item-description w-100" aria-hidden="true" >
                                         <?php
                                         if ($dish['short_description'] != '') {
                                         ?>
@@ -655,7 +655,7 @@
                                 <div class="image-container">
                                     <div aria-hidden="true">
                                         <button class="image-button" aria-label="<?php echo $dish['slug'] ?>" style="background: rgb(246 246 246);">
-                                            <img alt="<?php echo $dish['slug'] ?>" class="item-image" loading="lazy" width="256" src="<?php echo SITE_PATH ?>admin/media/dish/<?php echo $dish['image'] ?>">
+                                            <img alt="<?php echo $dish['slug'] ?>" class="item-image" loading="lazy" width="100" height="100" src="<?php echo SITE_PATH ?>admin/media/dish/<?php echo $dish['image'] ?>">
                                             <?php if ($dish['is_available'] == '0') {
                                             ?>
                                                 <div class="outfstock">
@@ -769,7 +769,7 @@
                                             <span class="mainprice_tagline"><?php echo $dish['price_tagline']  ?></span>
                                         <?php } ?>
                                     </div>
-                                    <div class="item-description" aria-hidden="true" style="width: 100%;">
+                                    <div class="item-description w-100" aria-hidden="true" >
                                         <?php
                                         if ($dish['short_description'] != '') {
                                         ?>
@@ -846,7 +846,7 @@
                                 <div class="image-container">
                                     <div aria-hidden="true">
                                         <button class="image-button" aria-label="<?php echo $dish['slug'] ?>" style="background: rgb(246 246 246);">
-                                            <img alt="<?php echo $dish['slug'] ?>" class="item-image" loading="lazy" width="256" src="<?php echo SITE_PATH ?>admin/media/dish/<?php echo $dish['image'] ?>">
+                                            <img alt="<?php echo $dish['slug'] ?>" class="item-image" loading="lazy" width="100" height="100" src="<?php echo SITE_PATH ?>admin/media/dish/<?php echo $dish['image'] ?>">
                                             <?php if ($dish['is_available'] == '0') {
                                             ?>
                                                 <div class="outfstock">
@@ -944,7 +944,7 @@
                                             <span class="mainprice_tagline"><?php echo $dish['price_tagline']  ?></span>
                                         <?php } ?>
                                     </div>
-                                    <div class="item-description" aria-hidden="true" style="width: 100%;">
+                                    <div class="item-description w-100" aria-hidden="true" >
                                         <?php
                                         if ($dish['short_description'] != '') {
                                         ?>
@@ -963,7 +963,7 @@
                                 <div class="image-container">
                                     <div aria-hidden="true">
                                         <button class="image-button" aria-label="<?php echo $dish['slug'] ?>" style="background: rgb(246 246 246);">
-                                            <img alt="<?php echo $dish['slug'] ?>" class="item-image" loading="lazy" width="256" src="<?php echo SITE_PATH ?>admin/media/dish/<?php echo $dish['image'] ?>">
+                                            <img alt="<?php echo $dish['slug'] ?>" class="item-image" loading="lazy" width="100" height="100" src="<?php echo SITE_PATH ?>admin/media/dish/<?php echo $dish['image'] ?>">
 
                                         </button>
                                     </div>

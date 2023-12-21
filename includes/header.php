@@ -38,11 +38,10 @@ $mypage = $script_name_arr[count($script_name_arr) - 1];
 
 
 // echo $mypage;
-$meta_title = "Foodieez Pre-orders Store| Healthy, Delicious & Hygienic Food | Foodieez.co.in & Delicious Food Restaurant
-Just A Step Away";
+$meta_title = "Foodieez Pre-orders Store| Healthy, Delicious & Hygienic Food ";
 $meta_desc = "We're dedicated to giving you the very best of food products, with a focus on great taste, quality, health & Hygiene.";
 $meta_keyword = "foodieez, pre-order, food-ordering, ";
-$meta_url = SITE_PATH;
+$meta_url = SITE_PATH .$mypage;
 $meta_image = "";
 
 $script_name1 = $_SERVER['SCRIPT_FILENAME'];
@@ -115,7 +114,7 @@ if ($mypage == 'forgot-password') {
     <script src="<?php echo SITE_PATH ?>js/bootstrap.js"></script>
     <link rel="stylesheet" href="<?php echo SITE_PATH ?>css/plugin.css">
     <link rel="stylesheet" href="<?php echo SITE_PATH ?>css/style.php">
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="<?php echo SITE_PATH ?>js/sweetalert.js"></script>
     <meta name="robots" content="index, follow" />
     <meta name="language" content="en-us" />
     <meta name="distribution" content="global" />
@@ -127,5 +126,5 @@ if ($mypage == 'forgot-password') {
     <meta property="og:image" content="<?php echo $meta_image ?>" />
     <meta property="og:url" content="<?php echo $meta_url ?>" />
     <link rel="canonical" href="<?php echo SITE_PATH . $mypage  ?>" />
-    <meta property="og:site_name" content="<?php echo SITE_PATH ?>" />
+    <meta property="og:site_name" content="Foodieez" />
 </head>

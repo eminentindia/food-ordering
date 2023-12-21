@@ -23,15 +23,15 @@ $response = $client->request(
                     'from' => '917827970588',
                     'to' => '91' . $phoneNumber,
                     'content' => [
-                        // 'templateName' => 'final_delivery',
-                        'templateName' => 'verified_user_only',
+                        'templateName' => 'food_auth',
+                        // 'templateName' => 'verified_user_only',
                         'templateData' => [
                             'body' => [
                                 'placeholders' => [$otp]
                             ],
 
                         ],
-                        'language' => 'en',
+                        'language' => 'en_US',
                     ],
                 ]
             ]

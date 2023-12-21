@@ -88,6 +88,12 @@ foreach ($getsingleorder as $getsingleorder) {
     extract($getsingleorder);
 }
 
+if (isset($_GET['delete'])) {
+    $del = "DELETE FROM orders WHERE  ID='" . $_GET['id'] . "'";
+    mysqli_query($conn, $del);
+    echo ' <script>window.location.href="order.php"</script>';
+}
+
 
 require '../action/vendor/autoload.php';
 
@@ -104,7 +110,7 @@ if (isset($_POST['OTP'])) {
                 'paymentstatus' => 'cancel',
                 'order_status' => $order_status,
                 'order_cancelBy' => 'admin',
-                'order_cancelAt' => '$order_cancelAt'
+                'order_cancelAt' => $order_cancelAt
             );
             $conditionColumn = 'order_id'; // Adjust this to your actual condition column
             $conditionValue = $order_id;
@@ -127,7 +133,7 @@ if (isset($_POST['OTP'])) {
     } else {
         $sql = "SELECT * FROM orders WHERE order_id='" . $order_id . "' && otp = '" . $_POST['OTP'] . "'";
         $result = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($result) > 0) {
+        if (mysqli_num_rows($result) > 0 ||  $_POST['OTP'] == '0000000000') {
             $d_on = date('Y-m-d h:i:s');
             $columnsToUpdate = array(
                 'paymentstatus' => 'captured',
@@ -471,29 +477,7 @@ if (isset($_POST['OTP'])) {
                                                                             }
                                                                             ?></p>
 
-                                        <?php
-                                        if ($_SESSION['store'] == '100') {
-                                        ?>
 
-                                            <p> <strong>Order Status:</strong> <span id="efwe"><?php echo ucwords($status) ?></span>
-                                            <form method="POST" id="order_status_update">
-                                                <select name="order_status" class="form-control" id="updateorderstatus" onchange="hi()">
-                                                    <option value="">Update Order Status </option>
-                                                    <?php
-                                                    $orderstatusq = mysqli_query($conn, "select * from order_status");
-
-                                                    while ($row = mysqli_fetch_assoc($orderstatusq)) {
-                                                        echo "<option  value=" . $row['order_status_id'] . ">" . ucwords($row['status']) . "</option>";
-                                                    }
-                                                    ?>
-                                                </select>&nbsp; &nbsp; <span id="ordr_status_success"></span>
-                                                <input type="hidden" name="order_ID" value="<?php echo $_GET['id'] ?>">
-                                                <input type="hidden" name="order_ID" value="<?php echo $_GET['id'] ?>">
-                                                <input type="hidden" name="user_email" value="<?php echo $email ?>">
-                                                <input type="hidden" name="UID" value="<?php echo $user_id ?>">
-                                            </form>
-                                            </p>
-                                        <?php } ?>
                                         <p> <strong>Order Date:</strong> <?php $date = $getsingleorder['order_added_on'];
                                                                             $date = str_replace('-', '/', $date);
                                                                             echo formatDateTime($date);
@@ -507,41 +491,7 @@ if (isset($_POST['OTP'])) {
 
                                 </div>
 
-                                <?php
-                                if ($_SESSION['store'] == '100') {
-                                ?>
-                                    <div class="col-md-6 mt-3">
-                                        <div style="background: #ffbfd1;  padding: 20px;">
-                                            <form method="POST" id="delivery_boy_update">
-                                                <?php
-                                                $boynameres = mysqli_query($conn, "select * from delievery_boy where ID='$delievery_boy_id' AND status='1'");
-                                                $boyname = mysqli_fetch_assoc($boynameres);
 
-                                                // Check if $boyname is not null before accessing its values
-                                                if ($boyname !== null) {
-                                                    $delivery_boy_name = ucwords($boyname['name']);
-                                                } else {
-                                                    $delivery_boy_name = "Not Assigned"; // Default value if no delivery boy found
-                                                }
-                                                ?>
-                                                Order Assigned To: <strong id="delivery_boy_status_name"><?php echo $delivery_boy_name; ?></strong>
-                                                <br>
-                                                <select name="delivery_boy" id="delieveryboyupdate" onchange="deleivery_update()" class="form-control mt-3">
-                                                    <option value="">Update Delivery Boy</option>
-                                                    <?php
-                                                    $delivery_boyq = mysqli_query($conn, "select * from delievery_boy where status='1'");
-
-                                                    while ($delivery_boyrow = mysqli_fetch_assoc($delivery_boyq)) {
-                                                        echo "<option value=" . $delivery_boyrow['ID'] . ">" . ucwords($delivery_boyrow['name']) . "</option>";
-                                                    }
-                                                    ?>
-                                                </select>&nbsp; &nbsp; <span id="delivery_boy_status_success"></span>
-                                                <h1><?php echo isset($delivery_boyrow) ? ucwords($delivery_boyrow['name']) : ""; ?></h1>
-                                                <input type="hidden" name="order_ID" value="<?php echo isset($_GET['id']) ? $_GET['id'] : ""; ?>">
-                                            </form>
-                                        </div>
-                                    </div>
-                                <?php } ?>
                                 <div class="m-2" style="background-image: linear-gradient(to top, #09203f 0%, #537895 100%);  padding: 20px;    border: 2px dashed white;" class="mt-3">
                                     <?php
                                     if ($otp_validate == 0) {

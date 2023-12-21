@@ -6,6 +6,49 @@ include('connect/head.php'); ?>
 <style>
 
 </style>
+
+<?php
+require('../razorpay/Razorpay.php');
+require('../razorpay/config.php');
+
+use Razorpay\Api\Api;
+
+if (checkSuperAdminSession()) {
+    $filter = " ";
+} else {
+    $filter = "AND orders.store='" . $_SESSION['store'] . "'";
+}
+
+$sql = "Select * from  orders JOIN order_status  ON orders.order_status=order_status.order_status_id WHERE orders.paymentstatus!='' $filter ORDER BY order_added_on DESC";
+$result = $conn->query($sql);
+$count = mysqli_num_rows($result);
+$data = array();
+if ($result->num_rows > 0) {
+    $i = 1;
+    while ($order = $result->fetch_assoc()) {
+        $ID = $order['ID'];
+        $razorpayOrderId = $order['razorpayOrderId'];
+        $razorpayPaymentId = $order['razorpayPaymentId'];
+        $paymentStatus = $order['paymentstatus'];
+        $addedOnDate = date('Y-m-d', strtotime($order['order_added_on']));
+
+        if (($paymentStatus == 'failed' || $paymentStatus == 'created' || $paymentStatus == "voided" || $paymentStatus == "expired" || $paymentStatus == 'authorized' || $paymentStatus == 'expired' ||  $paymentStatus == "disputed" || $paymentStatus == NULL || $paymentStatus == 'pending' || $paymentStatus == 'refunded') && $addedOnDate == date('Y-m-d')) {
+
+            //check status api razorpay
+            $api = new Api($keyId, $keySecret);
+            $payments = $api->payment->all(array('order_id' => $razorpayOrderId));
+
+            foreach ($payments->items as $payment) {
+                $status = $payment->status;
+                $as = "UPDATE orders set paymentstatus='$status' WHERE razorpayOrderId='$razorpayOrderId' AND razorpayPaymentId='$razorpayPaymentId' AND order_id='" . $order['order_id'] . "'";
+                mysqli_query($conn, $as);
+            }
+        }
+    }
+}
+
+
+?>
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <div class=" container-xxl " id="kt_content_container">
         <div class="card card-xl-stretch mb-xl-8">

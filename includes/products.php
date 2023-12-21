@@ -28,10 +28,10 @@
                                                                                                                             }
                                                                                                                                 ?> class="grid-view-item__link">
                                 <!-- image -->
-                                <img class="primary blur-up lazyload" data-src="<?php echo SITE_DISH_IMAGE . $row['image']; ?>" src="<?php echo SITE_DISH_IMAGE . $row['image']; ?>" alt="image" title="<?php echo $row['dish'] ?>">
+                                <img class="primary blur-up lazyload" data-src="<?php echo SITE_DISH_IMAGE . $row['image']; ?>" src="<?php echo SITE_DISH_IMAGE . $row['image']; ?>" width="100" height="100" alt="image" title="<?php echo $row['dish'] ?>">
                                 <!-- End image -->
                                 <!-- Hover image -->
-                                <img class="hover blur-up lazyload" data-src="<?php echo SITE_DISH_IMAGE . $row['image']; ?>" src="<?php echo SITE_DISH_IMAGE . $row['image']; ?>" alt="image" title="<?php echo $row['dish'] ?>">
+                                <img class="hover blur-up lazyload" data-src="<?php echo SITE_DISH_IMAGE . $row['image']; ?>" src="<?php echo SITE_DISH_IMAGE . $row['image']; ?>" width="100" height="100" alt="image" title="<?php echo $row['dish'] ?>">
                                 <?php if ($row['is_available'] == '0') {
                                 ?>
                                     <div class="outfstock">

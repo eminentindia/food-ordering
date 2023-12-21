@@ -24,7 +24,7 @@
                             <h4 class="text-center" style="    color: #fd7d16;
     font-size: 16px;
     letter-spacing: 1px;">Order Failed !!</h4>
-                            <p class="text-center" style="    line-height: 30px; color: #f1493d;">Payment For your Order has been failed due to some technical issues.<br> Kindly rety the payment for your order.</p>
+                            <p class="text-center" style="    line-height: 30px; color: #f1493d;">Payment For your Order has been failed due to some technical issues.<br> Kindly retry the payment for your order.</p>
                             
                         </div>
                     </div>
