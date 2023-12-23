@@ -25,6 +25,7 @@ if (!isset($_SESSION['ORDER_ID'])) {
                         <h4 class="text-center" style="    color: #8ebe43;
     font-size: 16px;
     letter-spacing: 1px;">Your Order Has Placed Successfully !</h4>
+                        <p>OTP : <?php echo $_SESSION['otp'] ?></p>
                         <p style=" background: #fde65f;
     display: flex;
     justify-content: center;

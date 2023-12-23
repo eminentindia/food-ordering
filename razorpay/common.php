@@ -46,7 +46,7 @@ class MYORDERS
                 $stmt3->bindParam(":paymentStatus", $paymentStatus);
                 $stmt3->bindParam(":order_id", $order_id);
                 $stmt3->execute();
-                $_SESSION['order_id'] = $order_id;
+                $_SESSION['ORDER_ID'] = $order_id;
                 $_SESSION['otp'] = $otp;
                 return $stmt3;
             } else {
@@ -106,7 +106,7 @@ class MYORDERS
                     $stmt2->execute();
                 }
 
-                $_SESSION['order_id'] = $order_id;
+                $_SESSION['ORDER_ID'] = $order_id;
                 $_SESSION['otp'] = $otp;
                 return $stmt2;
             }

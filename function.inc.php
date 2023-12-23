@@ -3449,6 +3449,36 @@ function get_not_detailed_dish_breakfast($conn)
   return $arr;
 }
 
+function get_dish_of_the_day($conn)
+{
+  $arr = array();
+  // First, select from the "dish" table
+  $sql_dish = "SELECT * FROM dish WHERE is_daydish = '1' AND status='1'";
+
+  $result_dish = mysqli_query($conn, $sql_dish);
+  while ($row_dish = mysqli_fetch_assoc($result_dish)) {
+    // For each detailed dish, fetch all corresponding details from the "dish_details" table
+    $dish_id = $row_dish['ID'];
+    $sql_details = "SELECT * FROM dish_details WHERE dish_id = '$dish_id'";
+    $result_details = mysqli_query($conn, $sql_details);
+
+    // Create an array to store all details records
+    $details_arr = array();
+
+    while ($row_details = mysqli_fetch_assoc($result_details)) {
+      // Add each detail record to the details array
+      $details_arr[] = $row_details;
+    }
+
+    // Assign the details array to the dish record
+    $row_dish['details'] = $details_arr;
+
+    // Add the modified dish record to the main array
+    $arr[] = $row_dish;
+  }
+  return $arr;
+}
+
 
 function get_not_detailed_dish_beverages($conn)
 {

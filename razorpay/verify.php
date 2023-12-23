@@ -70,7 +70,7 @@ if ($success === true) {
 		}
 		if ($applicatF->updatePayStatus($email, $razorpayOrderId, $razorpayPaymentId, $paymentStatus)) {
 			$stmt2 = $applicatF->runQuery("SELECT  *, order_details.name AS order_name FROM order_details JOIN orders ON order_details.order_id = orders.id WHERE invoice_order_id = :order_id");
-			$stmt2->bindParam(':order_id', $_SESSION['order_id']);
+			$stmt2->bindParam(':order_id', $_SESSION['ORDER_ID']);
 			$stmt2->execute();
 			$rows2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 			$items = '';
