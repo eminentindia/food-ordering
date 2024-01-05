@@ -92,8 +92,10 @@ if (isset($_POST['finalcheckout'])) {
             $start_time = date('h:i', strtotime($current_time)); // Current time as the start time
             $end_time = date('h:i A', strtotime($current_time . ' +20 minutes')); // End time is current time + 20 minutes
             $time_slot = $start_time . ' - ' . $end_time;
+            $delievery_date = date('Y-m-d');
         } else {
             $time_slot = mysqli_real_escape_string($conn, $_POST['time_slot']);
+            $delievery_date = mysqli_real_escape_string($conn, $_POST['delievery_date']);
         }
 
         $store = mysqli_real_escape_string($conn, $_POST['store']);

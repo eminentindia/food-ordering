@@ -121,7 +121,7 @@ if (count($cart) > 0) {
                                                 </div>
                                             </div>
                                             <style>
-                                                .addinstantpadd{
+                                                .addinstantpadd {
                                                     padding: 10px !important;
                                                     transition: all .2s ease-in;
                                                 }
@@ -175,9 +175,20 @@ if (count($cart) > 0) {
                                                         top: 80px;
                                                         z-index: 0;
                                                     }
+
+                                                    .aftercheckinstant {
+                                                        box-shadow: 0 0 18px 0px #00000033;
+                                                    }
+
+                                                    @media only screen and (max-width: 995px) {
+                                                        .aftercheckinstant {
+                                                            padding: 10px;
+                                                            margin-bottom: 10px;
+                                                        }
+                                                    }
                                                 </style>
                                                 <div class="row">
-                                                    <div class="col-md-1" style="padding: 0;margin: 0;">
+                                                    <div class="col-md-1 d-none d-md-block" style="padding: 0;margin: 0;">
                                                         <span class="spanor">
                                                             OR
                                                         </span>

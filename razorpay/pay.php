@@ -113,6 +113,7 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
         $start_time = date('h:i', strtotime($current_time)); // Current time as the start time
         $end_time = date('h:i A', strtotime($current_time . ' +20 minutes')); // End time is current time + 20 minutes
         $delievery_time = $start_time . ' - ' . $end_time;
+        $delievery_date = date('Y-m-d');
     } else {
         $delievery_time = $_GET['time_slot'];
     }
