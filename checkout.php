@@ -96,27 +96,113 @@ if (count($cart) > 0) {
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="checkout__order pb-0 row" style="background: #fd7d16c9;">
-                                            <div class="col-md-6" id="preorderdiv">
-                                                <div class="checkout__form__input">
-                                                    <p id="changeName" class="text-uppercase mycheckoutlabel">Delivery <span style="color: white !important;">Date</span> <span style="color: white !important;">*</span></p>
-                                                    <input style="height: inherit;font-size: 1rem;" type="text" name="delievery_date" required placeholder="Enter Delivery Date" id="delievery_date" class="form-control">
+                                        <div class="checkout__order  pb-0 row" style="background: #fd7d16c9;padding:0 !Important">
+                                            <div class="col-lg-3 aftercheckinstant" style=" justify-content: center;    background: white;   align-items: center;display: flex;">
+                                                <div class="">
+                                                    <div class="checkbox-wrapper-12">
+                                                        <div class="cbx">
+                                                            <input type="checkbox" name="instant" id="instant" style="margin-bottom: 0 !important;" onclick="toggleDivVisibilityInstant()">
+                                                            <label for="instant"></label>
+                                                            <svg width="15" height="14" viewBox="0 0 15 14" fill="none">
+                                                                <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                            </svg>
+                                                        </div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                                            <defs>
+                                                                <filter id="goo-12">
+                                                                    <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"></feGaussianBlur>
+                                                                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -7" result="goo-12"></feColorMatrix>
+                                                                    <feBlend in="SourceGraphic" in2="goo-12"></feBlend>
+                                                                </filter>
+                                                            </defs>
+                                                        </svg>
+                                                        <p class="" style="    font-size: 1rem; text-transform: uppercase;"> Instant Order</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="checkout__form__input">
-                                                    <p class="text-uppercase mycheckoutlabel">Time <span style="color: white !important;">Slot</span> <span style="color: white !important;">*</span> <?php
-                                                                                                                                                                                                        if (isset($_SESSION['time_slot_error'])) {
-                                                                                                                                                                                                            echo '<span class="text-warning">' . $_SESSION['time_slot_error'] . '</span>';
-                                                                                                                                                                                                        }
-                                                                                                                                                                                                        ?></p>
-                                                    <select name="time_slot" placeholder="Enter Delievery Date" id="time_slot" class="form-control" required style="background-color: #fff;height: inherit !important">
-                                                        <option value="" selected>Select Time Slot</option>
-                                                    </select>
+                                            <style>
+                                                .addinstantpadd{
+                                                    padding: 10px !important;
+                                                    transition: all .2s ease-in;
+                                                }
+                                            </style>
+                                            <script>
+                                                function toggleDivVisibilityInstant() {
+                                                    var checkbox = document.getElementById("instant");
+                                                    var contentDiv = document.querySelector(".ORDIV");
+                                                    var aftercheckinstant = document.querySelector(".aftercheckinstant");
+                                                    if (checkbox.checked) {
+                                                        contentDiv.classList.add("hidden");
+                                                        aftercheckinstant.classList.add("addinstantpadd");
+                                                        aftercheckinstant.classList.add("col-lg-12");
+                                                    } else {
+                                                        contentDiv.classList.remove("hidden");
+                                                        aftercheckinstant.classList.remove("addinstantpadd");
+                                                        aftercheckinstant.classList.remove("col-lg-12");
+                                                    }
+                                                }
+                                            </script>
+                                            <div class="col-lg-9 ORDIV">
+                                                <style>
+                                                    .spanor {
+                                                        width: 42px;
+                                                        display: inline-block;
+                                                        text-align: center;
+                                                        padding-top: 44px;
+                                                        color: #fff;
+                                                        font-weight: bolder;
+                                                        font-size: large;
+                                                    }
+
+                                                    .spanor:before {
+                                                        border-left: 2px solid white;
+                                                        content: "";
+                                                        display: block;
+                                                        height: 34px;
+                                                        left: 22px;
+                                                        position: absolute;
+                                                        top: 0;
+                                                        z-index: 0;
+                                                    }
+
+                                                    .spanor:after {
+                                                        border-left: 2px solid white;
+                                                        content: "";
+                                                        display: block;
+                                                        height: 33px;
+                                                        left: 22px;
+                                                        position: absolute;
+                                                        top: 80px;
+                                                        z-index: 0;
+                                                    }
+                                                </style>
+                                                <div class="row">
+                                                    <div class="col-md-1" style="padding: 0;margin: 0;">
+                                                        <span class="spanor">
+                                                            OR
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-md-5" id="preorderdiv">
+                                                        <div class="checkout__form__input">
+                                                            <p id="changeName" class="text-uppercase mycheckoutlabel">Delivery <span style="color: white !important;">Date</span> <span style="color: white !important;">*</span></p>
+                                                            <input style="height: inherit;font-size: 1rem;" type="text" name="delievery_date" required placeholder="Enter Delivery Date" id="delievery_date" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="checkout__form__input">
+                                                            <p class="text-uppercase mycheckoutlabel">Time <span style="color: white !important;">Slot</span> <span style="color: white !important;">*</span> <?php
+                                                                                                                                                                                                                if (isset($_SESSION['time_slot_error'])) {
+                                                                                                                                                                                                                    echo '<span class="text-warning">' . $_SESSION['time_slot_error'] . '</span>';
+                                                                                                                                                                                                                }
+                                                                                                                                                                                                                ?></p>
+                                                            <select name="time_slot" placeholder="Enter Delievery Date" id="time_slot" class="form-control" required style="background-color: #fff;height: inherit !important">
+                                                                <option value="" selected>Select Time Slot</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                     <?php
                                     $ORDERID = 'FOOD_' . strtoupper(substr(md5(uniqid(mt_rand(), true)), 0, 5));

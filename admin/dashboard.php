@@ -30,7 +30,7 @@ $getfestivals = json_decode($getfestivals, true);
 				<div class="row mb-5 mb-xl-8  g-xl-4">
 					<div class="col-4">
 						<div class="card card-stretch">
-							<a href="order.php" target="_blank" class="btn btn-flex btn-text-gray-800 btn-icon-gray-400 btn-active-color-primary bg-body flex-column justfiy-content-start align-items-start text-start w-100 p-2 fs-1 mb-4 text-warning">
+							<a href="order.php"  class="btn btn-flex btn-text-gray-800 btn-icon-gray-400 btn-active-color-primary bg-body flex-column justfiy-content-start align-items-start text-start w-100 p-2 fs-1 mb-4 text-warning">
 								<?php
 								$start_date  = date('Y-m-d') . ' 00-00-00';
 								$end_date = date('Y-m-d') . ' 23-59-59';
@@ -48,7 +48,7 @@ $getfestivals = json_decode($getfestivals, true);
 					</div>
 					<!-- <div class="col-4">
 						<div class="card card-stretch">
-							<a href="order.php" target="_blank" class="btn btn-flex btn-text-gray-800 btn-icon-gray-400 btn-active-color-primary bg-body flex-column justfiy-content-start align-items-start text-start w-100 p-2 fs-1 mb-4 text-warning">
+							<a href="order.php"  class="btn btn-flex btn-text-gray-800 btn-icon-gray-400 btn-active-color-primary bg-body flex-column justfiy-content-start align-items-start text-start w-100 p-2 fs-1 mb-4 text-warning">
 								<?php
 
 								$start_date  = date('Y-m-d') . ' 00-00-00';
@@ -68,7 +68,7 @@ $getfestivals = json_decode($getfestivals, true);
 
 					<div class="col-4">
 						<div class="card card-stretch">
-							<a href="order.php" target="_blank" class="btn btn-flex btn-text-gray-800 btn-icon-gray-400 btn-active-color-primary bg-body flex-column justfiy-content-start align-items-start text-start w-100 p-2 fs-1 mb-4 text-warning">
+							<a href="order.php"  class="btn btn-flex btn-text-gray-800 btn-icon-gray-400 btn-active-color-primary bg-body flex-column justfiy-content-start align-items-start text-start w-100 p-2 fs-1 mb-4 text-warning">
 								<?php
 
 								$start_date  = date('Y-m-d') . ' 00-00-00';
@@ -88,7 +88,7 @@ $getfestivals = json_decode($getfestivals, true);
 
 					<div class="col-4">
 						<div class="card card-stretch">
-							<a href="order.php" target="_blank" class="btn btn-flex btn-text-gray-800 btn-icon-gray-400 btn-active-color-primary bg-body flex-column justfiy-content-start align-items-start text-start w-100 p-2 fs-1 mb-4 text-warning">
+							<a href="order.php"  class="btn btn-flex btn-text-gray-800 btn-icon-gray-400 btn-active-color-primary bg-body flex-column justfiy-content-start align-items-start text-start w-100 p-2 fs-1 mb-4 text-warning">
 								<?php
 
 								$start_date  = date('Y-m-d') . ' 00-00-00';

@@ -20,16 +20,12 @@ $totalQty = 0;
 foreach ($cart as $item) {
     $totalQty += $item['quantity'];
 }
-include('../admin/category/controller/category-controller.php');
 // Initialize the total variable
 $total = 0;
 $getactivecategory = getactivecategory($conn);
 $getactivecategory = json_decode($getactivecategory, true);
 
 $html = '';
-
-
-
 
 $html .= '<nav id="main-nav">
     <a class="cart-button" href="#">

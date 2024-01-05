@@ -173,7 +173,7 @@ function showNotification(text) {
   $("body").append(notification);
   setTimeout(function () {
     notification.remove();
-  }, 1000);
+  }, 3000);
   notification.addClass("show");
 }
 

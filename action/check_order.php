@@ -21,6 +21,11 @@ use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 use Dompdf\Dompdf;
 
+$instant = $_POST['instant'];
+
+
+
+
 date_default_timezone_set("Asia/Calcutta");
 if (isset($_POST['finalcheckout'])) {
     if ($_POST['payment_type'] = 'cod') {
@@ -70,7 +75,7 @@ if (isset($_POST['finalcheckout'])) {
         } else {
             $icity = $ucity;
         }
-
+        date_default_timezone_set('Asia/Kolkata');
         $insertu = "UPDATE `users` SET `address`='$iaddress', `appartment`='$iappartment', `postcode`='$ipostcode', `city`='$icity' ,`email`='$email' WHERE `ID`='" . $_SESSION['ATECHFOOD_USER_ID'] . "'";
         $mysqliins = mysqli_query($conn, $insertu);
         //user insertion done 
@@ -81,7 +86,16 @@ if (isset($_POST['finalcheckout'])) {
         if ($delievery_date == '') {
             $delievery_date = date('Y-m-d');
         }
-        $time_slot = mysqli_real_escape_string($conn, $_POST['time_slot']);
+
+        if ($instant == 'on') {
+            $current_time = date('h:i A'); // Format the current time
+            $start_time = date('h:i', strtotime($current_time)); // Current time as the start time
+            $end_time = date('h:i A', strtotime($current_time . ' +20 minutes')); // End time is current time + 20 minutes
+            $time_slot = $start_time . ' - ' . $end_time;
+        } else {
+            $time_slot = mysqli_real_escape_string($conn, $_POST['time_slot']);
+        }
+
         $store = mysqli_real_escape_string($conn, $_POST['store']);
         $sql = "INSERT INTO orders (user_id,name,  address,appartment, city, postcode,phone, email,delieverytype, delievery_date, delievery_time,store,order_id,otp,payment_type,paymentstatus,coupon_code) VALUES ('" . $_SESSION['ATECHFOOD_USER_ID'] . "','$fname', '$address', '$apartment', '$city', '$zip', '$phone','$email', '$delieverytype', '$delievery_date', '$time_slot', '$store', '$order_id','$otp','$payment_method','created','$coupon_code')";
         // echo $sql;
