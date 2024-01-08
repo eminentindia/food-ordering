@@ -23,7 +23,7 @@ class MYORDERS
         $stmt = $this->conn->lastInsertId();
         return $stmt;
     }
-    public function razorPayOnline($fname, $razorpayOrderId, $razorpayPaymentId, $address, $apartment, $city, $zip, $phone, $email, $deliveryType, $deliveryDate, $deliveryTime, $store, $order_id, $otp, $paymentStatus, $paymentType)
+    public function razorPayOnline($fname, $razorpayOrderId, $razorpayPaymentId, $address, $apartment, $city, $zip, $phone, $email, $deliveryType, $deliveryDate, $deliveryTime, $store, $order_id, $otp, $paymentStatus, $paymentType, $dineinpersons)
     {
         try {
             // Prepare the query
@@ -51,12 +51,13 @@ class MYORDERS
                 return $stmt3;
             } else {
                 // Insert new order
-                $stmt = $this->conn->prepare("INSERT INTO orders(user_id,name, razorpayOrderId, razorpayPaymentId, address, appartment, city, postcode, phone, email, delieverytype, delievery_date, delievery_time, store, order_id, otp, paymentstatus, payment_type) 
-            VALUES(:user_id,:fname_o, :razorpayOrderId_o, :razorpayPaymentId_o, :address_o, :apartment_o, :city_o, :zip_o, :phone_o, :email_o, :deliveryType_o, :deliveryDate_o, :deliveryTime_o, :store_o, :order_id_o, :otp_o, :paymentStatus_o, :paymentType_o)");
+                $stmt = $this->conn->prepare("INSERT INTO orders(user_id,name, razorpayOrderId, razorpayPaymentId, address, appartment, city, postcode, phone, email, delieverytype, delievery_date, delievery_time, store, order_id, otp, paymentstatus, payment_type, dineinpersons) 
+            VALUES(:user_id,:fname_o, :razorpayOrderId_o, :razorpayPaymentId_o, :address_o, :apartment_o, :city_o, :zip_o, :phone_o, :email_o, :deliveryType_o, :deliveryDate_o, :deliveryTime_o, :store_o, :order_id_o, :otp_o, :paymentStatus_o, :paymentType_o, :dineinpersons)");
 
                 // Bind parameters for the new order
                 $stmt->bindParam(":user_id", $_SESSION['ATECHFOOD_USER_ID']);
                 $stmt->bindParam(":fname_o", $fname);
+                $stmt->bindParam(":dineinpersons", $dineinpersons);
                 $stmt->bindParam(":razorpayOrderId_o", $razorpayOrderId);
                 $stmt->bindParam(":razorpayPaymentId_o", $razorpayPaymentId);
                 $stmt->bindParam(":address_o", $address);

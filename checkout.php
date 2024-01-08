@@ -90,8 +90,13 @@ if (count($cart) > 0) {
                                             <div class="typeoption">
                                                 <input value="Dinein" id="annual" name="delieverytype" type="radio">
                                                 <label for="annual">
-                                                    <div class="delieverytype-info">
+                                                    <div class="delieverytype-info" style="">
                                                         <span class="plan-name text-uppercase text-center"> Dine-in <img src="<?php echo SITE_PATH ?>images/dinner-table.png" alt="Dine-in" class="ml-1"></span>
+                                                        <span id="dineInPersons" style="display: none;background: white; margin-top: 10px;">
+                                                            <label for="" style="margin-bottom: 0 !important;border-radius: 0;background: #729a1b;color: white;font-weight: 500;border: 1px solid white;padding: 0;padding-left: 12px;"> No. Of Persons <input type="number" name="dineinpersons" id="dineinpersons" value="1" min="1" max="12" style="    margin-bottom: 0 !important;background: white;color: #729a1b;width: max-content;    border: 1px dashed;"> </label>
+                                                            <span class="text-danger">*12 Persons Allowed</span>
+                                                        </span>
+
                                                     </div>
                                                 </label>
                                             </div>

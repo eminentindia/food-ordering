@@ -469,7 +469,7 @@ if (isset($_POST['OTP'])) {
 
                                         <p> <strong>Order Type:</strong> <?php
                                                                             if ($delieverytype == 'Dinein') {
-                                                                                echo "DINE-IN";
+                                                                                echo "DINE-IN " . $dineinpersons . " Persons";
                                                                             } else if ($delieverytype == 'Delivery') {
                                                                                 echo "DELIVERY";
                                                                             } else if ($delieverytype == 'Takeaway') {

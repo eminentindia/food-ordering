@@ -51,6 +51,14 @@ if (isset($_POST['finalcheckout'])) {
         $userdetail = getUserDetailsByid();
         $uaddress = $userdetail['address'];
         $coupon_code = mysqli_real_escape_string($conn, $_POST['couponcode']);
+        $dineinpersons = mysqli_real_escape_string($conn, $_POST['dineinpersons']);
+
+        if ($dineinpersons <= 0 || $dineinpersons == '') {
+            $dineinperson = '';
+        } else {
+            $dineinpersons = mysqli_real_escape_string($conn, $_POST['dineinpersons']);
+        }
+
 
         if ($uaddress == '') {
             $iaddress = $address;
@@ -99,7 +107,7 @@ if (isset($_POST['finalcheckout'])) {
         }
 
         $store = mysqli_real_escape_string($conn, $_POST['store']);
-        $sql = "INSERT INTO orders (user_id,name,  address,appartment, city, postcode,phone, email,delieverytype, delievery_date, delievery_time,store,order_id,otp,payment_type,paymentstatus,coupon_code) VALUES ('" . $_SESSION['ATECHFOOD_USER_ID'] . "','$fname', '$address', '$apartment', '$city', '$zip', '$phone','$email', '$delieverytype', '$delievery_date', '$time_slot', '$store', '$order_id','$otp','$payment_method','created','$coupon_code')";
+        $sql = "INSERT INTO orders (user_id,name,  address,appartment, city, postcode,phone, email,delieverytype, delievery_date, delievery_time,store,order_id,otp,payment_type,paymentstatus,coupon_code,dineinpersons) VALUES ('" . $_SESSION['ATECHFOOD_USER_ID'] . "','$fname', '$address', '$apartment', '$city', '$zip', '$phone','$email', '$delieverytype', '$delievery_date', '$time_slot', '$store', '$order_id','$otp','$payment_method','created','$coupon_code','$dineinpersons')";
         // echo $sql;
         $result  = mysqli_query($conn, $sql);
         $last_order_id = mysqli_insert_id($conn);
@@ -191,7 +199,7 @@ if (isset($_POST['finalcheckout'])) {
 
                 if ($delieverytype == 'Dinein' || $delieverytype == 'Takeaway') {
                     if ($delieverytype == 'Dinein') {
-                        $delieverytype = "DINE-IN";
+                        $delieverytype = "DINE-IN (" . $dineinpersons . " Persons)";
                     } else if ($delieverytype == 'Delivery') {
                         $delieverytype = "DELIVERY";
                     } else if ($delieverytype == 'Takeaway') {

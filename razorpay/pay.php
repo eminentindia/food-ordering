@@ -89,6 +89,7 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
     $phone = $_GET['phone'];
     $city = $_GET['city'];
     $delieverytype = $_GET['delieverytype'];
+    $dineinpersons = $_GET['dineinpersons'];
 
     if ($delieverytype == 'Takeaway' || $delieverytype == 'Dinein') {
         $address = $apartment = $zip = '';
@@ -186,7 +187,7 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
             $data['display_currency']  = $displayCurrency;
             $data['display_amount']    = $displayAmount;
         }
-        if ($onlinePay->razorPayOnline($fname, $razorpayOrderId, $razorpayPaymentId, $address, $apartment, $city, $zip, $phone, $email, $delieverytype, $delievery_date, $delievery_time, $store, $order_id, $otp, $paymentstatus, $payment_type)) {
+        if ($onlinePay->razorPayOnline($fname, $razorpayOrderId, $razorpayPaymentId, $address, $apartment, $city, $zip, $phone, $email, $delieverytype, $delievery_date, $delievery_time, $store, $order_id, $otp, $paymentstatus, $payment_type,$dineinpersons)) {
             $json = json_encode($data);
         } else {
             // echo '<script>window.location.href = "../order-failed.php";</script>';
